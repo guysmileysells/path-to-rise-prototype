@@ -282,6 +282,7 @@ function App() {
   const [progress, setProgress] = useState<ProgramProgress>(getStoredProgress)
   const [toolState, setToolState] = useState<ToolState>(getStoredToolState)
   const [selectedDay, setSelectedDay] = useState<number>(firstIncompleteDay(progress))
+  const [pathDayOpen, setPathDayOpen] = useState(false)
   const [draftReflections, setDraftReflections] = useState<Record<string, string>>(() => progress.savedReflections)
   const [resetView, setResetView] = useState<ResetView>('landing')
   const [selectedNeedId, setSelectedNeedId] = useState<NeedId | null>(null)
@@ -377,6 +378,7 @@ function App() {
     }
     if (safeDestination === 'path') {
       setSelectedDay(firstIncompleteDay(progress))
+      setPathDayOpen(false)
       goTo('path')
       return
     }
@@ -439,6 +441,7 @@ function App() {
   const openCurrentDay = () => {
     const day = firstIncompleteDay(progress)
     setSelectedDay(day)
+    setPathDayOpen(true)
     setProgress((current) => ({ ...current, currentDay: day, status: current.completedDays.length === 28 ? 'program_complete' : 'in_progress' }))
     goTo('path')
   }
@@ -627,9 +630,9 @@ function App() {
         {storageNotice && <p className={`storage-status ${storageNotice.tone}`} role="status">{storageNotice.message}</p>}
 
         <div className="screen">
-          {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => goTo('path')} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
+          {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
           {activeTab === 'reset' && <ResetExperience view={resetView} selectedNeedId={selectedNeedId} activeToolId={activeToolId} activeToolContext={activeToolContext} toolState={toolState} personalization={personalization} onSelectNeed={selectNeed} onSetView={setResetView} onStartTool={startTool} onCompleteTool={completeStandaloneTool} onToggleFavourite={toggleFavourite} onHome={() => goTo('today')} onSupport={() => goTo('support')} />}
-          {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} draftReflections={draftReflections} onSelectDay={setSelectedDay} onHome={() => goTo('today')} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onCompleteDay={completeDay} />}
+          {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} dayDetailOpen={pathDayOpen} draftReflections={draftReflections} onSelectDay={(day) => { setSelectedDay(day); setPathDayOpen(true) }} onOpenDayDetail={() => setPathDayOpen(true)} onCloseDayDetail={() => setPathDayOpen(false)} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onCompleteDay={completeDay} />}
           {activeTab === 'support' && <Support />}
         </div>
 
@@ -639,7 +642,7 @@ function App() {
               className={activeTab === item.key ? 'active' : ''}
               type="button"
               key={item.key}
-              onClick={() => item.key === 'reset' ? openReset() : goTo(item.key)}
+              onClick={() => item.key === 'reset' ? openReset() : item.key === 'path' ? (setPathDayOpen(false), goTo('path')) : goTo(item.key)}
               aria-current={activeTab === item.key ? 'page' : undefined}
               aria-label={`Open ${item.label}`}
             >
@@ -693,12 +696,20 @@ function Today({ progress, toolState, personalization, notificationPreferences, 
         )}
       </section>
 
-      <article className="notice-card" aria-label="Prompt 7 personalization scope note">
-        <strong>Personalization is transparent</strong>
-        <span>RESET + Toolbox active. Uses {permittedSignalCount} permitted signal types: program position, favourites and bounded recents. Private reflections are not analyzed or used for recommendations.</span>
-      </article>
-      <NotificationSettings progress={progress} toolState={toolState} preferences={notificationPreferences} permission={notificationPermission} platform={notificationPlatform} deliveryStatus={notificationDeliveryStatus} onChange={onNotificationPreferencesChange} onRequestPermission={onRequestNotificationPermission} />
-      <LocalDataControls onClearProgramData={onClearProgramData} onClearToolData={onClearToolData} onClearAllLocalData={onClearAllLocalData} />
+      <details className="calm-disclosure today-data-settings">
+        <summary>
+          <span>Privacy, reminders + local data</span>
+          <small>Prototype details when you need them.</small>
+        </summary>
+        <div className="disclosure-stack">
+          <article className="notice-card compact" aria-label="Prompt 7 personalization scope note">
+            <strong>Personalization is transparent</strong>
+            <span>RESET + Toolbox active. Uses {permittedSignalCount} permitted signal types: program position, favourites and bounded recents. Private reflections are not analyzed or used for recommendations.</span>
+          </article>
+          <NotificationSettings progress={progress} toolState={toolState} preferences={notificationPreferences} permission={notificationPermission} platform={notificationPlatform} deliveryStatus={notificationDeliveryStatus} onChange={onNotificationPreferencesChange} onRequestPermission={onRequestNotificationPermission} />
+          <LocalDataControls onClearProgramData={onClearProgramData} onClearToolData={onClearToolData} onClearAllLocalData={onClearAllLocalData} />
+        </div>
+      </details>
     </section>
   )
 }
@@ -847,6 +858,8 @@ function PersonalizedShortcutCard({ recommendation, onOpen }: { recommendation: 
 function ResetExperience({ view, selectedNeedId, activeToolId, activeToolContext, toolState, personalization, onSelectNeed, onSetView, onStartTool, onCompleteTool, onToggleFavourite, onHome, onSupport }: { view: ResetView; selectedNeedId: NeedId | null; activeToolId: ToolId | null; activeToolContext: ToolContext; toolState: ToolState; personalization: PersonalizationBundle; onSelectNeed: (needId: NeedId) => void; onSetView: (view: ResetView) => void; onStartTool: (toolId: ToolId, context: ToolContext) => void; onCompleteTool: (toolId: ToolId) => void; onToggleFavourite: (toolId: ToolId) => void; onHome: () => void; onSupport: () => void }) {
   const selectedNeed = getResetNeed(selectedNeedId)
   const activeTool = getCanonicalTool(activeToolId)
+  const primaryNeeds = resetNeeds.slice(0, 5)
+  const secondaryNeeds = resetNeeds.slice(5)
 
   if (view === 'tool') {
     if (!activeTool) return <ToolError onToolbox={() => onSetView('toolbox')} onReset={() => onSetView('landing')} />
@@ -896,14 +909,30 @@ function ResetExperience({ view, selectedNeedId, activeToolId, activeToolContext
         <h1 id="reset-title">What do you need right now?</h1>
         <p className="muted">Choose what fits best. RESET routes you to a small set of source-backed options.</p>
       </div>
-      <section className="need-grid" aria-label="Need choices">
-        {resetNeeds.map((need) => (
+      <section className="need-grid" aria-label="Primary RESET need choices">
+        {primaryNeeds.map((need) => (
           <button className="need-card" type="button" key={need.id} onClick={() => onSelectNeed(need.id)}>
             <span>{need.label}</span>
             <small>{need.helper}</small>
           </button>
         ))}
       </section>
+      {secondaryNeeds.length > 0 && (
+        <details className="calm-disclosure compact-disclosure">
+          <summary>
+            <span>More RESET needs</span>
+            <small>{secondaryNeeds.length} more source-backed routes.</small>
+          </summary>
+          <section className="need-grid nested" aria-label="Additional RESET need choices">
+            {secondaryNeeds.map((need) => (
+              <button className="need-card" type="button" key={need.id} onClick={() => onSelectNeed(need.id)}>
+                <span>{need.label}</span>
+                <small>{need.helper}</small>
+              </button>
+            ))}
+          </section>
+        </details>
+      )}
       {personalization.model.shortcut?.toolId && (
         <article className="notice-card" aria-label="Optional saved shortcut">
           <strong>{personalization.model.shortcut.badge === 'FAVOURITE' ? 'Saved shortcut' : 'Recent shortcut'}</strong>
@@ -933,27 +962,43 @@ function Toolbox({ toolState, personalization, onStartTool, onToggleFavourite, o
         <h1 id="toolbox-title">Choose a practice.</h1>
         <p className="muted">Source-backed tools from the 28-Day Journey. Standalone use does not complete a program day.</p>
       </div>
-      <ToolShortcutSection title="Favourites" empty="No favourites yet. Add one from any tool card." tools={favouriteTools} context="favourite" toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
-      <ToolShortcutSection title="Recent" empty="Recent tools will appear here after you start one." tools={recentTools} context="recent" toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
       {!personalization.context.programComplete && currentWeekTools.length > 0 && (
         <ToolShortcutSection title={`From Week ${personalization.context.currentWeek}`} empty="Current-week tools will appear when available." tools={currentWeekTools} context="toolbox" toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
       )}
+      <details className="calm-disclosure compact-disclosure">
+        <summary>
+          <span>Saved + recent practices</span>
+          <small>Quick returns when you have them.</small>
+        </summary>
+        <div className="disclosure-stack">
+          <ToolShortcutSection title="Favourites" empty="No favourites yet. Add one from any tool card." tools={favouriteTools} context="favourite" toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
+          <ToolShortcutSection title="Recent" empty="Recent tools will appear here after you start one." tools={recentTools} context="recent" toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
+        </div>
+      </details>
       {personalization.context.programComplete && (
         <article className="notice-card" aria-label="Post-program toolbox note">
           <strong>After Day 28</strong>
           <span>The full Toolbox stays open for maintenance. There is no Day 29 or endless streak to chase.</span>
         </article>
       )}
-      {toolCategories.map((category) => {
-        const tools = canonicalTools.filter((tool) => tool.category === category)
-        if (tools.length === 0) return null
-        return (
-          <section className="tool-list" key={category} aria-labelledby={`tool-category-${category}`}>
-            <p className="eyebrow" id={`tool-category-${category}`}>{category}</p>
-            {tools.map((tool) => <ToolCard key={tool.id} tool={tool} favourite={toolState.favouriteToolIds.includes(tool.id)} onStart={() => onStartTool(tool.id, 'toolbox')} onToggleFavourite={() => onToggleFavourite(tool.id)} />)}
-          </section>
-        )
-      })}
+      <details className="calm-disclosure browse-tools-disclosure">
+        <summary>
+          <span>Browse all Toolbox practices</span>
+          <small>All 10 canonical tools, grouped by purpose.</small>
+        </summary>
+        <div className="disclosure-stack">
+          {toolCategories.map((category) => {
+            const tools = canonicalTools.filter((tool) => tool.category === category)
+            if (tools.length === 0) return null
+            return (
+              <section className="tool-list" key={category} aria-labelledby={`tool-category-${category}`}>
+                <p className="eyebrow" id={`tool-category-${category}`}>{category}</p>
+                {tools.map((tool) => <ToolCard key={tool.id} tool={tool} favourite={toolState.favouriteToolIds.includes(tool.id)} onStart={() => onStartTool(tool.id, 'toolbox')} onToggleFavourite={() => onToggleFavourite(tool.id)} />)}
+              </section>
+            )
+          })}
+        </div>
+      </details>
     </section>
   )
 }
@@ -1058,7 +1103,7 @@ function ToolError({ onToolbox, onReset }: { onToolbox: () => void; onReset: () 
   )
 }
 
-function MyPath({ progress, progressModel, toolState, selectedDay, draftReflections, onSelectDay, onHome, onReset, onStartTool, onToggleFavourite, onToggleSection, onDraftReflection, onSaveReflection, onDeleteReflection, onCompleteDay }: { progress: ProgramProgress; progressModel: ProgressViewModel; toolState: ToolState; selectedDay: number; draftReflections: Record<string, string>; onSelectDay: (day: number) => void; onHome: () => void; onReset: () => void; onStartTool: (toolId: ToolId, context: ToolContext) => void; onToggleFavourite: (toolId: ToolId) => void; onToggleSection: (day: number, sectionId: string) => void; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onCompleteDay: (day: number) => void }) {
+function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen, draftReflections, onSelectDay, onOpenDayDetail, onCloseDayDetail, onReset, onStartTool, onToggleFavourite, onToggleSection, onDraftReflection, onSaveReflection, onDeleteReflection, onCompleteDay }: { progress: ProgramProgress; progressModel: ProgressViewModel; toolState: ToolState; selectedDay: number; dayDetailOpen: boolean; draftReflections: Record<string, string>; onSelectDay: (day: number) => void; onOpenDayDetail: () => void; onCloseDayDetail: () => void; onReset: () => void; onStartTool: (toolId: ToolId, context: ToolContext) => void; onToggleFavourite: (toolId: ToolId) => void; onToggleSection: (day: number, sectionId: string) => void; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onCompleteDay: (day: number) => void }) {
   const selected = getProgramDay(selectedDay)
   const completedSections = getCompletedSections(progress, selected.day)
   const insights = useMemo(() => resolveProgressInsights(progressModel), [progressModel])
@@ -1069,26 +1114,69 @@ function MyPath({ progress, progressModel, toolState, selectedDay, draftReflecti
       <div>
         <p className="eyebrow">My Path</p>
         <h1 id="path-title">Progress + Insights</h1>
-        <p className="muted">Meaningful progress, reflection and continuity — zero pressure. Missed days never reset program progress.</p>
+        <p className="muted">Meaningful progress, reflection and continuity — zero pressure. Missed days never reset program progress. See your next step first; details and the full source-backed day stay available when you ask for them.</p>
       </div>
 
-      <ProgressSummary model={progressModel} onHome={onHome} onReset={onReset} />
-      <ProgressInsights insights={insights} />
-      <WeekJourney model={progressModel} />
-      <DayProgressGrid model={progressModel} selectedDay={selected.day} onSelectDay={onSelectDay} />
-      <SavedPracticeSummary model={progressModel} toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
-      <ReflectionReview model={progressModel} savedReflections={progress.savedReflections} />
-      <article className="notice-card" aria-label="Progress privacy scope">
-        <strong>Progress uses minimal data</strong>
-        <span>{permittedProgressDataCount} permitted/caution signal groups are used for display. Reflection text is review-only and never interpreted into insights.</span>
-      </article>
-      {progressModel.dataIntegrityNotes.length > 0 && <ProgressIntegrityNotes notes={progressModel.dataIntegrityNotes} />}
-      <DayExperience day={selected} progress={progress} completedSections={completedSections} draftReflections={draftReflections} onStartTool={onStartTool} onToggleSection={onToggleSection} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onCompleteDay={onCompleteDay} />
+      <ProgressSummary model={progressModel} selectedDay={selected} onOpenDayDetail={onOpenDayDetail} onReset={onReset} />
+
+      {!dayDetailOpen && (
+        <article className="selected-day-card" aria-labelledby="selected-day-title">
+          <p className="eyebrow">Selected day</p>
+          <h2 id="selected-day-title">Day {selected.day}: {selected.title}</h2>
+          <p>{selected.purpose}</p>
+          <p className="fineprint left-copy">{completedSections.length} of {selected.sections.length} sections marked done. Full source-backed content opens only when you choose to review it.</p>
+          <button className="primary" type="button" onClick={onOpenDayDetail}>{progress.completedDays.includes(selected.day) ? `Review Day ${selected.day}` : `Open Day ${selected.day}`}</button>
+        </article>
+      )}
+
+      <details className="calm-disclosure">
+        <summary>
+          <span>Path map + insights</span>
+          <small>Weeks, day picker and descriptive progress notes.</small>
+        </summary>
+        <div className="disclosure-stack">
+          <ProgressInsights insights={insights} />
+          <WeekJourney model={progressModel} />
+          <DayProgressGrid model={progressModel} selectedDay={selected.day} onSelectDay={onSelectDay} />
+        </div>
+      </details>
+
+      <details className="calm-disclosure">
+        <summary>
+          <span>Practices + private reflections</span>
+          <small>Saved tools and local-only reflection review.</small>
+        </summary>
+        <div className="disclosure-stack">
+          <SavedPracticeSummary model={progressModel} toolState={toolState} onStartTool={onStartTool} onToggleFavourite={onToggleFavourite} />
+          <ReflectionReview model={progressModel} savedReflections={progress.savedReflections} />
+        </div>
+      </details>
+
+      <details className="calm-disclosure compact-disclosure">
+        <summary>
+          <span>Progress privacy</span>
+          <small>What this prototype uses and does not use.</small>
+        </summary>
+        <div className="disclosure-stack">
+          <article className="notice-card compact" aria-label="Progress privacy scope">
+            <strong>Progress uses minimal data</strong>
+            <span>{permittedProgressDataCount} permitted/caution signal groups are used for display. Reflection text is review-only and never interpreted into insights.</span>
+          </article>
+          {progressModel.dataIntegrityNotes.length > 0 && <ProgressIntegrityNotes notes={progressModel.dataIntegrityNotes} />}
+        </div>
+      </details>
+
+      {dayDetailOpen && (
+        <>
+          <button className="text-button left" type="button" onClick={onCloseDayDetail}>← Back to path overview</button>
+          <DayExperience day={selected} progress={progress} completedSections={completedSections} draftReflections={draftReflections} onStartTool={onStartTool} onToggleSection={onToggleSection} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onCompleteDay={onCompleteDay} />
+        </>
+      )}
     </section>
   )
 }
 
-function ProgressSummary({ model, onHome, onReset }: { model: ProgressViewModel; onHome: () => void; onReset: () => void }) {
+function ProgressSummary({ model, selectedDay, onOpenDayDetail, onReset }: { model: ProgressViewModel; selectedDay: ProgramDay; onOpenDayDetail: () => void; onReset: () => void }) {
   return (
     <article className="hero-card pale program-overview progress-summary" aria-labelledby="progress-summary-title">
       <div className="status-row">
@@ -1103,7 +1191,7 @@ function ProgressSummary({ model, onHome, onReset }: { model: ProgressViewModel;
         <span><strong>Completed</strong>{model.daysCompleted} Days</span>
       </div>
       <div className="button-grid two">
-        <button className="primary" type="button" onClick={onHome}>Return Home</button>
+        <button className="primary" type="button" onClick={onOpenDayDetail}>{model.programComplete ? `Review Day ${selectedDay.day}` : `Open Day ${selectedDay.day}`}</button>
         <button className="secondary" type="button" onClick={onReset}>Open RESET</button>
       </div>
       <p className="fineprint left-copy">Progress shows movement through the program. It is not a wellness score, clinical rating or recovery percentage.</p>
@@ -1226,6 +1314,11 @@ function DayExperience({ day, progress, completedSections, draftReflections, onS
       </div>
       <h2 id="day-title">{day.title}</h2>
       <p className="purpose">{day.purpose}</p>
+      <div className="day-orientation" aria-label="Today progression">
+        <span><strong>Now</strong>{complete ? 'Review when useful' : 'Work through one section at a time'}</span>
+        <span><strong>Progress</strong>{progressText}</span>
+        <span><strong>Next</strong>{complete ? 'Return to Toolbox or RESET' : 'Mark useful sections done'}</span>
+      </div>
       <div className="source-banner">
         <strong>{day.sourceStatus === 'VERIFIED_FROM_DOCX' ? 'Source verified' : 'Requires verification'}</strong>
         <span>{day.sourceLocation}</span>

@@ -1001,6 +1001,80 @@ small {
   text-align: left;
 }
 
+.calm-disclosure {
+  min-width: 0;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 253, 248, 0.82);
+}
+
+.calm-disclosure summary {
+  min-height: 48px;
+  display: grid;
+  gap: var(--space-1);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-weight: 850;
+}
+
+.calm-disclosure summary small {
+  color: var(--color-text-secondary);
+  font-size: var(--type-caption);
+  font-weight: 650;
+}
+
+.calm-disclosure[open] summary {
+  margin-bottom: var(--space-3);
+}
+
+.compact-disclosure {
+  padding: var(--space-3) var(--space-4);
+}
+
+.disclosure-stack,
+.need-grid.nested {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.notice-card.compact {
+  padding: var(--space-4);
+}
+
+.selected-day-card,
+.day-orientation {
+  min-width: 0;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-primary);
+  border: 1px solid rgba(36, 104, 79, 0.14);
+}
+
+.selected-day-card {
+  box-shadow: 0 10px 30px rgba(4, 39, 35, 0.06);
+}
+
+.day-orientation {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: rgba(255, 253, 248, 0.78);
+}
+
+.day-orientation span {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--color-text-secondary);
+  font-size: var(--type-caption);
+}
+
+.day-orientation strong {
+  color: var(--color-text-primary);
+}
+
 @media (max-width: 480px) {
   .shell {
     padding: 0;
@@ -1021,6 +1095,10 @@ small {
   .screen,
   .topbar {
     padding-inline: var(--space-5);
+  }
+
+  .day-orientation {
+    grid-template-columns: 1fr;
   }
 }
 
