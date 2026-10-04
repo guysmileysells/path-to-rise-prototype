@@ -21,7 +21,7 @@ Build result: PASS on 2026-10-03 22:25 PDT
 Testing environment: local production preview served over private LAN
 Preview process: proc_7c4fa4441422
 Private LAN URL: http://192.168.1.65:4173/
-Temporary HTTPS tunnel URL: https://286dd36ba84475.lhr.life/
+Temporary HTTPS tunnel URL: https://ec8390998c9ae8.lhr.life/
 ```
 
 ## Private access boundary
@@ -37,7 +37,7 @@ If the phone is not on the same network, the LAN URL may not load. If Windows fi
 Open on physical iPhone Safari:
 
 ```txt
-https://286dd36ba84475.lhr.life/
+https://ec8390998c9ae8.lhr.life/
 ```
 
 The original LAN URL `http://192.168.1.65:4173/` was blocked on the first iPhone attempt because Safari HTTPS-Only was enabled.
