@@ -1,0 +1,56 @@
+# PATH TO RISE — PROMPT #13 STAGE 1 OWNER ACCESS
+
+Generated: 2026-10-03 22:26 PDT
+Purpose: private owner/internal real-device validation setup only.
+
+## Scope
+
+This is not Prompt #14, not a first-responder pilot, not TestFlight, not public beta, and not production launch.
+
+The purpose is to let the owner open the current PATH to RISE build on physical devices and report real results.
+
+## Build under test
+
+```txt
+Branch: master
+Commit under test: ad65585fe38bbbf6f96b1ad940e932d245ca7266
+Prompt #1–#12 checkpoint: 045af500ff6901fa56494d33512cfd6e8d3c8311
+Prompt #1–#12 tag: path-to-rise-prompt-1-12-rc1
+Build command: npm run build
+Build result: PASS on 2026-10-03 22:25 PDT
+Testing environment: local production preview served over private LAN
+Preview process: proc_7c4fa4441422
+Private LAN URL: http://192.168.1.65:4173/
+```
+
+## Private access boundary
+
+The URL is a local network preview from the owner machine. It is intended for devices on the same private network/Wi-Fi only. It is not a public deployment, permanent URL, domain, TestFlight build, production release, or production HTTPS deployment.
+
+If the phone is not on the same network, the URL may not load. If Windows firewall prompts for Node/Vite access, allow access on private networks only.
+
+## Owner first test
+
+Open on physical iPhone Safari:
+
+```txt
+http://192.168.1.65:4173/
+```
+
+First result to report:
+
+```txt
+Does PATH to RISE open and does the Today/Home screen load correctly?
+```
+
+Do not mark this PASS until the owner reports the result from the physical iPhone.
+
+## Privacy reminder
+
+Reflection testing must use only:
+
+```txt
+TEST REFLECTION — private preview validation only.
+```
+
+Do not enter trauma details, diagnoses, medical history, crisis information, employer-sensitive information, incident information, patient information, or private journal material.

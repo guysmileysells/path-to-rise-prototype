@@ -28,6 +28,7 @@ Related issue IDs:
 | P13-E0001 | Baseline checkpoint recoverable | PASS | Git/tool | Local repo | Agent | 2026-10-03 22:06 PDT | `path-to-rise-prompt-1-12-rc1` | Proves recoverability only, not device UX. | Engineering |
 | P13-E0002 | Working tree clean at Prompt #13 start | PASS | Git/tool | Local repo | Agent | 2026-10-03 22:06 PDT | `d4286a34a25adcb068e613aba7b3ffd0c49f5047` | Does not validate devices/humans. | Engineering |
 | P13-E0003 | Prior automated implementation gates | PARTIAL | Prior Prompt #12 report | Local browser/build/test | Agent | 2026-10-03 | `045af500ff6901fa56494d33512cfd6e8d3c8311` | Useful baseline; not physical-device/human validation. | Engineering |
+| P13-E0004 | Stage 1 owner access prepared | PARTIAL | Build + local network preview | Private LAN URL `http://192.168.1.65:4173/` | Agent | 2026-10-03 22:26 PDT | `ad65585fe38bbbf6f96b1ad940e932d245ca7266` | URL responds from local/LAN curl; physical iPhone/Android owner validation remains NOT VERIFIED. | Engineering |
 
 ## Device/human evidence entries
 
