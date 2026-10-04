@@ -179,3 +179,15 @@ Mitigation implemented after the controlled refinement checkpoint:
 - Source-backed Day content, Support, bottom nav, privacy boundaries and program rules were not changed.
 
 Verification run after this addendum: `npm test`, `npm run lint`, `npm run build`, `npm run final-audit`, and affected-path browser smoke through the active HTTPS tunnel. Physical iPhone retest remains required before closing P13-F0003.
+
+## Addendum — Task separation and per-task reminders request
+
+Owner real-device screenshots show that source-backed Day/tool task instructions can still feel lumped together even after the Day detail visibility fix. The owner requested a clearer task model: each task should appear as its own separate tap-to-open unit with its own instructions, and each task should be able to offer a reminder to complete it.
+
+Feasibility classification:
+
+- Separate task cards/details: feasible in the current web prototype as a source-preserving UI/model change.
+- Per-task reminder preferences and in-app/browser-tab reminders: feasible as prototype-limited logic if clearly labelled.
+- Reliable iPhone lock-screen/background notifications: not honestly claimable in the current browser-only preview without PWA/service-worker push or a native wrapper/push scheduler and real-device verification.
+
+This request is recorded as P13-F0004/P13-R0002 and should be treated as a next scoped UX/reminder phase, not an unplanned Prompt #13 hotfix.
