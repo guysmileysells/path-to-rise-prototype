@@ -34,6 +34,7 @@ Related issue IDs:
 | P13-E0007 | Replacement HTTPS tunnel prepared | PARTIAL | HTTPS tunnel + curl header check | `https://61a63d81f71e23.lhr.life/` | Agent | 2026-10-03 22:45 PDT | `f02dd5fb38fd56fae800b161bff22bdf1a58edc4` | HTTPS URL returned HTTP 200 via curl; later returned 502 after localhost.run rotated URL. | Engineering |
 | P13-E0008 | Owner iPhone usability density finding | PARTIAL | Owner real-device report | Physical iPhone Safari | Owner | 2026-10-03 22:46 PDT | current private preview / `f02dd5fb38fd56fae800b161bff22bdf1a58edc4` | Owner reports controls/buttons functional/tappable, but several screens feel busy/all-over-the-place; screen-specific ranking still under evaluation. | Owner/QA |
 | P13-E0009 | Active HTTPS tunnel rotated | PARTIAL | HTTPS tunnel + curl header check | `https://7c53bb096f03b8.lhr.life/` | Agent | 2026-10-03 22:51 PDT | `51b51c8b4e3ff44ea4cef6c478031e49e5ab8d1b` | Prior HTTPS URL returned 502; current rotated tunnel returns HTTP 200. Physical iPhone Day 1 test remains owner-reported evidence. | Engineering |
+| P13-E0010 | Formal mobile UX density audit completed | PASS | Rendered preview metrics + visual/code inspection + owner iPhone report | Local production preview / physical iPhone report | Agent | 2026-10-03 23:05 PDT | `03053cbe90d31bb017b8b73300b03cfd1311dfd7` | Audit doc identifies My Path, Toolbox, RESET, Today, and Support density causes; no product/code changes made; iPhone overall remains PARTIAL/NOT PASSED. | Owner/QA |
 
 ## Device/human evidence entries
 
