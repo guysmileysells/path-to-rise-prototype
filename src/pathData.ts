@@ -53,10 +53,41 @@ export const sevenDayReset = [
 ] as const
 
 export const twentyEightDayWeeks = [
-  { week: 1, theme: 'Stabilize', outcome: 'Recognize activation and use basic regulation tools' },
+  { week: 1, theme: 'Stabilize / reset baseline', outcome: 'Recognize activation and use basic regulation tools' },
   { week: 2, theme: 'Awareness and Honesty', outcome: 'Notice triggers, body signals and automatic patterns' },
   { week: 3, theme: 'Acceptance and Letting Go', outcome: 'Separate responsibility from punishment and release what cannot be controlled' },
   { week: 4, theme: 'Identity and Purpose', outcome: 'Build values, relationships and purpose beyond the professional role' },
+] as const
+
+export const programDays = [
+  { day: 1, week: 1, title: 'Resetting the Baseline' },
+  { day: 2, week: 1, title: 'Creating Consistency and Control' },
+  { day: 3, week: 1, title: 'Increasing Awareness Without Overloading the System' },
+  { day: 4, week: 1, title: 'Building Control Through Routine' },
+  { day: 5, week: 1, title: 'Releasing Tension Without Losing Control' },
+  { day: 6, week: 1, title: 'Strengthening Emotional Control Without Suppressing' },
+  { day: 7, week: 1, title: 'Grounding the System and Preparing for the Next Phase' },
+  { day: 8, week: 2, title: 'Seeing What Is There Without Avoidance' },
+  { day: 9, week: 2, title: 'Recognizing Patterns' },
+  { day: 10, week: 2, title: 'Increasing Honesty' },
+  { day: 11, week: 2, title: 'Understanding Internal Pressure' },
+  { day: 12, week: 2, title: 'Identifying Emotional Avoidance' },
+  { day: 13, week: 2, title: 'Taking Ownership' },
+  { day: 14, week: 2, title: 'Full Awareness & Preparation for Week 3' },
+  { day: 15, week: 3, title: 'Accepting What Is' },
+  { day: 16, week: 3, title: 'Releasing Emotional Resistance' },
+  { day: 17, week: 3, title: 'Letting Go of Control' },
+  { day: 18, week: 3, title: 'Releasing Guilt & Shame' },
+  { day: 19, week: 3, title: 'Processing Anger & Resentment' },
+  { day: 20, week: 3, title: 'Self-Compassion & Forgiveness' },
+  { day: 21, week: 3, title: 'Week 3 Completion & Preparation for Rebuilding' },
+  { day: 22, week: 4, title: 'Rebuilding Self-Trust' },
+  { day: 23, week: 4, title: 'Creating Forward Momentum' },
+  { day: 24, week: 4, title: 'Reconnecting to Purpose' },
+  { day: 25, week: 4, title: 'Building Confidence Through Action' },
+  { day: 26, week: 4, title: 'Building Confidence Through Action' },
+  { day: 27, week: 4, title: 'Creating Healthier Future Habits' },
+  { day: 28, week: 4, title: 'Integration, Reflection & Preparing for Your Next Chapter' },
 ] as const
 
 export const lessonParts = ['Real Talk', 'Understand It', 'See It', 'Do It', 'Carry It', 'Check It'] as const

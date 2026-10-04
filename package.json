@@ -8,7 +8,13 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "contract": "node scripts/contract-check.mjs",
-    "test": "npm run contract && npm run build",
+    "personalization": "node --experimental-transform-types scripts/personalization-scenarios.mjs",
+    "progress": "node --experimental-transform-types scripts/progress-scenarios.mjs",
+    "hardening": "node scripts/hardening-scenarios.mjs",
+    "notifications": "node --experimental-transform-types scripts/notification-scenarios.mjs",
+    "production-qa": "node --experimental-transform-types scripts/production-qa-scenarios.mjs",
+    "final-audit": "node --experimental-transform-types scripts/final-launch-audit.mjs",
+    "test": "npm run contract && npm run personalization && npm run progress && npm run hardening && npm run notifications && npm run production-qa && npm run final-audit && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
