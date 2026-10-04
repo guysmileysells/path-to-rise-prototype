@@ -47,7 +47,7 @@ If a P1 appears:
 
 | ID | Category | Severity | Status | Build | Device/browser | Evidence | Steps / context | User impact | Assigned action | Regression requirement | Resolution | Retest result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| P13-F0001 | DEFECT | P0/P1/P2/P3 | TEMPLATE |  |  |  |  |  |  |  |  |  |
+| P13-F0001 | USABILITY FRICTION | P2 | MITIGATED / RETEST NEEDED | `eca3eb403487fcb4801ce413f7c447a12c7f4551` | Physical iPhone Safari | Owner screenshot + P13-E0005/P13-E0006 | Opening `http://192.168.1.65:4173/` on iPhone Safari with HTTPS-Only enabled | Owner could not load app via HTTP LAN URL | Created temporary HTTPS tunnel `https://aaf62eedc0e33f.lhr.life/`; owner must retry first app-load test | Retest iPhone Safari Home/Today load through HTTPS URL | Access method changed, app code unchanged | NOT VERIFIED until owner retries |
 
 ## Feature-request quarantine
 

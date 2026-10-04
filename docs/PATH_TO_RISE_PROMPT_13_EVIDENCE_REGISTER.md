@@ -29,6 +29,8 @@ Related issue IDs:
 | P13-E0002 | Working tree clean at Prompt #13 start | PASS | Git/tool | Local repo | Agent | 2026-10-03 22:06 PDT | `d4286a34a25adcb068e613aba7b3ffd0c49f5047` | Does not validate devices/humans. | Engineering |
 | P13-E0003 | Prior automated implementation gates | PARTIAL | Prior Prompt #12 report | Local browser/build/test | Agent | 2026-10-03 | `045af500ff6901fa56494d33512cfd6e8d3c8311` | Useful baseline; not physical-device/human validation. | Engineering |
 | P13-E0004 | Stage 1 owner access prepared | PARTIAL | Build + local network preview | Private LAN URL `http://192.168.1.65:4173/` | Agent | 2026-10-03 22:26 PDT | `ad65585fe38bbbf6f96b1ad940e932d245ca7266` | URL responds from local/LAN curl; physical iPhone/Android owner validation remains NOT VERIFIED. | Engineering |
+| P13-E0005 | iPhone Safari HTTP LAN access attempt | FAIL | Owner screenshot | Physical iPhone Safari | Owner | 2026-10-03 22:30 PDT | `eca3eb403487fcb4801ce413f7c447a12c7f4551` | Safari displayed HTTPS-Only block before app loaded; this validates access-method failure only, not app UI. | Owner/QA |
+| P13-E0006 | Temporary HTTPS tunnel prepared | PARTIAL | HTTPS tunnel + curl header check | `https://aaf62eedc0e33f.lhr.life/` | Agent | 2026-10-03 22:31 PDT | `eca3eb403487fcb4801ce413f7c447a12c7f4551` | HTTPS URL returned HTTP 200 via curl; physical iPhone app load remains NOT VERIFIED until owner reports result. | Engineering |
 
 ## Device/human evidence entries
 

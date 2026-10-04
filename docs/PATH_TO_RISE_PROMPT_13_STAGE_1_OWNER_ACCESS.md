@@ -21,21 +21,26 @@ Build result: PASS on 2026-10-03 22:25 PDT
 Testing environment: local production preview served over private LAN
 Preview process: proc_7c4fa4441422
 Private LAN URL: http://192.168.1.65:4173/
+Temporary HTTPS tunnel URL: https://aaf62eedc0e33f.lhr.life/
 ```
 
 ## Private access boundary
 
-The URL is a local network preview from the owner machine. It is intended for devices on the same private network/Wi-Fi only. It is not a public deployment, permanent URL, domain, TestFlight build, production release, or production HTTPS deployment.
+The original LAN URL is a local network preview from the owner machine. It is intended for devices on the same private network/Wi-Fi only. It is not a public deployment, permanent URL, domain, TestFlight build, production release, or production HTTPS deployment.
 
-If the phone is not on the same network, the URL may not load. If Windows firewall prompts for Node/Vite access, allow access on private networks only.
+The temporary HTTPS tunnel exists only to work around iPhone Safari HTTPS-Only blocking of local HTTP testing. It is an unlisted temporary test URL, not a public launch or production deployment. Treat it as share-with-owner-only and stop the tunnel when Stage 1 testing is done.
+
+If the phone is not on the same network, the LAN URL may not load. If Windows firewall prompts for Node/Vite access, allow access on private networks only.
 
 ## Owner first test
 
 Open on physical iPhone Safari:
 
 ```txt
-http://192.168.1.65:4173/
+https://aaf62eedc0e33f.lhr.life/
 ```
+
+The original LAN URL `http://192.168.1.65:4173/` was blocked on the first iPhone attempt because Safari HTTPS-Only was enabled.
 
 First result to report:
 
