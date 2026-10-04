@@ -166,3 +166,16 @@ Not sufficient:
 
 - There is less content.
 - Everything has simply been hidden behind extra taps.
+
+## Addendum — Open Day 1 iPhone tap report
+
+Owner reported that pressing Open Day 1 on iPhone appeared to do nothing while other buttons worked. Investigation found the app state did open the Day detail, but the detail appeared below folded overview sections/without clear visible feedback on iPhone.
+
+Mitigation implemented after the controlled refinement checkpoint:
+
+- Day detail now renders immediately below the primary program/progress card.
+- Opening a Day scrolls that detail into view.
+- The folded overview sections remain available below the Day detail.
+- Source-backed Day content, Support, bottom nav, privacy boundaries and program rules were not changed.
+
+Verification run after this addendum: `npm test`, `npm run lint`, `npm run build`, `npm run final-audit`, and affected-path browser smoke through the active HTTPS tunnel. Physical iPhone retest remains required before closing P13-F0003.

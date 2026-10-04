@@ -1108,6 +1108,12 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
   const completedSections = getCompletedSections(progress, selected.day)
   const insights = useMemo(() => resolveProgressInsights(progressModel), [progressModel])
   const permittedProgressDataCount = progressDataInventory.filter((item) => item.permittedUse !== 'DO_NOT_USE').length
+  const dayDetailRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!dayDetailOpen) return
+    dayDetailRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' })
+  }, [dayDetailOpen, selected.day])
 
   return (
     <section className="stack page-enter" aria-labelledby="path-title">
@@ -1127,6 +1133,13 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
           <p className="fineprint left-copy">{completedSections.length} of {selected.sections.length} sections marked done. Full source-backed content opens only when you choose to review it.</p>
           <button className="primary" type="button" onClick={onOpenDayDetail}>{progress.completedDays.includes(selected.day) ? `Review Day ${selected.day}` : `Open Day ${selected.day}`}</button>
         </article>
+      )}
+
+      {dayDetailOpen && (
+        <div ref={dayDetailRef} className="stack" aria-live="polite">
+          <button className="text-button left" type="button" onClick={onCloseDayDetail}>← Back to path overview</button>
+          <DayExperience day={selected} progress={progress} completedSections={completedSections} draftReflections={draftReflections} onStartTool={onStartTool} onToggleSection={onToggleSection} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onCompleteDay={onCompleteDay} />
+        </div>
       )}
 
       <details className="calm-disclosure">
@@ -1165,13 +1178,6 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
           {progressModel.dataIntegrityNotes.length > 0 && <ProgressIntegrityNotes notes={progressModel.dataIntegrityNotes} />}
         </div>
       </details>
-
-      {dayDetailOpen && (
-        <>
-          <button className="text-button left" type="button" onClick={onCloseDayDetail}>← Back to path overview</button>
-          <DayExperience day={selected} progress={progress} completedSections={completedSections} draftReflections={draftReflections} onStartTool={onStartTool} onToggleSection={onToggleSection} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onCompleteDay={onCompleteDay} />
-        </>
-      )}
     </section>
   )
 }
