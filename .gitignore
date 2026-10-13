@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local deployment/account state
+.vercel
+
+# Local Hermes recovery checkpoints
+.hermes/checkpoints/

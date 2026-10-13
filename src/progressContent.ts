@@ -1,5 +1,6 @@
 import { programContent } from './programContent.ts'
 import { canonicalTools, getCanonicalTool, sanitizeToolIds, type ToolId } from './toolContent.ts'
+import { calculateSmallWins, deriveDayRoadmapStatus, getRoadmapForDay, sanitizeTaskProgress, type SmallWinsSummary } from './dayRoadmap.ts'
 
 export type ProgressUseClass = 'SAFE' | 'USE_WITH_CAUTION' | 'DO_NOT_USE'
 export type DayProgressState = 'complete' | 'current' | 'available' | 'upcoming'
@@ -11,6 +12,7 @@ export type ProgressProgramState = {
   status: 'not_started' | 'in_progress' | 'program_complete'
   completedDays: unknown
   daySectionProgress: unknown
+  dayTaskProgress?: unknown
   savedReflections: unknown
   lastReturn?: 'today' | 'after_break'
 }
@@ -68,6 +70,9 @@ export type ProgressViewModel = {
   daysCompleted: number
   sectionsCompleted: number
   totalSections: number
+  dayTaskProgressLabel?: string
+  nextTaskLabel?: string
+  smallWins: SmallWinsSummary
   completedWeeks: number[]
   programComplete: boolean
   nextActionLabel: string
@@ -134,6 +139,16 @@ export const progressDataInventory: ProgressDataInventoryItem[] = [
     reliability: 'Sanitized by valid day/section IDs',
     displayValue: 'Sections completed in aggregate only',
     insightValue: 'Practice/engagement summary without scores',
+    permittedUse: 'SAFE',
+  },
+  {
+    field: 'dayTaskProgress',
+    source: 'path-to-rise-program-progress-v1',
+    currentStorage: 'Prototype localStorage',
+    sensitivity: 'Moderate wellness-program state',
+    reliability: 'Sanitized by canonical 28-day roadmap action IDs',
+    displayValue: 'Morning Activation, Daily Wellness Activity and Evening Activation Small Wins',
+    insightValue: 'Action completion only; no scoring or psychological inference',
     permittedUse: 'SAFE',
   },
   {
@@ -270,6 +285,7 @@ export function createProgressViewModel(progress: ProgressProgramState, toolStat
   const completedDays = uniqueValidDays(progress.completedDays)
   const completedDaySet = new Set(completedDays)
   const sanitizedSections = safeSectionProgress(progress.daySectionProgress)
+  const sanitizedTasks = sanitizeTaskProgress(progress.dayTaskProgress)
   const sanitizedReflections = safeReflections(progress.savedReflections)
   const favouriteToolIds = sanitizeToolIds(toolState.favouriteToolIds, 20)
   const recentToolIds = sanitizeToolIds(toolState.recentToolIds, 5)
@@ -280,6 +296,9 @@ export function createProgressViewModel(progress: ProgressProgramState, toolStat
   const currentWeek = currentDayContent.week
   const totalSections = programContent.reduce((sum, day) => sum + day.sections.length, 0)
   const sectionsCompleted = Object.values(sanitizedSections).reduce((sum, ids) => sum + ids.length, 0)
+  const currentRoadmap = getRoadmapForDay(currentDay)
+  const currentRoadmapStatus = currentRoadmap ? deriveDayRoadmapStatus(currentRoadmap, sanitizedTasks[String(currentDay)] ?? []) : null
+  const smallWins = calculateSmallWins(sanitizedTasks, currentDay)
   const dataIntegrityNotes: string[] = []
 
   if (Array.isArray(progress.completedDays) && progress.completedDays.length !== completedDays.length) dataIntegrityNotes.push('Duplicate or invalid completed Day values were ignored for display.')
@@ -317,7 +336,9 @@ export function createProgressViewModel(progress: ProgressProgramState, toolStat
   const favouriteTools = favouriteToolIds.map((id) => getCanonicalTool(id)?.canonicalName).filter((name): name is string => Boolean(name))
   const recentTools = recentToolIds.map((id) => getCanonicalTool(id)?.canonicalName).filter((name): name is string => Boolean(name))
   const learnedToolIds = getLearnedToolIds(completedDays, completedStandaloneToolIds)
-  const nextActionLabel = programComplete ? 'Reset or revisit a practice' : completedDays.length === 0 ? 'Start Day 1' : `Continue Day ${currentDay}`
+  const dayTaskProgressLabel = !programComplete && currentRoadmapStatus ? currentRoadmapStatus.progressLabel : undefined
+  const nextTaskLabel = !programComplete && currentRoadmapStatus?.nextTask ? `${currentRoadmapStatus.nextTask.shortTitle}` : undefined
+  const nextActionLabel = programComplete ? 'Reset or revisit a practice' : nextTaskLabel ? `Next up: ${nextTaskLabel}` : completedDays.length === 0 ? 'Start Day 1' : `Continue Day ${currentDay}`
 
   return {
     currentDay,
@@ -327,6 +348,9 @@ export function createProgressViewModel(progress: ProgressProgramState, toolStat
     daysCompleted: completedDays.length,
     sectionsCompleted,
     totalSections,
+    dayTaskProgressLabel,
+    nextTaskLabel,
+    smallWins,
     completedWeeks,
     programComplete,
     nextActionLabel,
@@ -382,7 +406,7 @@ export const progressInsightRules: ProgressInsightRule[] = [
     requiredData: ['daySectionProgress', 'completedStandaloneToolIds'],
     privacyClass: 'MODERATE',
     eligibility: (model) => model.sectionsCompleted > 0 || model.learnedToolIds.length > 0,
-    message: (model) => `You have practiced ${model.sectionsCompleted} source-backed sections and have ${model.learnedToolIds.length} reusable tools available.`,
+    message: (model) => `You have completed ${model.smallWins.program.completed} of 476 Small Wins, and ${model.learnedToolIds.length} reusable tools are available.`,
     userBenefit: 'Shows what the user has practiced and can return to.',
     confidenceLimit: 'This is engagement/practice history, not proof of clinical improvement.',
   },

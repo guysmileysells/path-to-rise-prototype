@@ -1,8 +1,37 @@
 # PATH to RISE preview release checkpoint
 
-Date: 2026-09-23 22:52 PDT
+Date: 2026-10-13 09:10 PDT
 
-## Shareable preview URL
+## Durable anywhere-access preview status
+
+Requested outcome: create a review link that does not disconnect during functionality testing.
+
+Current result: **blocked until a real hosting account/deployment target is connected.** The app is a static Vite prototype and is ready to host, but this local repo currently has no durable deployment credentials or remote target configured.
+
+Verified blockers on 2026-10-13:
+
+- Vercel CLI is installed but logged out: `vercel whoami` returned `Logged out`.
+- Permanent Vercel deploy failed with `No existing credentials found`.
+- No Git remote is configured for this local repo.
+- `gh`, `netlify`, `surge`, `wrangler`, and `firebase` CLIs are not available/logged in for durable deploy fallback.
+- Cloudflare quick-tunnel links are temporary and can disconnect because they depend on the Windows local preview server and tunnel process staying alive.
+
+Current temporary review URL:
+
+```txt
+https://davis-metallica-attacked-indicating.trycloudflare.com/
+```
+
+Temporary URL verification on 2026-10-13:
+
+- Public URL returned HTTP 200 and title `PATH to RISE Prototype`.
+- Browser opened the app and rendered PATH to RISE.
+- Morning Activation / Evening Activation / Small Wins smoke checks passed during owner-preview verification.
+- Browser console errors: 0 during smoke check.
+
+Durable-link next step: GitHub CLI has been installed locally under Hermes and the GitHub device-login flow is waiting for owner authorization. After GitHub authorization succeeds, create/push a GitHub repo, connect/deploy the app through Vercel, and verify the resulting stable URL. Do not use anonymous temporary Vercel or Cloudflare quick tunnels as the durable no-disconnect link.
+
+## Prior shareable preview URL
 
 https://pension-disclosure-colleague-mainly.trycloudflare.com/
 

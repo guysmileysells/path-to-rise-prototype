@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 import { programContent, prompt5SourceIssues, type ProgramSection } from './programContent'
+import { activationAffirmations, deriveDayRoadmapStatus, feelingStuckOptions, getAllRoadmapTasks, getCompletedRoadmapTaskIds, getRoadmapForDay, sanitizeTaskProgress, toggleTaskCompletion, type DayRoadmap, type DayTaskProgress, type RoadmapTask, type SmallWinSection } from './dayRoadmap'
 import {
   canonicalTools,
   getCanonicalTool,
@@ -54,6 +55,7 @@ type ProgramProgress = {
   status: ProgramStatus
   completedDays: number[]
   daySectionProgress: Record<string, string[]>
+  dayTaskProgress: DayTaskProgress
   savedReflections: Record<string, string>
   lastReturn: 'today' | 'after_break'
 }
@@ -100,6 +102,7 @@ const defaultProgress: ProgramProgress = {
   status: 'not_started',
   completedDays: [],
   daySectionProgress: {},
+  dayTaskProgress: {},
   savedReflections: {},
   lastReturn: 'today',
 }
@@ -153,6 +156,7 @@ function parseProgress(stored: string | null): ProgramProgress | null {
       status: parsed.status === 'in_progress' || parsed.status === 'program_complete' ? parsed.status : defaultProgress.status,
       completedDays: uniqueValidDays(parsed.completedDays),
       daySectionProgress: safeRecord(parsed.daySectionProgress),
+      dayTaskProgress: sanitizeTaskProgress(parsed.dayTaskProgress),
       savedReflections: safeStringRecord(parsed.savedReflections),
       lastReturn: parsed.lastReturn === 'after_break' ? 'after_break' : 'today',
     }
@@ -255,6 +259,20 @@ function getHomeModel(progress: ProgramProgress): HomeModel {
   const day = getProgramDay(dayNumber)
   const completedSectionCount = getCompletedSections(progress, dayNumber).length
   const progressPrefix = `Day ${day.day} of 28 · Week ${day.week} of 4`
+  const roadmap = getRoadmapForDay(day.day)
+  const roadmapStatus = roadmap ? deriveDayRoadmapStatus(roadmap, getCompletedRoadmapTaskIds(progress.dayTaskProgress, day.day)) : null
+
+  if (roadmap && roadmapStatus) {
+    const nextLabel = roadmapStatus.nextTask ? `Next up: ${roadmapStatus.nextTask.order}. ${roadmapStatus.nextTask.shortTitle}` : 'Day complete'
+    return {
+      eyebrow: `${progressPrefix} · ${roadmapStatus.progressLabel}`,
+      title: day.title,
+      subtitle: roadmapStatus.completedRequiredCount > 0 ? 'PATH remembers where you stopped. Continue with the next ordered task.' : 'Start with Task 1. The Day is organized for you.',
+      primaryLabel: roadmapStatus.completedRequiredCount > 0 ? `Continue Day ${day.day}` : 'Start Day 1',
+      progressLabel: roadmapStatus.progressLabel,
+      statusLabel: nextLabel,
+    }
+  }
 
   if (completedSectionCount > 0 || progress.status === 'in_progress') {
     return {
@@ -603,6 +621,28 @@ function App() {
     }
   }
 
+  const toggleRoadmapTask = (day: number, taskId: string) => {
+    setProgress((current) => {
+      const roadmap = getRoadmapForDay(day)
+      if (!roadmap) return current
+      const key = String(day)
+      const nextTaskIds = toggleTaskCompletion(current.dayTaskProgress[key] ?? [], taskId, roadmap)
+      const roadmapStatus = deriveDayRoadmapStatus(roadmap, nextTaskIds)
+      const completedDays = roadmapStatus.dayComplete
+        ? uniqueValidDays([...current.completedDays, day])
+        : current.completedDays.filter((completedDay) => completedDay !== day)
+      const programComplete = completedDays.length === 28
+      return {
+        ...current,
+        currentDay: roadmapStatus.dayComplete ? normalizeDay(day + 1) : day,
+        status: programComplete ? 'program_complete' : nextTaskIds.length > 0 ? 'in_progress' : 'in_progress',
+        completedDays,
+        dayTaskProgress: { ...current.dayTaskProgress, [key]: nextTaskIds },
+        lastReturn: 'today',
+      }
+    })
+  }
+
   const completeDay = (day: number) => {
     setProgress((current) => {
       const completedDays = uniqueValidDays([...current.completedDays, day])
@@ -632,7 +672,7 @@ function App() {
         <div className="screen">
           {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
           {activeTab === 'reset' && <ResetExperience view={resetView} selectedNeedId={selectedNeedId} activeToolId={activeToolId} activeToolContext={activeToolContext} toolState={toolState} personalization={personalization} onSelectNeed={selectNeed} onSetView={setResetView} onStartTool={startTool} onCompleteTool={completeStandaloneTool} onToggleFavourite={toggleFavourite} onHome={() => goTo('today')} onSupport={() => goTo('support')} />}
-          {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} dayDetailOpen={pathDayOpen} draftReflections={draftReflections} onSelectDay={(day) => { setSelectedDay(day); setPathDayOpen(true) }} onOpenDayDetail={() => setPathDayOpen(true)} onCloseDayDetail={() => setPathDayOpen(false)} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onCompleteDay={completeDay} />}
+          {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} dayDetailOpen={pathDayOpen} draftReflections={draftReflections} onSelectDay={(day) => { setSelectedDay(day); setPathDayOpen(true) }} onOpenDayDetail={() => setPathDayOpen(true)} onCloseDayDetail={() => setPathDayOpen(false)} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onToggleRoadmapTask={toggleRoadmapTask} onCompleteDay={completeDay} onSupport={() => goTo('support')} />}
           {activeTab === 'support' && <Support />}
         </div>
 
@@ -1103,7 +1143,7 @@ function ToolError({ onToolbox, onReset }: { onToolbox: () => void; onReset: () 
   )
 }
 
-function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen, draftReflections, onSelectDay, onOpenDayDetail, onCloseDayDetail, onReset, onStartTool, onToggleFavourite, onToggleSection, onDraftReflection, onSaveReflection, onDeleteReflection, onCompleteDay }: { progress: ProgramProgress; progressModel: ProgressViewModel; toolState: ToolState; selectedDay: number; dayDetailOpen: boolean; draftReflections: Record<string, string>; onSelectDay: (day: number) => void; onOpenDayDetail: () => void; onCloseDayDetail: () => void; onReset: () => void; onStartTool: (toolId: ToolId, context: ToolContext) => void; onToggleFavourite: (toolId: ToolId) => void; onToggleSection: (day: number, sectionId: string) => void; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onCompleteDay: (day: number) => void }) {
+function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen, draftReflections, onSelectDay, onOpenDayDetail, onCloseDayDetail, onReset, onSupport, onStartTool, onToggleFavourite, onToggleSection, onDraftReflection, onSaveReflection, onDeleteReflection, onToggleRoadmapTask, onCompleteDay }: { progress: ProgramProgress; progressModel: ProgressViewModel; toolState: ToolState; selectedDay: number; dayDetailOpen: boolean; draftReflections: Record<string, string>; onSelectDay: (day: number) => void; onOpenDayDetail: () => void; onCloseDayDetail: () => void; onReset: () => void; onSupport: () => void; onStartTool: (toolId: ToolId, context: ToolContext) => void; onToggleFavourite: (toolId: ToolId) => void; onToggleSection: (day: number, sectionId: string) => void; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onToggleRoadmapTask: (day: number, taskId: string) => void; onCompleteDay: (day: number) => void }) {
   const selected = getProgramDay(selectedDay)
   const completedSections = getCompletedSections(progress, selected.day)
   const insights = useMemo(() => resolveProgressInsights(progressModel), [progressModel])
@@ -1138,7 +1178,7 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
       {dayDetailOpen && (
         <div ref={dayDetailRef} className="stack" aria-live="polite">
           <button className="text-button left" type="button" onClick={onCloseDayDetail}>← Back to path overview</button>
-          <DayExperience day={selected} progress={progress} completedSections={completedSections} draftReflections={draftReflections} onStartTool={onStartTool} onToggleSection={onToggleSection} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onCompleteDay={onCompleteDay} />
+          <DayExperience day={selected} progress={progress} completedSections={completedSections} draftReflections={draftReflections} onStartTool={onStartTool} onToggleSection={onToggleSection} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onToggleRoadmapTask={onToggleRoadmapTask} onCompleteDay={onCompleteDay} onSupport={onSupport} />
         </div>
       )}
 
@@ -1194,7 +1234,9 @@ function ProgressSummary({ model, selectedDay, onOpenDayDetail, onReset }: { mod
       <div className="summary-metrics" aria-label="Progress summary metrics">
         <span><strong>Week</strong>{model.programComplete ? '4 complete' : `${model.currentWeek} · ${model.currentWeekTheme}`}</span>
         <span><strong>Day</strong>{model.programComplete ? '28 / 28' : `${model.currentDay} / 28`}</span>
-        <span><strong>Completed</strong>{model.daysCompleted} Days</span>
+        <span><strong>Small Wins</strong>{model.smallWins.today.completed}/17 today</span>
+        <span><strong>This Week</strong>{model.smallWins.week.completed}/119</span>
+        <span><strong>Journey</strong>{model.smallWins.program.completed}/476</span>
       </div>
       <div className="button-grid two">
         <button className="primary" type="button" onClick={onOpenDayDetail}>{model.programComplete ? `Review Day ${selectedDay.day}` : `Open Day ${selectedDay.day}`}</button>
@@ -1305,7 +1347,12 @@ function ProgressIntegrityNotes({ notes }: { notes: string[] }) {
   )
 }
 
-function DayExperience({ day, progress, completedSections, draftReflections, onStartTool, onToggleSection, onDraftReflection, onSaveReflection, onDeleteReflection, onCompleteDay }: { day: ProgramDay; progress: ProgramProgress; completedSections: string[]; draftReflections: Record<string, string>; onStartTool: (toolId: ToolId, context: ToolContext) => void; onToggleSection: (day: number, sectionId: string) => void; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onCompleteDay: (day: number) => void }) {
+function DayExperience({ day, progress, completedSections, draftReflections, onStartTool, onToggleSection, onDraftReflection, onSaveReflection, onDeleteReflection, onToggleRoadmapTask, onCompleteDay, onSupport }: { day: ProgramDay; progress: ProgramProgress; completedSections: string[]; draftReflections: Record<string, string>; onStartTool: (toolId: ToolId, context: ToolContext) => void; onToggleSection: (day: number, sectionId: string) => void; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onToggleRoadmapTask: (day: number, taskId: string) => void; onCompleteDay: (day: number) => void; onSupport: () => void }) {
+  const roadmap = getRoadmapForDay(day.day)
+  if (roadmap) {
+    return <DayRoadmapExperience roadmap={roadmap} progress={progress} draftReflections={draftReflections} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onToggleRoadmapTask={onToggleRoadmapTask} onSupport={onSupport} />
+  }
+
   const complete = progress.completedDays.includes(day.day)
   const completedSectionSet = new Set(completedSections)
   const progressText = `${completedSections.length} of ${day.sections.length} sections marked done`
@@ -1356,6 +1403,404 @@ function DayExperience({ day, progress, completedSections, draftReflections, onS
         <button className="primary" type="button" disabled={!canComplete || complete} onClick={() => onCompleteDay(day.day)}>{complete ? 'Already complete' : `Complete Day ${day.day}`}</button>
       </section>
     </article>
+  )
+}
+
+
+function getTaskReflectionKey(task: RoadmapTask) {
+  return `day-${task.day}:task-${task.id}`
+}
+
+function sectionLabel(section: SmallWinSection) {
+  if (section === 'morning') return 'Morning Activation'
+  if (section === 'daily') return 'Daily Wellness Activities'
+  return 'Evening Activation'
+}
+
+function DayRoadmapExperience({ roadmap, progress, draftReflections, onDraftReflection, onSaveReflection, onDeleteReflection, onToggleRoadmapTask, onSupport }: { roadmap: DayRoadmap; progress: ProgramProgress; draftReflections: Record<string, string>; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onToggleRoadmapTask: (day: number, taskId: string) => void; onSupport: () => void }) {
+  const [activeTaskId, setActiveTaskId] = useState<string | null>(null)
+  const completedTaskIds = getCompletedRoadmapTaskIds(progress.dayTaskProgress, roadmap.day)
+  const completedSet = new Set(completedTaskIds)
+  const roadmapStatus = deriveDayRoadmapStatus(roadmap, completedTaskIds)
+  const allTasks = getAllRoadmapTasks(roadmap)
+  const activeTask = activeTaskId ? allTasks.find((task) => task.id === activeTaskId) ?? null : null
+  const dayComplete = roadmapStatus.dayComplete
+  const nextTask = roadmapStatus.nextTask
+
+  if (activeTask) {
+    const reflectionKey = getTaskReflectionKey(activeTask)
+    const reflectionValue = draftReflections[reflectionKey] ?? progress.savedReflections[reflectionKey] ?? ''
+    return (
+      <article className="lesson-card day-experience roadmap-experience focused-task-experience" aria-labelledby={`${activeTask.id}-detail-title`}>
+        <TaskDetail
+          task={activeTask}
+          complete={completedSet.has(activeTask.id)}
+          progressLabel={roadmapStatus.progressLabel}
+          nextTask={nextTask}
+          reflectionKey={reflectionKey}
+          reflectionValue={reflectionValue}
+          savedReflection={progress.savedReflections[reflectionKey]}
+          draftReflections={draftReflections}
+          savedReflections={progress.savedReflections}
+          onDraftReflection={onDraftReflection}
+          onSaveReflection={onSaveReflection}
+          onDeleteReflection={onDeleteReflection}
+          onMark={() => onToggleRoadmapTask(roadmap.day, activeTask.id)}
+          onOpenTask={(taskId) => setActiveTaskId(taskId)}
+          onBack={() => setActiveTaskId(null)}
+        />
+      </article>
+    )
+  }
+
+  return (
+    <article className="lesson-card day-experience roadmap-experience master-day-experience" aria-labelledby="day-roadmap-title">
+      <div className="status-row">
+        <p className="eyebrow">Day {roadmap.day} · Week {roadmap.week} of 4 · Master daily experience</p>
+        <span className="status-pill">{roadmapStatus.progressLabel}</span>
+      </div>
+      <h2 id="day-roadmap-title">Day {roadmap.day}: {roadmap.title}</h2>
+      <p className="purpose">{roadmap.purpose}</p>
+
+      <section className="day-intro-card" aria-label="Day introduction">
+        <p className="eyebrow">Day Introduction</p>
+        <h3>Objective</h3>
+        <p>{roadmap.purpose}</p>
+        {roadmap.whatToExpect.length > 0 && (
+          <details>
+            <summary>What to expect</summary>
+            <ul className="instruction-list">
+              {roadmap.whatToExpect.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </details>
+        )}
+      </section>
+
+      <SmallWinsMeter roadmap={roadmap} status={roadmapStatus} />
+
+      <div className="day-orientation roadmap-orientation" aria-label="Today roadmap progression">
+        <span><strong>Structure</strong>{roadmap.sourceSequenceLanguage}</span>
+        <span><strong>Progress</strong>{roadmapStatus.progressLabel}</span>
+        <span><strong>Next</strong>{nextTask ? nextTask.shortTitle : 'All 17 Small Wins complete'}</span>
+      </div>
+
+      {!dayComplete && nextTask && (
+        <article className="next-up-card" aria-label="Next unfinished action">
+          <p className="eyebrow">Next small win</p>
+          <h4>{nextTask.shortTitle}</h4>
+          <p>{sectionLabel(nextTask.winSection ?? 'daily')} · {nextTask.durationLabel ? `${nextTask.durationLabel} · ` : ''}{nextTask.timingLabel}</p>
+          <button className="primary" type="button" onClick={() => setActiveTaskId(nextTask.id)}>Open next action</button>
+        </article>
+      )}
+
+      {dayComplete && (
+        <article className="next-up-card complete" aria-label="Day complete">
+          <p className="eyebrow">Day {roadmap.day} complete</p>
+          <h4>All 17 Small Wins are complete.</h4>
+          <p>RESET, Toolbox and the original reflection remain available without adding extra wins.</p>
+        </article>
+      )}
+
+      <ActionGroup title="Morning Activation" progress={`${roadmapStatus.sectionCounts.morning.completed}/6`} description="Same six task tabs every day." intro="How you begin your day can influence how you move through it. These six small actions are designed to help you start with intention, build consistency and create a moment of calm before the demands of the day begin. Take them one at a time. Every action you complete is a Small Win." tasks={roadmap.morningActions} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} onOpen={setActiveTaskId} />
+      <ActionGroup title="Your Daily Wellness Activities" progress={`${roadmapStatus.sectionCounts.daily.completed}/6`} description="Six day-specific activities from the approved curriculum." tasks={roadmap.tasks} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} onOpen={setActiveTaskId} />
+
+      <section className="end-of-day-card" aria-labelledby="reflection-title">
+        <div className="status-row">
+          <p className="eyebrow">Original End-of-Day Reflection · Separate</p>
+          <span className="status-pill">Does not add a Small Win</span>
+        </div>
+        <h3 id="reflection-title">{roadmap.reflection.title}</h3>
+        <p>{roadmap.reflection.shortDescription}</p>
+        <button className="secondary" type="button" onClick={() => setActiveTaskId(roadmap.reflection.id)}>Open original reflection</button>
+      </section>
+
+      <ActionGroup title="Evening Activation" progress={`${roadmapStatus.sectionCounts.evening.completed}/5`} description="Same five task tabs every day, with private writing fields where needed." intro="Your evening is an opportunity to acknowledge your effort, reflect on what mattered and prepare to rest. You don't need to have had a perfect day. These five actions are about noticing what you did, appreciating what you have and treating yourself with kindness." tasks={roadmap.eveningActions} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} onOpen={setActiveTaskId} />
+
+      {roadmap.dailyReminder.length > 0 && (
+        <section className="notice-card compact daily-reminder-card" aria-label="Daily reminder">
+          <strong>Daily Reminder</strong>
+          {roadmap.dailyReminder.map((line) => <span key={line}>{line}</span>)}
+        </section>
+      )}
+
+      <FeelingStuckPanel onSupport={onSupport} />
+
+      <section className="source-banner roadmap-source" aria-label="Source fidelity">
+        <strong>Enhancement, not rebuild</strong>
+        <span>{roadmap.sourceReference}</span>
+        <span>Morning and Evening routines are owner-approved standard structure. Daily activities remain day-specific source curriculum. Feeling Stuck, RESET and Toolbox do not affect Small Wins.</span>
+      </section>
+    </article>
+  )
+}
+
+function SmallWinsMeter({ roadmap, status }: { roadmap: DayRoadmap; status: ReturnType<typeof deriveDayRoadmapStatus> }) {
+  const percent = Math.round((status.completedRequiredCount / roadmap.expectedWins.total) * 100)
+  return (
+    <section className="small-wins-card" aria-label={`Today's Small Wins ${status.completedRequiredCount} of 17`}>
+      <div className="status-row">
+        <div>
+          <p className="eyebrow">My Small Wins</p>
+          <h3>Today: {status.completedRequiredCount}/17</h3>
+        </div>
+        <span className="status-pill">Actions, not recovery score</span>
+      </div>
+      <div className="section-progress" aria-hidden="true"><span style={{ width: `${Math.max(status.completedRequiredCount === 0 ? 0 : 6, percent)}%` }} /></div>
+      <div className="summary-metrics small-win-metrics">
+        <span><strong>Morning</strong>{status.sectionCounts.morning.completed}/6</span>
+        <span><strong>Activities</strong>{status.sectionCounts.daily.completed}/6</span>
+        <span><strong>Evening</strong>{status.sectionCounts.evening.completed}/5</span>
+      </div>
+      <p className="fineprint left-copy">Weekly target: 119 possible Small Wins. Full 28-day journey: 476 possible Small Wins. No streaks, rankings, guilt or penalties.</p>
+    </section>
+  )
+}
+
+function ActionGroup({ title, progress, description, intro, tasks, completedSet, currentTaskId, onOpen }: { title: string; progress: string; description: string; intro?: string; tasks: RoadmapTask[]; completedSet: Set<string>; currentTaskId: string | null; onOpen: (taskId: string) => void }) {
+  return (
+    <section className="roadmap-panel action-group" aria-labelledby={`${slugForId(title)}-title`}>
+      <div className="status-row">
+        <div>
+          <p className="eyebrow">{title}</p>
+          <h3 id={`${slugForId(title)}-title`}>{progress}</h3>
+        </div>
+        <span className="status-pill">{progress}</span>
+      </div>
+      <p className="muted">{description}</p>
+      {intro && <p className="activation-intro">{intro}</p>}
+      <div className="roadmap-timeline" aria-label={`${title} actions`}>
+        {tasks.map((task) => (
+          <RoadmapTaskCard
+            key={task.id}
+            task={task}
+            complete={completedSet.has(task.id)}
+            current={currentTaskId === task.id}
+            onOpen={() => onOpen(task.id)}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function slugForId(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+}
+
+function RoadmapTaskCard({ task, complete, current, onOpen }: { task: RoadmapTask; complete: boolean; current: boolean; onOpen: () => void }) {
+  const orderLabel = task.kind === 'DAILY_ACTIVITY' ? task.order : task.order
+  return (
+    <article className={`roadmap-task-card ${complete ? 'complete' : ''} ${current ? 'current' : ''}`} aria-labelledby={`${task.id}-title`}>
+      <div className="roadmap-marker" aria-hidden="true">{complete ? '✓' : orderLabel}</div>
+      <div className="roadmap-task-body">
+        <div className="status-row">
+          <p className="eyebrow">{task.category}{current ? ' · START HERE' : ''}</p>
+          <span className="status-pill">{complete ? '✓ Done' : '○ Not done'}</span>
+        </div>
+        <h4 id={`${task.id}-title`}>{task.shortTitle}</h4>
+        <p>{task.shortDescription}</p>
+        <p className="fineprint left-copy">{task.durationLabel ? `${task.durationLabel} · ` : ''}When: {task.timingLabel}</p>
+        <button className="primary" type="button" onClick={onOpen}>{complete ? 'Review tab' : 'Open tab'}</button>
+      </div>
+    </article>
+  )
+}
+
+function FeelingStuckPanel({ onSupport }: { onSupport: () => void }) {
+  const [selectedId, setSelectedId] = useState(feelingStuckOptions[0]?.id ?? '')
+  const selected = feelingStuckOptions.find((option) => option.id === selectedId) ?? feelingStuckOptions[0]
+  return (
+    <section className="feeling-stuck-card" aria-labelledby="feeling-stuck-title">
+      <div className="status-row">
+        <div>
+          <p className="eyebrow">Available anytime</p>
+          <h3 id="feeling-stuck-title">Feeling Stuck?</h3>
+        </div>
+        <span className="status-pill">Optional · 0 wins</span>
+      </div>
+      <p className="muted">Choose what fits. This does not affect completion, Small Wins, RESET history or private reflections.</p>
+      <div className="button-grid two stuck-options" role="list" aria-label="Feeling Stuck choices">
+        {feelingStuckOptions.map((option) => (
+          <button className={option.id === selected.id ? 'secondary active-choice' : 'secondary'} type="button" key={option.id} onClick={() => setSelectedId(option.id)} aria-pressed={option.id === selected.id}>{option.label}</button>
+        ))}
+      </div>
+      <article className="stuck-response" aria-live="polite">
+        <h4>UNDERSTAND</h4>
+        <p>{selected.understand}</p>
+        <h4>TRY THIS</h4>
+        <p>{selected.tryThis}</p>
+        <h4>ONE SMALL STEP</h4>
+        <p>{selected.oneSmallStep}</p>
+        {selected.supportNote && <p className="fineprint left-copy">{selected.supportNote}</p>}
+        <div className="button-grid two">
+          <button className="secondary" type="button" onClick={onSupport}>Open Support</button>
+          <button className="secondary" type="button" onClick={() => setSelectedId(feelingStuckOptions[0].id)}>Return to choices</button>
+        </div>
+      </article>
+    </section>
+  )
+}
+
+function getWritingFieldKey(baseKey: string, index: number) {
+  return `${baseKey}:field-${index + 1}`
+}
+
+function isAffirmationTask(task: RoadmapTask) {
+  return /Affirmations/i.test(task.title)
+}
+
+function AffirmationCards() {
+  return (
+    <section className="affirmation-display" aria-label="Mirror affirmation repetition sequence">
+      {activationAffirmations.map((affirmation) => (
+        <article className="affirmation-card" key={affirmation.countLabel}>
+          <span className="affirmation-count">{affirmation.countLabel}</span>
+          <div>
+            <p className="eyebrow">{affirmation.label} · {affirmation.repeat}</p>
+            <p className="affirmation-text">“{affirmation.text}”</p>
+          </div>
+        </article>
+      ))}
+    </section>
+  )
+}
+
+function TaskWritingFields({ reflectionKey, labels, examples, draftReflections, savedReflections, onDraftReflection, onSaveReflection, onDeleteReflection }: { reflectionKey: string; labels: string[]; examples?: string[]; draftReflections: Record<string, string>; savedReflections: Record<string, string>; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void }) {
+  const values = labels.map((_, index) => {
+    const fieldKey = getWritingFieldKey(reflectionKey, index)
+    return draftReflections[fieldKey] ?? savedReflections[fieldKey] ?? ''
+  })
+  const totalLength = values.reduce((sum, value) => sum + value.length, 0)
+  const hasText = values.some((value) => value.trim().length > 0)
+  const overLimit = totalLength > reflectionMaxLength
+  const savedAny = labels.some((_, index) => Boolean(savedReflections[getWritingFieldKey(reflectionKey, index)]))
+
+  return (
+    <section className="writing-field-set" aria-label="Private writing fields">
+      <h4>Private writing fields</h4>
+      <p className="fineprint left-copy">Saved text stays local to this browser for the prototype. It is not used for analytics, profiling or automatic insights.</p>
+      {labels.map((label, index) => {
+        const fieldKey = getWritingFieldKey(reflectionKey, index)
+        const value = values[index]
+        const example = examples?.[index]
+        return (
+          <label className="reflection-field task-writing-field multi-writing-field" key={fieldKey}>
+            <span>{label}</span>
+            <textarea value={value} onChange={(event) => onDraftReflection(fieldKey, event.target.value)} placeholder={example ? `Example: ${example}` : 'Write only what is useful.'} maxLength={reflectionMaxLength} />
+          </label>
+        )
+      })}
+      <span className={`fineprint ${overLimit ? 'warning-text' : ''}`}>{totalLength.toLocaleString()} / {reflectionMaxLength.toLocaleString()} total characters across this task.</span>
+      <div className="button-grid two">
+        <button className="secondary" type="button" disabled={!hasText || overLimit} onClick={() => labels.forEach((_, index) => {
+          const fieldKey = getWritingFieldKey(reflectionKey, index)
+          const value = values[index]
+          if (value.trim().length > 0) onSaveReflection(fieldKey, value)
+          else onDeleteReflection(fieldKey)
+        })}>Save fields locally</button>
+        {savedAny && <button className="secondary danger" type="button" onClick={() => labels.forEach((_, index) => onDeleteReflection(getWritingFieldKey(reflectionKey, index)))}>Delete saved fields</button>}
+      </div>
+    </section>
+  )
+}
+
+function TaskDetail({ task, complete, progressLabel, nextTask, reflectionKey, reflectionValue, savedReflection, draftReflections, savedReflections, onDraftReflection, onSaveReflection, onDeleteReflection, onMark, onOpenTask, onBack }: { task: RoadmapTask; complete: boolean; progressLabel: string; nextTask: RoadmapTask | null; reflectionKey: string; reflectionValue: string; savedReflection?: string; draftReflections: Record<string, string>; savedReflections: Record<string, string>; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onMark: () => void; onOpenTask: (taskId: string) => void; onBack: () => void }) {
+  const countLabel = task.winSection ? `${sectionLabel(task.winSection)} · Small Win` : 'Separate reflection'
+  const markLabel = complete ? 'Undo Mark as Done' : 'Mark as Done'
+  const affirmationTask = isAffirmationTask(task)
+  const howInstructions = affirmationTask ? task.instructions.filter((instruction) => !/^AFFIRMATION \d/i.test(instruction) && !/^".*"$/.test(instruction)) : task.instructions
+  const writingLabels = task.writingFieldLabels ?? []
+  const needsMultiWriting = writingLabels.length > 0
+  const needsSingleWriting = !needsMultiWriting && (task.kind === 'DAILY_ACTIVITY' && Boolean(task.prompts?.length) || task.kind === 'REFLECTION')
+  const reflectionOverLimit = reflectionValue.length > reflectionMaxLength
+
+  return (
+    <section className="task-detail-card" aria-labelledby={`${task.id}-detail-title`}>
+      <button className="text-button left" type="button" onClick={onBack}>← Back to Day {task.day}</button>
+      <p className="eyebrow">Day {task.day} · {countLabel}</p>
+      <h3 id={`${task.id}-detail-title`}>{task.title}</h3>
+      <p className="muted">{task.what ?? task.shortDescription}</p>
+      <div className="task-detail-grid">
+        <span><strong>WHEN</strong>{task.timingLabel}</span>
+        <span><strong>HOW LONG</strong>{task.durationLabel ?? 'Not specified'}</span>
+        <span><strong>STATUS</strong>{complete ? '✓ Done' : '○ Not done'}</span>
+      </div>
+      <section>
+        <h4>WHAT</h4>
+        <p>{task.what ?? task.shortDescription}</p>
+      </section>
+      <section>
+        <h4>HOW</h4>
+        <ol className="instruction-list">
+          {howInstructions.map((instruction) => <li key={instruction}>{instruction}</li>)}
+        </ol>
+      </section>
+      {affirmationTask && <AffirmationCards />}
+      <section>
+        <h4>WHY</h4>
+        <p>{task.why ?? 'This activity is part of the approved daily curriculum.'}</p>
+      </section>
+      <section>
+        <h4>HOW LONG</h4>
+        <p>{task.durationLabel ?? 'The source does not specify an exact duration for this action.'}</p>
+      </section>
+      {task.examples && task.examples.length > 0 && (
+        <section>
+          <h4>EXAMPLES</h4>
+          <ul className="benefit-list">
+            {task.examples.map((example) => <li key={example}>{example}</li>)}
+          </ul>
+        </section>
+      )}
+      {task.benefits && task.benefits.length > 0 && (
+        <section>
+          <h4>BENEFITS</h4>
+          <ul className="benefit-list">
+            {task.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}
+          </ul>
+        </section>
+      )}
+      {task.specialNote && (
+        <article className="notice-card compact activation-note" aria-label="Important note">
+          <strong>Important</strong>
+          <span>{task.specialNote}</span>
+        </article>
+      )}
+      {needsMultiWriting && (
+        <TaskWritingFields reflectionKey={reflectionKey} labels={writingLabels} examples={task.examples} draftReflections={draftReflections} savedReflections={savedReflections} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} />
+      )}
+      {needsSingleWriting && (
+        <label className="reflection-field task-writing-field">
+          <span>Private writing field</span>
+          {task.prompts && task.prompts.length > 0 && (
+            <ul className="instruction-list prompt-list">
+              {task.prompts.map((prompt) => <li key={prompt}>{prompt}</li>)}
+            </ul>
+          )}
+          <textarea value={reflectionValue} onChange={(event) => onDraftReflection(reflectionKey, event.target.value)} placeholder="Write only what is useful. Saved text stays local to this browser for the prototype." maxLength={reflectionMaxLength} />
+          <span className={`fineprint ${reflectionOverLimit ? 'warning-text' : ''}`}>{reflectionValue.length.toLocaleString()} / {reflectionMaxLength.toLocaleString()} characters. Not used for analytics, profiling or personalization.</span>
+          <div className="button-grid two">
+            <button className="secondary" type="button" disabled={reflectionValue.trim().length === 0 || reflectionOverLimit} onClick={() => onSaveReflection(reflectionKey, reflectionValue)}>Save locally</button>
+            {savedReflection && <button className="secondary danger" type="button" onClick={() => onDeleteReflection(reflectionKey)}>Delete saved text</button>}
+          </div>
+        </label>
+      )}
+      <article className="notice-card compact" aria-label="Small Win instruction">
+        <strong>{task.winSection ? 'Your Small Win' : 'Separate from Small Wins'}</strong>
+        <span>{task.winSection ? task.smallWinInstruction ?? 'Tap Mark as Done when finished. This action adds one Small Win, and undo removes it.' : 'This reflection remains separate and does not change Small Wins totals.'}</span>
+      </article>
+      <div className="button-grid two">
+        <button className={complete ? 'secondary' : 'primary'} type="button" aria-pressed={complete} onClick={onMark}>{markLabel}</button>
+        <button className="secondary" type="button" onClick={onBack}>Return to daily roadmap</button>
+      </div>
+      {complete && task.winSection && (
+        <article className="next-up-card complete" role="status">
+          <p className="eyebrow">✓ {task.shortTitle} done</p>
+          <h4>{progressLabel}</h4>
+          {nextTask ? <button className="primary" type="button" onClick={() => onOpenTask(nextTask.id)}>Open next: {nextTask.shortTitle}</button> : <p>All 17 Small Wins are complete for this day.</p>}
+        </article>
+      )}
+    </section>
   )
 }
 
