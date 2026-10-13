@@ -24,7 +24,11 @@ const scenario = (name, fn) => {
 }
 
 const app = fs.readFileSync('src/App.tsx', 'utf8')
-const sourceRoot = path.resolve('..', 'source', 'programs', '28-day-nervous-system-reset', 'raw')
+const sourceRootCandidates = [
+  path.resolve('..', 'source', 'programs', '28-day-nervous-system-reset', 'raw'),
+  path.resolve('source', 'programs', '28-day-nervous-system-reset', 'raw'),
+]
+const sourceRoot = sourceRootCandidates.find((candidate) => fs.existsSync(path.join(candidate, 'week-01-source.docx'))) ?? sourceRootCandidates[0]
 const expectedWeeks = [
   { week: 1, label: 'Stabilize', days: [1, 7] },
   { week: 2, label: 'Awareness & Honesty', days: [8, 14] },
