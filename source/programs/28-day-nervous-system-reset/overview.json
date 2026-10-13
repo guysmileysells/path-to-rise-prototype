@@ -1,0 +1,178 @@
+[
+  {
+    "week": 1,
+    "theme": "Stabilize / reset baseline",
+    "source_file": "week-01-source.docx",
+    "paragraph_count": 867,
+    "table_count": 7,
+    "days": [
+      {
+        "absolute_day": 1,
+        "source_day_label": 1,
+        "title": "Resetting the Baseline"
+      },
+      {
+        "absolute_day": 2,
+        "source_day_label": 2,
+        "title": "Creating Consistency and Control"
+      },
+      {
+        "absolute_day": 3,
+        "source_day_label": 3,
+        "title": "Increasing Awareness Without Overloading the System"
+      },
+      {
+        "absolute_day": 4,
+        "source_day_label": 4,
+        "title": "Building Control Through Routine"
+      },
+      {
+        "absolute_day": 5,
+        "source_day_label": 5,
+        "title": "Releasing Tension Without Losing Control"
+      },
+      {
+        "absolute_day": 6,
+        "source_day_label": 6,
+        "title": "Strengthening Emotional Control Without Suppressing"
+      },
+      {
+        "absolute_day": 7,
+        "source_day_label": 7,
+        "title": "Grounding the System and Preparing for the Next Phase"
+      }
+    ]
+  },
+  {
+    "week": 2,
+    "theme": "Building Awareness & Honesty",
+    "source_file": "week-02-source.docx",
+    "paragraph_count": 1272,
+    "table_count": 3,
+    "days": [
+      {
+        "absolute_day": 8,
+        "source_day_label": 1,
+        "title": "Seeing What Is There Without Avoidance"
+      },
+      {
+        "absolute_day": 9,
+        "source_day_label": 2,
+        "title": "Recognizing Patterns"
+      },
+      {
+        "absolute_day": 10,
+        "source_day_label": 3,
+        "title": "INCREASING HONESTY"
+      },
+      {
+        "absolute_day": 11,
+        "source_day_label": 4,
+        "title": "UNDERSTANDING INTERNAL PRESSURE"
+      },
+      {
+        "absolute_day": 12,
+        "source_day_label": 5,
+        "title": "IDENTIFYING EMOTIONAL AVOIDANCE"
+      },
+      {
+        "absolute_day": 13,
+        "source_day_label": 6,
+        "title": "TAKING OWNERSHIP"
+      },
+      {
+        "absolute_day": 14,
+        "source_day_label": 7,
+        "title": "FULL AWARENESS & PREPARATION FOR WEEK 3"
+      }
+    ]
+  },
+  {
+    "week": 3,
+    "theme": "Acceptance, Emotional Release & Letting Go",
+    "source_file": "week-03-source.docx",
+    "paragraph_count": 1259,
+    "table_count": 2,
+    "days": [
+      {
+        "absolute_day": 15,
+        "source_day_label": 15,
+        "title": "ACCEPTING WHAT IS"
+      },
+      {
+        "absolute_day": 16,
+        "source_day_label": 16,
+        "title": "RELEASING EMOTIONAL RESISTANCE"
+      },
+      {
+        "absolute_day": 17,
+        "source_day_label": 17,
+        "title": "LETTING GO OF CONTROL"
+      },
+      {
+        "absolute_day": 18,
+        "source_day_label": 18,
+        "title": "RELEASING GUILT & SHAME"
+      },
+      {
+        "absolute_day": 19,
+        "source_day_label": 19,
+        "title": "PROCESSING ANGER & RESENTMENT"
+      },
+      {
+        "absolute_day": 20,
+        "source_day_label": 20,
+        "title": "SELF-COMPASSION & FORGIVENESS"
+      },
+      {
+        "absolute_day": 21,
+        "source_day_label": 21,
+        "title": "WEEK 3 COMPLETION & PREPARATION FOR REBUILDING"
+      }
+    ]
+  },
+  {
+    "week": 4,
+    "theme": "Rebuilding Identity, Purpose & Forward Momentum",
+    "source_file": "week-04-source.docx",
+    "paragraph_count": 1697,
+    "table_count": 2,
+    "days": [
+      {
+        "absolute_day": 22,
+        "source_day_label": 22,
+        "title": "Rebuilding Self-Trust"
+      },
+      {
+        "absolute_day": 23,
+        "source_day_label": 23,
+        "title": "CREATING FORWARD MOMENTUM"
+      },
+      {
+        "absolute_day": 24,
+        "source_day_label": 24,
+        "title": "RECONNECTING TO PURPOSE"
+      },
+      {
+        "absolute_day": 25,
+        "source_day_label": 25,
+        "title": "BUILDING CONFIDENCE THROUGH ACTION"
+      },
+      {
+        "absolute_day": 26,
+        "source_day_label": 26,
+        "title": "BUILDING CONFIDENCE THROUGH ACTION"
+      },
+      {
+        "absolute_day": 27,
+        "source_day_label": 27,
+        "title": "CREATING HEALTHIER FUTURE HABITS"
+      },
+      {
+        "absolute_day": 28,
+        "source_day_label": 28,
+        "title": "INTEGRATION, REFLECTION & PREPARING FOR YOUR NEXT CHAPTER"
+      }
+    ]
+  }
+]

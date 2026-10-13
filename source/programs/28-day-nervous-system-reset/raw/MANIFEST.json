@@ -1,0 +1,33 @@
+{
+  "description": "Raw uploaded DOCX files for PATH to RISE 4-week / 28-day Nervous System Reset Protocol. Draft source only; not approved app or clinical content.",
+  "files": [
+    {
+      "week": 1,
+      "source_cache_path": "C:\\Users\\I9-10900KF\\AppData\\Local\\hermes\\cache\\documents\\doc_8000167489a0_PATH_to_RISE_Week_1_4_week_reset_Path_to_Rise_Protocol_2026_3.docx",
+      "staged_path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\source\\programs\\28-day-nervous-system-reset\\raw\\week-01-source.docx",
+      "bytes": 913966,
+      "sha256": "81494f875bbc2609a38a16a3cb83c58f5c5a5e9ed02d9e1b912b24e7a123c9a7"
+    },
+    {
+      "week": 2,
+      "source_cache_path": "C:\\Users\\I9-10900KF\\AppData\\Local\\hermes\\cache\\documents\\doc_d675ad7d7114_Week_2_of_4_week_reset_protocol_2026.docx",
+      "staged_path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\source\\programs\\28-day-nervous-system-reset\\raw\\week-02-source.docx",
+      "bytes": 2327062,
+      "sha256": "fd69097e5c98e5c5de2909a1e8def9a59aa65959aa190971893da091fc10fb27"
+    },
+    {
+      "week": 3,
+      "source_cache_path": "C:\\Users\\I9-10900KF\\AppData\\Local\\hermes\\cache\\documents\\doc_dda2735b5ee6_Path_to_Rise_Nervous_System_Reset_Protocol_Week_3_2026_1.docx",
+      "staged_path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\source\\programs\\28-day-nervous-system-reset\\raw\\week-03-source.docx",
+      "bytes": 3574730,
+      "sha256": "7a09a741122873cf8a3f58126bf4aff83348ceeec45ac458c01a14e0dc2866f2"
+    },
+    {
+      "week": 4,
+      "source_cache_path": "C:\\Users\\I9-10900KF\\AppData\\Local\\hermes\\cache\\documents\\doc_4a3c19408e08_Path_to_Rise_Nervous_System_Reset_Protocol_Week_4_2026_Complete_1.docx",
+      "staged_path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\source\\programs\\28-day-nervous-system-reset\\raw\\week-04-source.docx",
+      "bytes": 983990,
+      "sha256": "059e42c9e2216b880583cb9265960e0e844fce877b6d051801c51572508d1c05"
+    }
+  ]
+}
