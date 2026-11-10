@@ -881,6 +881,26 @@ small {
   gap: var(--space-3);
 }
 
+.inline-expansion {
+  min-width: 0;
+  grid-column: 1 / -1;
+}
+
+.inline-expansion > button,
+summary {
+  scroll-margin-block-start: var(--space-3);
+}
+
+.inline-expansion-panel:not([hidden]) {
+  margin-top: var(--space-3);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.inline-expansion-panel .task-detail-card {
+  padding: var(--space-3);
+}
+
 .roadmap-task-card {
   position: relative;
   display: grid;

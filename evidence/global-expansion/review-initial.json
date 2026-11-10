@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "security_concerns": [],
+  "logic_errors": [
+    {
+      "severity": "medium",
+      "location": "src/App.tsx:1431-1435,1489-1496; src/InlineExpansion.tsx:48-58",
+      "issue": "Closing the next-action shortcut after completing the final Small Win removes the focused trigger and loses keyboard focus.",
+      "repro": [
+        "Complete the first 16 Small Wins for a day.",
+        "Open the remaining task through 'Open next action'.",
+        "Select 'Mark as Done'.",
+        "Select 'Return to daily roadmap'."
+      ],
+      "actual": "closeTask focuses the shortcut trigger, then clears expanded. Because nextTask is now null, shortcutTask becomes null and the entire shortcut unmounts. Its collapse layout effect cannot restore positioning or focus. A targeted Chromium reproduction against the current Vite source returned {\"activeTag\":\"BODY\",\"shortcutCount\":0,\"visibleDetails\":0}.",
+      "expected": "Collapse should return focus to a surviving, visible control without stranding keyboard users.",
+      "recommendation": "When completion will remove the shortcut, restore focus and positioning to the completed task's permanent roadmap trigger after the layout update, or retain the shortcut trigger through collapse."
+    }
+  ],
+  "suggestions": [
+    "Add a regression covering final-task completion through the shortcut followed by both return-button collapse and trigger-button collapse. Existing shortcut coverage completes only the first task.",
+    "Add explicit rapid-switching and initially-open native disclosure tests; current tests cover sequential switching and ordinary nested toggles, but not these edge cases.",
+    "Prefer component-scoped trigger refs over document-wide selectors for return-focus handling."
+  ],
+  "summary": "Reviewed the complete tracked diff, shared expansion implementation, Playwright configuration, both browser test files, and expansion contract. Found one reproducible collapse/focus regression. Otherwise, native nested-event filtering, initial-mount suppression, reduced-motion selection, normal next-task continuation, content/data handlers, and genuine navigation appear preserved. No new security issues found. No files were created or edited, and no broad test suite was run; the temporary verification server was stopped."
+}

@@ -1,0 +1,481 @@
+
+> app@0.0.0 test
+> npm run contract && npm run personalization && npm run progress && npm run day-roadmap && npm run hardening && npm run notifications && npm run production-qa && npm run final-audit && npm run build
+
+
+> app@0.0.0 contract
+> node scripts/contract-check.mjs
+
+Contract check passed: source labels, 20-tool inventory, four-tab nav, and safety disclaimers present.
+
+> app@0.0.0 personalization
+> node --experimental-transform-types scripts/personalization-scenarios.mjs
+
+{
+  "scenarioCount": 14,
+  "collisionCount": 6,
+  "journalContentExcluded": true,
+  "results": [
+    {
+      "name": "USER A brand new",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER B Day 1 in progress",
+      "expectedRule": "continue-unfinished-day",
+      "actualRule": "continue-unfinished-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER C Day 9 active",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER D Day 9 partially complete",
+      "expectedRule": "continue-unfinished-day",
+      "actualRule": "continue-unfinished-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER E Day 9 complete Day 10 next",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER F returning after break",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER G favourite no recent",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER H recent no favourite",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER I favourite and recent overlap",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER J interrupted standalone proxy recent",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER K Day 28 complete",
+      "expectedRule": "post-program-maintenance",
+      "actualRule": "post-program-maintenance",
+      "result": "PASS"
+    },
+    {
+      "name": "USER L completed program returning weeks later",
+      "expectedRule": "post-program-maintenance",
+      "actualRule": "post-program-maintenance",
+      "result": "PASS"
+    },
+    {
+      "name": "USER M corrupt optional state sanitized",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "USER N no personalization state",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "result": "PASS"
+    },
+    {
+      "name": "collision: unfinished Day + favourite",
+      "expectedRule": "continue-unfinished-day",
+      "actualRule": "continue-unfinished-day",
+      "shortcutRule": "favourite-tool-shortcut",
+      "result": "PASS"
+    },
+    {
+      "name": "collision: unfinished Day + recent tool",
+      "expectedRule": "continue-unfinished-day",
+      "actualRule": "continue-unfinished-day",
+      "shortcutRule": "recent-tool-shortcut",
+      "result": "PASS"
+    },
+    {
+      "name": "collision: completed Day + favourite",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "shortcutRule": "favourite-tool-shortcut",
+      "result": "PASS"
+    },
+    {
+      "name": "collision: favourite + recent same tool",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "shortcutRule": "favourite-tool-shortcut",
+      "result": "PASS"
+    },
+    {
+      "name": "collision: program complete + favourite",
+      "expectedRule": "post-program-maintenance",
+      "actualRule": "post-program-maintenance",
+      "shortcutRule": "favourite-tool-shortcut",
+      "result": "PASS"
+    },
+    {
+      "name": "collision: missing recommendation target",
+      "expectedRule": "start-current-day",
+      "actualRule": "start-current-day",
+      "shortcutRule": "current-week-tool-shortcut",
+      "result": "PASS"
+    }
+  ]
+}
+(node:23572) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> app@0.0.0 progress
+> node --experimental-transform-types scripts/progress-scenarios.mjs
+
+{
+  "scenarioCount": 11,
+  "reflectionContentExcludedFromInsights": true,
+  "resetToolboxIsolation": true,
+  "results": [
+    {
+      "name": "FLOW A new user",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW B Day 1 complete",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW C Day 7 complete Week 1 complete",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW D Day 8 Week 2 current",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW E Day 14 Week 2 complete",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW F Day 21 Week 3 complete",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW G Day 28 complete",
+      "result": "PASS"
+    },
+    {
+      "name": "EDGE duplicate Days counted once",
+      "result": "PASS"
+    },
+    {
+      "name": "EDGE invalid currentDay recovers from first incomplete",
+      "result": "PASS"
+    },
+    {
+      "name": "EDGE contradictory complete status preserves note",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW M missed days non punitive",
+      "result": "PASS"
+    }
+  ]
+}
+(node:11392) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> app@0.0.0 day-roadmap
+> node --experimental-transform-types scripts/day-roadmap-scenarios.mjs
+
+{"scenario":"morning-evening-final-activation","result":"PASS","days":28,"dailyWins":17,"programWins":476}
+(node:28604) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> app@0.0.0 hardening
+> node scripts/hardening-scenarios.mjs
+
+{
+  "result": "PASS",
+  "checks": 9,
+  "privacy": "journal/reflection text excluded from analytics, URLs, logs, personalization and automatic insights in static review",
+  "storage": "prototype localStorage explicitly disclosed and destructive controls separated",
+  "accessibility": "status live region/focus/reduced-motion foundations present"
+}
+
+> app@0.0.0 notifications
+> node --experimental-transform-types scripts/notification-scenarios.mjs
+
+{
+  "scenarioCount": 19,
+  "privacyBoundary": {
+    "pass": true,
+    "failures": []
+  },
+  "results": [
+    {
+      "name": "FLOW A unsupported notifications keep architecture honest",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW B not determined permission is separate from app preference",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW C authorized permission state represented explicitly",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW D denied permission does not erase app preference",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW E reminder edit changes stable reminder schedule without duplicate id",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW F turning reminder off removes active reminder",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW G program notification resolves to current valid Day path",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW H stale Day/program notification resolves safely after Day 28",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW I user-created tool reminder opens canonical tool",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW J invalid tool target falls back safely",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW J2 malformed active practice reminder is not scheduled",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW K quiet hours crossing midnight work",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW L Day 28 reconciliation turns off active program reminder",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW M return copy remains non-shaming",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW N malformed preference state recovers safely",
+      "result": "PASS"
+    },
+    {
+      "name": "FLOW O permission revoked is represented separately from reminder preference",
+      "result": "PASS"
+    },
+    {
+      "name": "privacy automation blocks sensitive copy",
+      "result": "PASS"
+    },
+    {
+      "name": "timezone/DST calculation uses local Date and not UTC string arithmetic",
+      "result": "PASS"
+    },
+    {
+      "name": "quiet-hour delivery delays to configured end",
+      "result": "PASS"
+    }
+  ]
+}
+(node:22116) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> app@0.0.0 production-qa
+> node --experimental-transform-types scripts/production-qa-scenarios.mjs
+
+{
+  "scenarioCount": 14,
+  "results": [
+    {
+      "name": "CONTENT all 28 Days exist exactly once and map to four 7-day weeks",
+      "result": "PASS"
+    },
+    {
+      "name": "CONTENT all program section IDs are unique within each Day and renderable",
+      "result": "PASS"
+    },
+    {
+      "name": "TOOLBOX every canonical tool resolves to source-backed program content",
+      "result": "PASS"
+    },
+    {
+      "name": "RESET every visible need maps to valid reset-eligible tools with no dead ends",
+      "result": "PASS"
+    },
+    {
+      "name": "STATE completedDays invariant keeps only unique integers 1-28",
+      "result": "PASS"
+    },
+    {
+      "name": "STATE week transitions derive correctly at Day 7, 14, 21 and 28",
+      "result": "PASS"
+    },
+    {
+      "name": "STATE Day 28 terminal state never creates Day 29 or pressure copy",
+      "result": "PASS"
+    },
+    {
+      "name": "STATE standalone RESET/tool use cannot complete a Day",
+      "result": "PASS"
+    },
+    {
+      "name": "REFLECTION references are preserved without exposing private content in insights",
+      "result": "PASS"
+    },
+    {
+      "name": "PERSONALIZATION remains deterministic and ignores private reflection text",
+      "result": "PASS"
+    },
+    {
+      "name": "NOTIFICATION malformed preferences recover and invalid practice targets do not schedule",
+      "result": "PASS"
+    },
+    {
+      "name": "NOTIFICATION Day 28 reconciliation stops obsolete program reminders without erasing post-program reminders",
+      "result": "PASS"
+    },
+    {
+      "name": "NOTIFICATION payloads are discreet and never include reflection, diagnosis or crisis copy",
+      "result": "PASS"
+    },
+    {
+      "name": "ROUTING destination model only exposes canonical app routes",
+      "result": "PASS"
+    }
+  ]
+}
+(node:5876) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> app@0.0.0 final-audit
+> node --experimental-transform-types scripts/final-launch-audit.mjs
+
+{
+  "result": "PASS",
+  "scenarioCount": 16,
+  "dayCount": 28,
+  "sectionCount": 311,
+  "canonicalToolCount": 10,
+  "resetNeedCount": 9,
+  "sourceRoot": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\source\\programs\\28-day-nervous-system-reset\\raw",
+  "results": [
+    {
+      "name": "PROMPT 11 exit gate document exists before Prompt 12 launch audit",
+      "result": "PASS"
+    },
+    {
+      "name": "FINAL BASELINE source files for all four original DOCX weeks are present",
+      "result": "PASS"
+    },
+    {
+      "name": "PROGRAM all 28 Days are present exactly once with verified DOCX provenance",
+      "result": "PASS"
+    },
+    {
+      "name": "PROGRAM week progression maps to the locked four-week architecture",
+      "result": "PASS"
+    },
+    {
+      "name": "PROGRAM every Day has purpose, content, completion model and mobile-renderable sections",
+      "result": "PASS"
+    },
+    {
+      "name": "DAY 28 has terminal value without actionable Day 29 architecture",
+      "result": "PASS"
+    },
+    {
+      "name": "TOOLBOX every visible canonical tool resolves to source-backed sections",
+      "result": "PASS"
+    },
+    {
+      "name": "RESET every need resolves to canonical tools and never mutates Day completion by design",
+      "result": "PASS"
+    },
+    {
+      "name": "PERSONALIZATION signal inventory excludes journal/reflection text and hidden profiling",
+      "result": "PASS"
+    },
+    {
+      "name": "PROGRESS inventory excludes streak/performance/clinical scoring",
+      "result": "PASS"
+    },
+    {
+      "name": "REFLECTION privacy gate: private text is not sent to URLs, analytics, notifications or personalization models",
+      "result": "PASS"
+    },
+    {
+      "name": "NOTIFICATIONS are optional enhancement and malformed/stale settings recover safely",
+      "result": "PASS"
+    },
+    {
+      "name": "SUPPORT remains discoverable, non-paywalled and non-clinical",
+      "result": "PASS"
+    },
+    {
+      "name": "SECURITY baseline: no app network exfiltration, unsafe HTML or obvious client secrets",
+      "result": "PASS"
+    },
+    {
+      "name": "DEVELOPMENT residue in user-facing source is limited to intentional prototype disclosure",
+      "result": "PASS"
+    },
+    {
+      "name": "ROUTING exposes only the approved four primary destinations",
+      "result": "PASS"
+    }
+  ]
+}
+(node:2948) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> app@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 24 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.52 kB │ gzip:   0.32 kB
+dist/assets/index-DdfKh1yv.css   18.04 kB │ gzip:   4.35 kB
+dist/assets/index-jRMCrb5d.js   601.58 kB │ gzip: 144.22 kB
+
+✓ built in 236ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

@@ -1,0 +1,37 @@
+[WebServer] (node:3728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 26 tests using 1 worker
+
+(node:28312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [mobile] › tests\browser\coverage.spec.ts:27:1 › all 28 days, all 17 action cards and separate reflections expand inline without data changes (1.0m)
+  ok  2 [mobile] › tests\browser\coverage.spec.ts:61:1 › shortcut ownership, completion, next navigation, undo and collapse focus (1.8s)
+  ok  3 [mobile] › tests\browser\coverage.spec.ts:82:1 › single and multiple writing fields retain drafts, save, reload and delete without new wins (3.2s)
+  ok  4 [mobile] › tests\browser\coverage.spec.ts:114:1 › native disclosure inventory and RESET navigation retain original behavior (2.7s)
+  ok  5 [mobile] › tests\browser\coverage.spec.ts:139:1 › smooth motion selection and reduced-motion override; no reposition on typing (1.7s)
+  ok  6 [mobile] › tests\browser\edge-cases.spec.ts:6:1 › active reminders remain manually collapsible; editing schedules does not move or reopen them (1.3s)
+  ok  7 [mobile] › tests\browser\edge-cases.spec.ts:26:1 › saved reflections remain individually collapsed within My Path and do not leak on Today (1.3s)
+  ok  8 [mobile] › tests\browser\edge-cases.spec.ts:41:3 › final win shortcut collapse via return button restores focus to permanent task trigger (1.6s)
+  ok  9 [mobile] › tests\browser\edge-cases.spec.ts:41:3 › final win shortcut collapse via same trigger restores focus to permanent task trigger (1.8s)
+  ok 10 [mobile] › tests\browser\edge-cases.spec.ts:70:1 › final win in shortcut remains reviewable and undoable, including Day 28 (1.6s)
+  ok 11 [mobile] › tests\browser\expansion.spec.ts:29:1 › Feeling Stuck response is directly below selected choice and collapses (2.4s)
+  ok 12 [mobile] › tests\browser\expansion.spec.ts:43:1 › native and nested disclosures position the trigger and content beginning (1.4s)
+  ok 13 [mobile] › tests\browser\expansion.spec.ts:63:1 › task opens beneath its own trigger, switches and collapses without replacing roadmap (1.8s)
+(node:27140) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 14 [desktop] › tests\browser\coverage.spec.ts:27:1 › all 28 days, all 17 action cards and separate reflections expand inline without data changes (1.2m)
+  ok 15 [desktop] › tests\browser\coverage.spec.ts:61:1 › shortcut ownership, completion, next navigation, undo and collapse focus (3.0s)
+  ok 16 [desktop] › tests\browser\coverage.spec.ts:82:1 › single and multiple writing fields retain drafts, save, reload and delete without new wins (4.6s)
+  ok 17 [desktop] › tests\browser\coverage.spec.ts:114:1 › native disclosure inventory and RESET navigation retain original behavior (7.1s)
+  ok 18 [desktop] › tests\browser\coverage.spec.ts:139:1 › smooth motion selection and reduced-motion override; no reposition on typing (2.1s)
+  ok 19 [desktop] › tests\browser\edge-cases.spec.ts:6:1 › active reminders remain manually collapsible; editing schedules does not move or reopen them (2.8s)
+  ok 20 [desktop] › tests\browser\edge-cases.spec.ts:26:1 › saved reflections remain individually collapsed within My Path and do not leak on Today (2.5s)
+  ok 21 [desktop] › tests\browser\edge-cases.spec.ts:41:3 › final win shortcut collapse via return button restores focus to permanent task trigger (2.2s)
+  ok 22 [desktop] › tests\browser\edge-cases.spec.ts:41:3 › final win shortcut collapse via same trigger restores focus to permanent task trigger (2.2s)
+  ok 23 [desktop] › tests\browser\edge-cases.spec.ts:70:1 › final win in shortcut remains reviewable and undoable, including Day 28 (2.4s)
+  ok 24 [desktop] › tests\browser\expansion.spec.ts:29:1 › Feeling Stuck response is directly below selected choice and collapses (3.6s)
+  ok 25 [desktop] › tests\browser\expansion.spec.ts:43:1 › native and nested disclosures position the trigger and content beginning (2.3s)
+  ok 26 [desktop] › tests\browser\expansion.spec.ts:63:1 › task opens beneath its own trigger, switches and collapses without replacing roadmap (3.6s)
+
+  26 passed (3.3m)

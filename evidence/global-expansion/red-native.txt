@@ -1,0 +1,46 @@
+[WebServer] (node:3496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [mobile] › tests\browser\expansion.spec.ts:33:1 › native and nested disclosures position the trigger and content beginning (5.9s)
+
+
+  1) [mobile] › tests\browser\expansion.spec.ts:33:1 › native and nested disclosures position the trigger and content beginning 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      21 |     const screen = document.querySelector('.screen')!.getBoundingClientRect()
+      22 |     return rect.top + 40 < Math.min(innerHeight, screen.bottom)
+    > 23 |   })).toBe(true)
+         |       ^
+      24 | }
+      25 |
+      26 | async function uniqueIds(page: Page) {
+        at anchored (C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\expansion.spec.ts:23:7)
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\expansion.spec.ts:39:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\expansion-native-and-neste-1e94e-igger-and-content-beginning-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\global-expansion\artifacts\expansion-native-and-neste-1e94e-igger-and-content-beginning-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\expansion-native-and-neste-1e94e-igger-and-content-beginning-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\global-expansion\artifacts\expansion-native-and-neste-1e94e-igger-and-content-beginning-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\expansion.spec.ts:33:1 › native and nested disclosures position the trigger and content beginning 

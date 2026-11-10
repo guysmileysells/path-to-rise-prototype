@@ -1,0 +1,162 @@
+import { test, expect, type Page, type Locator } from '@playwright/test'
+
+const storageKey = 'path-to-rise-program-progress-v1'
+const stored = (page: Page) => page.evaluate(() => Object.fromEntries(Object.entries(localStorage)))
+async function openDay(page: Page) {
+  await page.goto('/#path')
+  await page.getByRole('button', { name: 'Open Day 1', exact: true }).first().click()
+}
+async function anchored(trigger: Locator, panel: Locator) {
+  const content = await panel.elementHandle()
+  await expect.poll(() => trigger.evaluate((el, content) => {
+    const t = el.getBoundingClientRect(), p = content!.getBoundingClientRect()
+    const s = document.querySelector('.screen')!.getBoundingClientRect()
+    return t.top >= Math.max(0, s.top) - 1 && p.top >= t.bottom - 1 && p.top - t.bottom <= 24 && p.top + 40 < Math.min(innerHeight, s.bottom)
+  }, content)).toBe(true)
+}
+async function disclosure(page: Page, text: string) {
+  const trigger = page.locator('summary').filter({ hasText: text }).first()
+  const details = trigger.locator('..')
+  if (await details.getAttribute('open') !== null) await trigger.click()
+  await trigger.click()
+  await anchored(trigger, details.locator(':scope > :not(summary)').first())
+  await trigger.click()
+  await expect(details).not.toHaveAttribute('open')
+}
+
+test('all 28 days, all 17 action cards and separate reflections expand inline without data changes', async ({ page }) => {
+  test.setTimeout(180_000)
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/#path')
+  const map = page.locator('summary').filter({ hasText: 'Path map + insights' })
+  await map.click()
+  const before = await stored(page)
+  for (let day = 1; day <= 28; day++) {
+    await page.locator('.day-progress-grid button').nth(day - 1).click()
+    await expect(page.locator('#day-roadmap-title')).toContainText(`Day ${day}:`)
+    const expectations = page.locator('summary').filter({ hasText: 'What to expect' })
+    if (await expectations.count()) {
+      await expectations.click()
+      await anchored(expectations, expectations.locator('..').locator('ul'))
+      await expectations.click()
+    }
+    const cards = page.locator('.roadmap-task-card')
+    await expect(cards).toHaveCount(17)
+    for (let i = 0; i < 17; i++) {
+      const card = cards.nth(i), trigger = card.locator('button[aria-expanded]')
+      await trigger.click()
+      await expect(card.locator('.task-detail-card')).toBeVisible()
+      await anchored(trigger, card.locator('.inline-expansion-panel'))
+    }
+    const original = page.locator('.end-of-day-card button[aria-expanded]')
+    await original.click()
+    await anchored(original, page.locator('.end-of-day-card .inline-expansion-panel'))
+    await expect(page.locator('.task-detail-card')).toHaveCount(1)
+    await original.click()
+    await expect(page.locator('.task-detail-card')).toHaveCount(0)
+  }
+  expect(await stored(page)).toEqual(before)
+})
+
+test('shortcut ownership, completion, next navigation, undo and collapse focus', async ({ page }) => {
+  await openDay(page)
+  const shortcut = page.getByRole('button', { name: 'Open next action', exact: true })
+  await shortcut.click()
+  await anchored(shortcut, shortcut.locator('..').locator('.inline-expansion-panel'))
+  await page.getByRole('button', { name: 'Mark as Done', exact: true }).click()
+  await expect(page.locator('.task-detail-card')).toContainText('✓ Done')
+  await page.getByRole('button', { name: /^Open next:/ }).click()
+  const second = page.locator('.roadmap-task-card').nth(1)
+  await anchored(second.locator('button[aria-expanded]'), second.locator('.inline-expansion-panel'))
+  await second.getByRole('button', { name: 'Return to daily roadmap', exact: true }).click()
+  await expect(second.locator('button[aria-expanded]')).toBeFocused()
+  await expect(second.locator('.task-detail-card')).toHaveCount(0)
+  const first = page.locator('.roadmap-task-card').first()
+  await first.getByRole('button', { name: 'Review tab', exact: true }).click()
+  await first.getByRole('button', { name: 'Undo Mark as Done', exact: true }).click()
+  const progress = await page.evaluate(key => JSON.parse(localStorage.getItem(key)!), storageKey)
+  expect(progress.dayTaskProgress['1']).toEqual([])
+  expect(progress.completedDays).toEqual([])
+})
+
+test('single and multiple writing fields retain drafts, save, reload and delete without new wins', async ({ page }) => {
+  await openDay(page)
+  const original = page.locator('.end-of-day-card button[aria-expanded]')
+  await original.click()
+  const field = page.locator('.end-of-day-card textarea')
+  await field.fill('QA synthetic private reflection')
+  await original.click()
+  await original.click()
+  await expect(field).toHaveValue('QA synthetic private reflection')
+  await page.locator('.end-of-day-card').getByRole('button', { name: 'Save locally', exact: true }).click()
+  const evening = page.locator('.roadmap-task-card').nth(14)
+  await evening.locator('button[aria-expanded]').click()
+  const fields = evening.locator('textarea')
+  await expect(fields).toHaveCount(5)
+  await fields.first().fill('QA gratitude draft')
+  await evening.locator('button[aria-expanded]').click()
+  await evening.locator('button[aria-expanded]').click()
+  await expect(fields.first()).toHaveValue('QA gratitude draft')
+  await evening.getByRole('button', { name: /Save/ }).first().click()
+  const before = JSON.parse((await stored(page))[storageKey])
+  expect(before.dayTaskProgress).toEqual({})
+  await page.reload()
+  await page.getByRole('button', { name: 'Open Day 1', exact: true }).first().click()
+  await original.click()
+  await expect(field).toHaveValue('QA synthetic private reflection')
+  page.once('dialog', dialog => dialog.accept())
+  await page.locator('.end-of-day-card').getByRole('button', { name: 'Delete saved text', exact: true }).click()
+  await expect(field).toHaveValue('')
+  await evening.locator('button[aria-expanded]').click()
+  await expect(fields.first()).toHaveValue('QA gratitude draft')
+})
+
+test('native disclosure inventory and RESET navigation retain original behavior', async ({ page }) => {
+  await page.goto('/')
+  const before = await stored(page)
+  await page.locator('.today-data-settings > summary').click()
+  await disclosure(page, 'Local prototype data controls')
+  await disclosure(page, 'Reminders — optional')
+  await page.getByRole('button', { name: 'Open Reset', exact: true }).click()
+  await disclosure(page, 'More RESET needs')
+  await page.getByRole('button', { name: 'Open Toolbox', exact: true }).click()
+  await disclosure(page, 'Saved + recent practices')
+  await disclosure(page, 'Browse all Toolbox practices')
+  await page.getByRole('button', { name: 'Open My Path', exact: true }).click()
+  await disclosure(page, 'Path map + insights')
+  await disclosure(page, 'Practices + private reflections')
+  await disclosure(page, 'Progress privacy')
+  expect(await stored(page)).toEqual(before)
+  await page.getByRole('button', { name: 'Open Reset', exact: true }).click()
+  await page.locator('.need-card').first().click()
+  await expect(page.locator('#reset-recommendation-title')).toBeVisible()
+  await page.getByRole('button', { name: 'Start this tool', exact: true }).click()
+  const full = page.locator('summary').filter({ hasText: 'Read full source instructions' })
+  if (await full.count()) await disclosure(page, 'Read full source instructions')
+  await expect(page.locator('.tool-runner')).toBeVisible()
+})
+
+test('smooth motion selection and reduced-motion override; no reposition on typing', async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = Element.prototype.scrollIntoView
+    Object.assign(window, { expansionScrolls: [] as unknown[] })
+    Element.prototype.scrollIntoView = function (options) {
+      if (this.hasAttribute('aria-expanded')) (window as unknown as { expansionScrolls: unknown[] }).expansionScrolls.push(options)
+      return original.call(this, options)
+    }
+  })
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await openDay(page)
+  const trigger = page.locator('.end-of-day-card button[aria-expanded]')
+  await trigger.click()
+  await anchored(trigger, page.locator('.end-of-day-card .inline-expansion-panel'))
+  const calls = () => page.evaluate(() => (window as unknown as { expansionScrolls: { behavior: string }[] }).expansionScrolls)
+  expect((await calls()).at(-1)?.behavior).toBe('smooth')
+  const count = (await calls()).length
+  await page.locator('.end-of-day-card textarea').fill('QA no scroll on typing')
+  expect((await calls()).length).toBe(count)
+  await trigger.click()
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await trigger.click()
+  expect((await calls()).at(-1)?.behavior).toBe('instant')
+})

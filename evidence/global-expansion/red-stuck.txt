@@ -1,0 +1,51 @@
+[WebServer] (node:28232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:25300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [mobile] › tests\browser\expansion.spec.ts:33:1 › Feeling Stuck response is directly below selected choice and collapses (5.9s)
+
+
+  1) [mobile] › tests\browser\expansion.spec.ts:33:1 › Feeling Stuck response is directly below selected choice and collapses 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('.feeling-stuck-card').locator('.stuck-options > div > button')
+    Expected: 6
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('.feeling-stuck-card').locator('.stuck-options > div > button') with timeout 5000ms
+      - waiting for locator('.feeling-stuck-card').locator('.stuck-options > div > button')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      35 |   const panel = page.locator('.feeling-stuck-card')
+      36 |   const buttons = panel.locator('.stuck-options > div > button')
+    > 37 |   await expect(buttons).toHaveCount(6)
+         |                         ^
+      38 |   for (let i = 0; i < await buttons.count(); i++) {
+      39 |     const button = buttons.nth(i)
+      40 |     await button.click()
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\expansion.spec.ts:37:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\expansion-Feeling-Stuck-re-d2f8d-lected-choice-and-collapses-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\global-expansion\artifacts\expansion-Feeling-Stuck-re-d2f8d-lected-choice-and-collapses-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\expansion-Feeling-Stuck-re-d2f8d-lected-choice-and-collapses-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\global-expansion\artifacts\expansion-Feeling-Stuck-re-d2f8d-lected-choice-and-collapses-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\expansion.spec.ts:33:1 › Feeling Stuck response is directly below selected choice and collapses 

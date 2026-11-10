@@ -31,6 +31,10 @@ jobs:
         run: npm test
       - name: Run lint
         run: npm run lint
+      - name: Install browser test runtime
+        run: npx playwright install --with-deps chromium
+      - name: Verify mobile and desktop expansion behavior
+        run: npx playwright test --project=mobile --project=desktop
       - name: Build
         run: npm run build
       - name: Setup Pages

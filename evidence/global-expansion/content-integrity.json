@@ -1,0 +1,66 @@
+{
+  "baseline_commit": "ba81cd5e6110a0a3ec0f1b26630df729c9d2cf69",
+  "all_non_ui_source_unchanged": true,
+  "files": [
+    {
+      "path": "src/assets/hero.png",
+      "unchanged": true,
+      "sha256_normalized_lf": "cfdde5b97f7abbdde251933fda164ea3d0d920a219bf2f8c48c1e22cbf3acfe0"
+    },
+    {
+      "path": "src/assets/react.svg",
+      "unchanged": true,
+      "sha256_normalized_lf": "35ef61ed53b323ae94a16a8ec659b3d0af3880698791133f23b084085ab1c2e5"
+    },
+    {
+      "path": "src/assets/vite.svg",
+      "unchanged": true,
+      "sha256_normalized_lf": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f"
+    },
+    {
+      "path": "src/dayRoadmap.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "8d81f94cc3e2c7d7ec42fc8b1ed6d917eaf890925ec75a8af4d73acaf9c75b50"
+    },
+    {
+      "path": "src/index.css",
+      "unchanged": true,
+      "sha256_normalized_lf": "6a8e6d250a12ac6a494498df7a30eb76fd1cb2f6f706a49a48b5d0ca6dee2bb1"
+    },
+    {
+      "path": "src/main.tsx",
+      "unchanged": true,
+      "sha256_normalized_lf": "6e9e5807fcbd48b75a96db5cbef36c996262196be42e6d4760dc86babbe61ad2"
+    },
+    {
+      "path": "src/notificationContent.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "cd5565507df38077b16fff73fdf178df44877c4348db71a24b4382c5db7141a6"
+    },
+    {
+      "path": "src/pathData.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "426883f6caa0cee4fb7268833104c444ac6c5cfde84016c88376736fbf13df93"
+    },
+    {
+      "path": "src/personalizationContent.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "8d5ce5e0eecbd7708f10fd2dba9ba9e2aef0cd2ad0e6b7f1c82bbcef347172f6"
+    },
+    {
+      "path": "src/programContent.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "33dc9a0ee4a42ce5a4f518868249eece566ce163b2ba17e9fd650d54fbcfe31e"
+    },
+    {
+      "path": "src/progressContent.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "280377ec0664a7231be654ef630c0ec2d1555e4abcb0c3108536d77310addc3b"
+    },
+    {
+      "path": "src/toolContent.ts",
+      "unchanged": true,
+      "sha256_normalized_lf": "a8aaea4d361162d642f2367b98ca3760fcffefda4f87bee7b6a8569bb43a82f6"
+    }
+  ]
+}

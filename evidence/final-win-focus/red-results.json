@@ -1,0 +1,290 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\I9-10900KF\\AppData\\Local\\hermes\\node\\node.exe",
+      "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "edge-cases",
+      "--project=mobile",
+      "--grep",
+      "final win shortcut collapse",
+      "--output=evidence/final-win-focus/red-artifacts"
+    ],
+    "configFile": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\playwright.config.ts",
+    "rootDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/evidence/final-win-focus/red-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/evidence/final-win-focus/red-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile",
+        "testDir": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser",
+        "snapshotDir": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "channel": "chromium",
+          "baseURL": "http://127.0.0.1:4175",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "reducedMotion": "reduce"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/global-expansion/latest-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 4175 --strictPort",
+      "url": "http://127.0.0.1:4175",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "edge-cases.spec.ts",
+      "file": "edge-cases.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "final win shortcut collapse via return button restores focus to permanent task trigger",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6427,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" class=\"primary\" id=\"_r_i_-trigger\" aria-expanded=\"false\" title=\"Expand section\" aria-controls=\"_r_i_-panel\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" class=\"primary\" id=\"_r_i_-trigger\" aria-expanded=\"false\" title=\"Expand section\" aria-controls=\"_r_i_-panel\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts:60:36",
+                    "location": {
+                      "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts",
+                      "column": 36,
+                      "line": 60
+                    },
+                    "snippet": " \u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(shortcut)\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\n \u001b[90m 59 |\u001b[39m     \u001b[36mconst\u001b[39m permanentTrigger \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`.roadmap-task-card[aria-labelledby=\"${finalTask.id}-title\"]`\u001b[39m)\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Review tab'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(permanentTrigger)\u001b[33m.\u001b[39mtoBeFocused()\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m expect(permanentTrigger)\u001b[33m.\u001b[39mtoBeInViewport({ ratio\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m })\n \u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m expect(permanentTrigger)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m'aria-expanded'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'false'\u001b[39m)\n \u001b[90m 63 |\u001b[39m     \u001b[90m// Focus is useful: Enter must reopen the completed task at its permanent card.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts",
+                        "column": 36,
+                        "line": 60
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" class=\"primary\" id=\"_r_i_-trigger\" aria-expanded=\"false\" title=\"Expand section\" aria-controls=\"_r_i_-panel\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  58 |     await expect(shortcut).toHaveCount(0)\n  59 |     const permanentTrigger = page.locator(`.roadmap-task-card[aria-labelledby=\"${finalTask.id}-title\"]`).getByRole('button', { name: 'Review tab', exact: true })\n> 60 |     await expect(permanentTrigger).toBeFocused()\n     |                                    ^\n  61 |     await expect(permanentTrigger).toBeInViewport({ ratio: 1 })\n  62 |     await expect(permanentTrigger).toHaveAttribute('aria-expanded', 'false')\n  63 |     // Focus is useful: Enter must reopen the completed task at its permanent card.\n    at C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts:60:36"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-10T23:13:38.169Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts\\edge-cases-final-win-short-2fc06-s-to-permanent-task-trigger-mobile\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts\\edge-cases-final-win-short-2fc06-s-to-permanent-task-trigger-mobile\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts\\edge-cases-final-win-short-2fc06-s-to-permanent-task-trigger-mobile\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts",
+                    "column": 36,
+                    "line": 60
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "db200a91ff2226597e25-a8c21a909aeb8887ea0e",
+          "file": "edge-cases.spec.ts",
+          "line": 41,
+          "column": 3
+        },
+        {
+          "title": "final win shortcut collapse via same trigger restores focus to permanent task trigger",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6166,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" class=\"primary\" id=\"_r_i_-trigger\" aria-expanded=\"false\" title=\"Expand section\" aria-controls=\"_r_i_-panel\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" class=\"primary\" id=\"_r_i_-trigger\" aria-expanded=\"false\" title=\"Expand section\" aria-controls=\"_r_i_-panel\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts:60:36",
+                    "location": {
+                      "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts",
+                      "column": 36,
+                      "line": 60
+                    },
+                    "snippet": " \u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(shortcut)\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\n \u001b[90m 59 |\u001b[39m     \u001b[36mconst\u001b[39m permanentTrigger \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`.roadmap-task-card[aria-labelledby=\"${finalTask.id}-title\"]`\u001b[39m)\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Review tab'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(permanentTrigger)\u001b[33m.\u001b[39mtoBeFocused()\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m expect(permanentTrigger)\u001b[33m.\u001b[39mtoBeInViewport({ ratio\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m })\n \u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m expect(permanentTrigger)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m'aria-expanded'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'false'\u001b[39m)\n \u001b[90m 63 |\u001b[39m     \u001b[90m// Focus is useful: Enter must reopen the completed task at its permanent card.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts",
+                        "column": 36,
+                        "line": 60
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.roadmap-task-card[aria-labelledby=\"day-28-evening-05-one-thing-proud-of-title\"]').getByRole('button', { name: 'Review tab', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" class=\"primary\" id=\"_r_i_-trigger\" aria-expanded=\"false\" title=\"Expand section\" aria-controls=\"_r_i_-panel\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  58 |     await expect(shortcut).toHaveCount(0)\n  59 |     const permanentTrigger = page.locator(`.roadmap-task-card[aria-labelledby=\"${finalTask.id}-title\"]`).getByRole('button', { name: 'Review tab', exact: true })\n> 60 |     await expect(permanentTrigger).toBeFocused()\n     |                                    ^\n  61 |     await expect(permanentTrigger).toBeInViewport({ ratio: 1 })\n  62 |     await expect(permanentTrigger).toHaveAttribute('aria-expanded', 'false')\n  63 |     // Focus is useful: Enter must reopen the completed task at its permanent card.\n    at C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts:60:36"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-10T23:13:45.714Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts\\edge-cases-final-win-short-bdb8e-s-to-permanent-task-trigger-mobile\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts\\edge-cases-final-win-short-bdb8e-s-to-permanent-task-trigger-mobile\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\final-win-focus\\red-artifacts\\edge-cases-final-win-short-bdb8e-s-to-permanent-task-trigger-mobile\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\edge-cases.spec.ts",
+                    "column": 36,
+                    "line": 60
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "db200a91ff2226597e25-7b9eaffdc18720607068",
+          "file": "edge-cases.spec.ts",
+          "line": 41,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-10T23:13:35.427Z",
+    "duration": 17283.508,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

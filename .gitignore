@@ -28,3 +28,8 @@ dist-ssr
 
 # Local Hermes recovery checkpoints
 .hermes/checkpoints/
+
+# Regenerated Playwright traces and failure artifacts (curated evidence is tracked)
+playwright-report/
+evidence/global-expansion/artifacts/
+evidence/final-win-focus/*-artifacts/

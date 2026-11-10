@@ -1,0 +1,44 @@
+[
+  {
+    "name": "chromium-android",
+    "base": "http://127.0.0.1:4176/",
+    "passed": true,
+    "checks": [
+      "morning/daily/evening inline switching and collapse; progress unchanged",
+      "completion / undo preserve one-win semantics",
+      "6 Feeling Stuck options anchored/collapsible",
+      "nested Today reminders/data disclosures",
+      "RESET and Toolbox disclosures; navigation remains screen-based",
+      "My Path native disclosures"
+    ],
+    "errors": []
+  },
+  {
+    "name": "webkit-iphone",
+    "base": "http://127.0.0.1:4176/",
+    "passed": true,
+    "checks": [
+      "morning/daily/evening inline switching and collapse; progress unchanged",
+      "completion / undo preserve one-win semantics",
+      "6 Feeling Stuck options anchored/collapsible",
+      "nested Today reminders/data disclosures",
+      "RESET and Toolbox disclosures; navigation remains screen-based",
+      "My Path native disclosures"
+    ],
+    "errors": []
+  },
+  {
+    "name": "firefox-desktop",
+    "base": "http://127.0.0.1:4176/",
+    "passed": true,
+    "checks": [
+      "morning/daily/evening inline switching and collapse; progress unchanged",
+      "completion / undo preserve one-win semantics",
+      "6 Feeling Stuck options anchored/collapsible",
+      "nested Today reminders/data disclosures",
+      "RESET and Toolbox disclosures; navigation remains screen-based",
+      "My Path native disclosures"
+    ],
+    "errors": []
+  }
+]

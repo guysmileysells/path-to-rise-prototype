@@ -1,0 +1,49 @@
+[WebServer] (node:10572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:11316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [mobile] › tests\browser\expansion.spec.ts:33:1 › task opens beneath its own trigger, switches and collapses without replacing roadmap (6.3s)
+
+
+  1) [mobile] › tests\browser\expansion.spec.ts:33:1 › task opens beneath its own trigger, switches and collapses without replacing roadmap 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('#day-roadmap-title')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('#day-roadmap-title') with timeout 5000ms
+      - waiting for locator('#day-roadmap-title')
+
+
+      36 |   const firstTrigger = first.getByRole('button', { name: 'Open tab', exact: true })
+      37 |   await firstTrigger.click()
+    > 38 |   await expect(page.locator('#day-roadmap-title')).toBeVisible()
+         |                                                    ^
+      39 |   await expect(first.locator('.task-detail-card')).toBeVisible()
+      40 |   await expect(firstTrigger).toHaveAttribute('aria-expanded', 'true')
+      41 |   await anchored(firstTrigger, first.locator('.inline-expansion-panel'))
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\expansion.spec.ts:38:52
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\global-expansion\artifacts\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\global-expansion\artifacts\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\expansion.spec.ts:33:1 › task opens beneath its own trigger, switches and collapses without replacing roadmap 

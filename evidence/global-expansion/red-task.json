@@ -1,0 +1,212 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\I9-10900KF\\AppData\\Local\\hermes\\node\\node.exe",
+      "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=mobile"
+    ],
+    "configFile": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\playwright.config.ts",
+    "rootDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/evidence/global-expansion/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/evidence/global-expansion/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/I9-10900KF/projects/path-to-rise/app/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\global-expansion\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile",
+        "testDir": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser",
+        "snapshotDir": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "channel": "chromium",
+          "baseURL": "http://127.0.0.1:4175",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "reducedMotion": "reduce"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/global-expansion/latest-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev -- --host 127.0.0.1 --port 4175 --strictPort",
+      "url": "http://127.0.0.1:4175",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "expansion.spec.ts",
+      "file": "expansion.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "task opens beneath its own trigger, switches and collapses without replacing roadmap",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6254,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#day-roadmap-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#day-roadmap-title') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#day-roadmap-title')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#day-roadmap-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#day-roadmap-title') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#day-roadmap-title')\u001b[22m\n\n    at C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\expansion.spec.ts:38:52",
+                    "location": {
+                      "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\expansion.spec.ts",
+                      "column": 52,
+                      "line": 38
+                    },
+                    "snippet": " \u001b[90m 36 |\u001b[39m   \u001b[36mconst\u001b[39m firstTrigger \u001b[33m=\u001b[39m first\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Open tab'\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\n \u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m firstTrigger\u001b[33m.\u001b[39mclick()\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#day-roadmap-title'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mawait\u001b[39m expect(first\u001b[33m.\u001b[39mlocator(\u001b[32m'.task-detail-card'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m expect(firstTrigger)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m'aria-expanded'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'true'\u001b[39m)\n \u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m anchored(firstTrigger\u001b[33m,\u001b[39m first\u001b[33m.\u001b[39mlocator(\u001b[32m'.inline-expansion-panel'\u001b[39m))"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\expansion.spec.ts",
+                        "column": 52,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#day-roadmap-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#day-roadmap-title') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#day-roadmap-title')\u001b[22m\n\n\n  36 |   const firstTrigger = first.getByRole('button', { name: 'Open tab', exact: true })\n  37 |   await firstTrigger.click()\n> 38 |   await expect(page.locator('#day-roadmap-title')).toBeVisible()\n     |                                                    ^\n  39 |   await expect(first.locator('.task-detail-card')).toBeVisible()\n  40 |   await expect(firstTrigger).toHaveAttribute('aria-expanded', 'true')\n  41 |   await anchored(firstTrigger, first.locator('.inline-expansion-panel'))\n    at C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\expansion.spec.ts:38:52"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-10T22:44:32.809Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\global-expansion\\artifacts\\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\global-expansion\\artifacts\\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\evidence\\global-expansion\\artifacts\\expansion-task-opens-benea-4e9bd-s-without-replacing-roadmap-mobile\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\I9-10900KF\\projects\\path-to-rise\\app\\tests\\browser\\expansion.spec.ts",
+                    "column": 52,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "de5dd86fe8d99c93f505-3083e779c561d201de14",
+          "file": "expansion.spec.ts",
+          "line": 33,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-10T22:44:30.252Z",
+    "duration": 10244.83,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
