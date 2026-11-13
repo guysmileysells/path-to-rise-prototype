@@ -8,8 +8,11 @@
 - Regression gate: `npm run contract` scans source and public text assets for the rejected spelling. Confirmed RED before the content correction.
 - Local verification: `npm test` passed (including typecheck/production build), `npm run lint` passed with zero errors/warnings, and all 26 mobile/desktop browser tests passed, including all 28 days and writing save/reload/delete.
 - Exact source comparison confirmed only three spelling substitutions; no behavior or data-model changes. Source/public scan found zero remaining rejected spellings.
-- Hosted verification: pending publication and served-asset/browser checks.
-- Existing non-blocking warnings: Node experimental type transforms and the Vite bundle-size advisory.
+- Hosted verification: **PASS** for app commit `90689bf0e86e9205bf355472fec90a2c7c5d91ce`. [GitHub build/deploy run 43340712701](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/43340712701) succeeded.
+- Public JavaScript and CSS returned HTTP 200 and SHA-256 matched the verified local production build. No rejected spelling remained in served JavaScript; all three corrected phrases were present.
+- Live browser checks opened all three corrected panels across all 28 days on mobile and desktop viewports: 84 panels per viewport, unchanged local storage, zero console/page errors. Physical-device testing remains unverified.
+- Reproducible hosted check: `node evidence/practice-spelling/verify-hosted.mjs` (requires local build and installed Playwright Chromium). Raw proof: `evidence/practice-spelling/hosted-results.json` and `evidence/practice-spelling/local-browser-results.json`.
+- Existing non-blocking warnings: Node experimental type transforms, the Vite bundle-size advisory, and GitHub Actions runtime migration notices.
 
 ## Previous release checkpoint
 
@@ -29,7 +32,7 @@ This is a durable GitHub Pages hosted preview for owner functionality testing. I
 https://github.com/guysmileysells/path-to-rise-prototype
 ```
 
-Current deployed commit:
+Initial deployed commit (historical; current spelling release is identified above):
 
 ```txt
 5110e81 ci: support in-repo source audit files

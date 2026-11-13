@@ -1,0 +1,35 @@
+{
+  "url": "https://guysmileysells.github.io/path-to-rise-prototype/",
+  "verifiedAt": "2026-11-13T00:56:53.768Z",
+  "assets": [
+    {
+      "asset": "./assets/index-CpEqTmOS.js",
+      "status": 200,
+      "sha256": "d9f37d4b1c293a77afc97cd6fed0377db437b025bcccf6bfe319a3eeb26424ed",
+      "matchesLocal": true
+    },
+    {
+      "asset": "./assets/index-DdfKh1yv.css",
+      "status": 200,
+      "sha256": "be2849ff91fbe18665d4ae022d38c44adef50a789e0db4b81a4a0bfd81ecec67",
+      "matchesLocal": true
+    }
+  ],
+  "browsers": [
+    {
+      "name": "mobile",
+      "days": 28,
+      "checkedPanels": 84,
+      "storageUnchanged": true,
+      "consoleErrors": 0
+    },
+    {
+      "name": "desktop",
+      "days": 28,
+      "checkedPanels": 84,
+      "storageUnchanged": true,
+      "consoleErrors": 0
+    }
+  ],
+  "result": "PASS"
+}
