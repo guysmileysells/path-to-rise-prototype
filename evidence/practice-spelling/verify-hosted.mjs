@@ -9,7 +9,7 @@ const response = await fetch(`${base}?verify=90689bf`)
 assert.equal(response.status, 200)
 const html = await response.text()
 assert.ok(html.includes('PATH to RISE Prototype'))
-const assets = [...html.matchAll(/(?:src|href)="(\.\/assets\/[^\"]+)"/g)].map((match) => match[1])
+const assets = [...html.matchAll(/(?:src|href)="(\.\/assets\/[^"]+)"/g)].map((match) => match[1])
 assert.ok(assets.some((asset) => asset.endsWith('.js')))
 for (const asset of assets) {
   const served = await fetch(new URL(asset, base))
