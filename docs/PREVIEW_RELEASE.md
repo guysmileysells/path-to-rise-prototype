@@ -1,5 +1,18 @@
 # PATH to RISE preview release checkpoint
 
+## App-wide spelling correction — 2026-11-13
+
+- Owner direction: use **practice**, not the alternative spelling, throughout app-authored content and labels.
+- Scope: wording only. Preserve task IDs, curriculum meaning, progress, completion, saved reflections, and navigation.
+- Located three source occurrences in `src/dayRoadmap.ts`, in reusable morning/evening explanations shared across all 28 days.
+- Regression gate: `npm run contract` scans source and public text assets for the rejected spelling. Confirmed RED before the content correction.
+- Local verification: `npm test` passed (including typecheck/production build), `npm run lint` passed with zero errors/warnings, and all 26 mobile/desktop browser tests passed, including all 28 days and writing save/reload/delete.
+- Exact source comparison confirmed only three spelling substitutions; no behavior or data-model changes. Source/public scan found zero remaining rejected spellings.
+- Hosted verification: pending publication and served-asset/browser checks.
+- Existing non-blocking warnings: Node experimental type transforms and the Vite bundle-size advisory.
+
+## Previous release checkpoint
+
 Date: 2026-10-13 09:58 PDT
 
 ## Current non-disconnecting review URL

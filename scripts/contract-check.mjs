@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 
 const data = readFileSync(new URL('../src/pathData.ts', import.meta.url), 'utf8')
 const programContent = readFileSync(new URL('../src/programContent.ts', import.meta.url), 'utf8')
@@ -26,6 +26,16 @@ const required = {
 }
 
 const failures = []
+
+// Owner-approved app-wide spelling; include nested source and public text assets.
+for (const directory of ['src', 'public']) {
+  const root = new URL(`../${directory}/`, import.meta.url)
+  for (const name of readdirSync(root, { recursive: true })) {
+    if (!/\.(?:[cm]?[jt]sx?|json|html|svg|txt|md|css)$/i.test(name)) continue
+    const text = readFileSync(new URL(name.replaceAll('\\', '/'), root), 'utf8')
+    if (/\bpractise\b/i.test(text)) failures.push(`spelling: ${directory}/${name} must use practice`)
+  }
+}
 
 for (const [group, values] of Object.entries(required)) {
   const source = group === 'tabs' ? app : data
