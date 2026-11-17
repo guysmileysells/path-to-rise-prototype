@@ -1,6 +1,23 @@
 # PATH to RISE preview release checkpoint
 
-## Current owner decision — restore the previous homepage
+> **Current execution update:** owner explicitly requested applying A to the GitHub **functioning version** (`1572271883523596462`). This is now the authorized implementation/deployment target; the ChatGPT-hosted site stays untouched. Earlier main-host access restrictions below remain historical context, not a blocker for this release. See `docs/TODAY_A_IMPLEMENTATION.md`.
+
+## Functioning version — owner-named functional baseline
+
+- **Functioning version:** https://guysmileysells.github.io/path-to-rise-prototype/#today
+- Owner explicitly requested this name and a current-status note. Live Today rechecked 2026-11-17 UTC: `Start where you are.`, Day 1 entry/next action, Reset and the original four navigation tabs. Restored pre-Daily Rhythm implementation; no approved-A update applied.
+- Detailed status, earlier verification and limits: `docs/FUNCTIONING_VERSION.md`. This label does not change the main design/prototype designation below or authorize code/deployment changes.
+
+## Main prototype — owner-designated
+
+- **Primary prototype:** https://path-to-rise-review.gimidaloot.chatgpt.site/
+- Owner explicitly selected this URL as the main PATH to RISE prototype. It supersedes GitHub Pages as the default prototype/review link and version reference for future discussions.
+- Direct browser check: page title `PATH to RISE — Interactive Concept`; rendered heading `Leave the shift. Keep yourself.`, `Reset me now`, `Your path`, `My Quick Kit`, and navigation Today / Reset / My Path / Support.
+- This is a choice of prototype/version, not a deployment, source-code migration or authorization to rebuild it. Source ownership, editable project access, repository linkage, persistence, and full functionality of this external host have NOT been verified. Earlier GitHub Pages test results do not certify this separate prototype.
+- GitHub Pages is the owner-named **functioning version** and functional baseline, not the main design prototype. Keep the two references distinct and do not reintroduce Daily Rhythm without explicit direction.
+- **Current selected direction: A — Reset first.** Keep the main prototype’s visual style and Reset-led Today hierarchy; add the full GitHub Today functionality, with day/progress/Continue underneath and privacy/data/reminders accessible through Your space. B is not selected. Coverage and decision: `docs/TODAY_FUNCTIONALITY_PARITY_MOCKS.md`; implementation handoff: `docs/TODAY_OPTION_A_HANDOFF.md`. Owner subsequently authorized applying A plus the shared settings screens (`ok apply`). Main-host edit/publish access is the outstanding prerequisite; no live code, data migration, backend expansion or deployment has been performed.
+
+## Historical owner decision — restore the previous GitHub Pages homepage
 
 - Owner requested returning to the version before Daily Rhythm.
 - Restored application source, scripts, test configuration and package manifest exactly to baseline `8045621` (including the earlier **practice** spelling correction and inline-expansion improvements).
@@ -43,7 +60,7 @@
 
 Date: 2026-10-13 09:58 PDT
 
-## Current non-disconnecting review URL
+## Historical GitHub Pages review URL (secondary)
 
 ```txt
 https://guysmileysells.github.io/path-to-rise-prototype/

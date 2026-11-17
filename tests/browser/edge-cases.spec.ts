@@ -12,7 +12,7 @@ test('active reminders remain manually collapsible; editing schedules does not m
   await page.locator('.today-data-settings > summary').click()
   const reminders = page.locator('.notification-settings')
   await expect(reminders).toHaveAttribute('open')
-  const summary = reminders.locator('summary')
+  const summary = reminders.locator(':scope > summary')
   await summary.click()
   await expect(reminders).not.toHaveAttribute('open')
   await summary.click()
