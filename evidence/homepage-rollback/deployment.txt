@@ -1,0 +1,936 @@
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  * Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  * Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push less than a minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 1 minute ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  * Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+* build (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  ✓ Verify mobile and desktop expansion behavior
+  * Build
+  * Setup Pages
+  * Upload artifact
+  * Post Setup Node
+  * Post Checkout
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ build in 2m59s (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  ✓ Verify mobile and desktop expansion behavior
+  ✓ Build
+  ✓ Setup Pages
+  ✓ Upload artifact
+  ✓ Post Setup Node
+  ✓ Post Checkout
+  ✓ Complete job
+* deploy (ID 133810847193)
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/configure-pages@v5, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ build in 2m59s (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  ✓ Verify mobile and desktop expansion behavior
+  ✓ Build
+  ✓ Setup Pages
+  ✓ Upload artifact
+  ✓ Post Setup Node
+  ✓ Post Checkout
+  ✓ Complete job
+* deploy (ID 133810847193)
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/configure-pages@v5, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ build in 2m59s (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  ✓ Verify mobile and desktop expansion behavior
+  ✓ Build
+  ✓ Setup Pages
+  ✓ Upload artifact
+  ✓ Post Setup Node
+  ✓ Post Checkout
+  ✓ Complete job
+* deploy (ID 133810847193)
+  ✓ Set up job
+  * Deploy to GitHub Pages
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/configure-pages@v5, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ build in 2m59s (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  ✓ Verify mobile and desktop expansion behavior
+  ✓ Build
+  ✓ Setup Pages
+  ✓ Upload artifact
+  ✓ Post Setup Node
+  ✓ Post Checkout
+  ✓ Complete job
+✓ deploy in 9s (ID 133810847193)
+  ✓ Set up job
+  ✓ Deploy to GitHub Pages
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/configure-pages@v5, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+
+✓ master Deploy static preview to GitHub Pages · 44014685005
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ build in 2m59s (ID 133809657830)
+  ✓ Set up job
+  ✓ Checkout
+  ✓ Setup Node
+  ✓ Install dependencies
+  ✓ Run tests
+  ✓ Run lint
+  ✓ Install browser test runtime
+  ✓ Verify mobile and desktop expansion behavior
+  ✓ Build
+  ✓ Setup Pages
+  ✓ Upload artifact
+  ✓ Post Setup Node
+  ✓ Post Checkout
+  ✓ Complete job
+✓ deploy in 9s (ID 133810847193)
+  ✓ Set up job
+  ✓ Deploy to GitHub Pages
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/configure-pages@v5, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+

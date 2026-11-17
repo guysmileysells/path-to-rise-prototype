@@ -7,7 +7,10 @@
 - Removed Daily Rhythm-only selector/tests from the active application. Historical handoff, implementation and verification artifacts remain preserved; their acceptance results describe the superseded design, not the current homepage.
 - No browser-storage schema/migration, clearing operation or user-data reset is included. Existing progress and saved writing remain on each browser/device.
 - Local verification: `npm test` (including production build) PASS; `npm run lint` PASS with zero warnings/errors; all 26 original mobile/desktop Playwright tests PASS. Exact source parity proof and test log: `evidence/homepage-rollback/`.
-- Hosted rollback verification: pending deployment. Do not treat the superseded Daily Rhythm deployment below as the restored release.
+- Hosted rollback verification: **PASS**. Restored app commit `1a162eb4989424f45f7b9ad5846ba30b2b1ff9ab`; [GitHub build/deploy run 44014685005](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44014685005) succeeded.
+- Live preview: https://guysmileysells.github.io/path-to-rise-prototype/ — verified old `Start where you are.` heading and journey card on mobile/desktop; Daily Rhythm heading absent. Served JS/CSS SHA-256 match the tested restored build.
+- Hosted checks revisited all 28 days and 84 corrected-writing panels per viewport; storage was unchanged during those checks and zero console/page errors were captured. Raw proof: `evidence/homepage-rollback/hosted-results.json`, `deployment.txt`; repeat with `node evidence/homepage-rollback/verify-hosted.mjs`.
+- Daily Rhythm remains in Git history and historical docs/evidence only. Physical-device and real screen-reader testing were not repeated for this rollback.
 
 ## Superseded Daily Rhythm homepage — verified 2026-11-17 UTC
 
