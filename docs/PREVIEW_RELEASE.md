@@ -1,6 +1,15 @@
 # PATH to RISE preview release checkpoint
 
-## Daily Rhythm homepage — verified 2026-11-17 UTC
+## Current owner decision — restore the previous homepage
+
+- Owner requested returning to the version before Daily Rhythm.
+- Restored application source, scripts, test configuration and package manifest exactly to baseline `8045621` (including the earlier **practice** spelling correction and inline-expansion improvements).
+- Removed Daily Rhythm-only selector/tests from the active application. Historical handoff, implementation and verification artifacts remain preserved; their acceptance results describe the superseded design, not the current homepage.
+- No browser-storage schema/migration, clearing operation or user-data reset is included. Existing progress and saved writing remain on each browser/device.
+- Local verification: `npm test` (including production build) PASS; `npm run lint` PASS with zero warnings/errors; all 26 original mobile/desktop Playwright tests PASS. Exact source parity proof and test log: `evidence/homepage-rollback/`.
+- Hosted rollback verification: pending deployment. Do not treat the superseded Daily Rhythm deployment below as the restored release.
+
+## Superseded Daily Rhythm homepage — verified 2026-11-17 UTC
 
 - Live preview: https://guysmileysells.github.io/path-to-rise-prototype/
 - App commit `d9f91339490c188eba10cec5af0b40311f001247`; [build and deploy run 44012408616](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44012408616) passed.

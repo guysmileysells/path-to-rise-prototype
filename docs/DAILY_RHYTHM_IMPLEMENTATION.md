@@ -1,6 +1,10 @@
 # Daily Rhythm homepage — implementation contract
 
-## Authority and baseline
+## Status: superseded by owner rollback
+
+The owner requested returning to the pre-Daily Rhythm version. The active application is restored to baseline `8045621`, preserving the practice spelling correction, existing functionality and storage format. This document and its source package are retained as historical design context, not instructions to reapply the redesign. A new owner request is required before reintroducing Daily Rhythm. See `docs/PREVIEW_RELEASE.md` for rollback verification and deployment status.
+
+## Historical authority and baseline
 - Owner requested implementation of `START_HERE_AGENT.md` from the supplied Daily Rhythm ZIP, with all existing functionality preserved and tests before handoff.
 - Unchanged source package is preserved in `docs/handoffs/daily-rhythm/` (seven files). Written specification is authoritative; its HTML is illustrative, not an exact redesign mandate.
 - Repository: `guysmileysells/path-to-rise-prototype`; app: `C:/Users/I9-10900KF/projects/path-to-rise/app`; baseline commit `8045621`; branch `feat/daily-rhythm-home`.

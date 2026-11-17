@@ -5,7 +5,11 @@
 - Original ZIP SHA-256 `54707eac44053c82a30b9c906900d82981871cd3ead99314e780a41ed16500de`; seven handoff files preserved unchanged in `docs/handoffs/daily-rhythm/`.
 - Evidence paths below are relative to `evidence/daily-rhythm/`.
 
-## Current result
+## Current status: superseded by owner rollback
+
+The owner requested restoring the pre-Daily Rhythm homepage. The acceptance evidence below remains a historical record of that redesign; it does not describe the active restored interface. Current rollback source parity, regression and deployment evidence are recorded in `docs/PREVIEW_RELEASE.md`. Do not run the Daily Rhythm-specific reproduction commands against the restored application or count their expected design mismatch as a regression.
+
+## Historical Daily Rhythm result
 Published and hosted engineering acceptance PASS, verified 2026-11-17 UTC. App commit `d9f91339490c188eba10cec5af0b40311f001247`; [build/deploy run 44012408616](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44012408616) succeeded. Preview: https://guysmileysells.github.io/path-to-rise-prototype/
 
 Hosted JavaScript/CSS returned HTTP 200 and SHA-256 matched the tested local build. All four viewport/navigation/keyboard checks passed with zero captured console/resource errors. The missing-records recovery fixture opens actual Day 28 content without fabricated completions or storage mutation. Proof: `hosted-verification.json`, `hosted-smoke.txt`, `hosted-after-*.png`, `deployment.txt`. Physical-device and external approvals remain NOT VERIFIED.

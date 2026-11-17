@@ -1,0 +1,8 @@
+{
+  "baseline": "8045621c9c1eb0ff9159b035fc45e19f3477122a",
+  "aggregate": { "command": "npm test", "exitCode": 0, "includes": "contracts, scenario regressions, TypeScript and Vite production build", "log": "local-tests.txt" },
+  "lint": { "command": "npm run lint", "exitCode": 0, "warnings": 0, "errors": 0 },
+  "browser": { "command": "npx playwright test --project=mobile --project=desktop --reporter=list", "process": "proc_5ef37b9a2d71", "exitCode": 0, "passed": 26, "reportedDuration": "2.6m", "scope": "original pre-Daily-Rhythm browser suites" },
+  "sourceParity": "source-parity.json",
+  "limitations": ["Physical phone testing and real screen-reader testing not performed during rollback", "Hosted verification is a separate post-deployment gate"]
+}

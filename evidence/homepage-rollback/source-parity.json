@@ -1,0 +1,16 @@
+{
+  "baseline": "8045621c9c1eb0ff9159b035fc45e19f3477122a",
+  "paths": [
+    "src",
+    "scripts",
+    "package.json",
+    "package-lock.json",
+    "tests",
+    "playwright.config.ts",
+    "vite.config.ts",
+    "index.html",
+    ".github/workflows"
+  ],
+  "result": "EXACT_MATCH",
+  "storageChanges": "none; restored code matches pre-redesign version"
+}
