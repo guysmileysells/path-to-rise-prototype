@@ -1,0 +1,743 @@
+{
+  "result": "PASS",
+  "base": "http://127.0.0.1:4180/",
+  "checkedAt": "2026-11-17T16:23:48.167Z",
+  "assets": [
+    {
+      "url": "http://127.0.0.1:4180/assets/index-DJC8mtaH.js",
+      "sha256": "de29dc473b4939e5b7ee8160af9cfc6424fac6f4ffffff0d41be296a5b887873",
+      "bytes": 605313
+    },
+    {
+      "url": "http://127.0.0.1:4180/assets/index-Bfjv2sIW.css",
+      "sha256": "5eb27630f3421d92705a17cf6562bf8ecb2dca0e4389934131e875a68e8cbd25",
+      "bytes": 26087
+    }
+  ],
+  "layouts": 20,
+  "results": [
+    {
+      "width": 320,
+      "height": 844,
+      "mode": "home",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "mode": "your-space",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "mode": "reminders",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "mode": "reminder-categories",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "mode": "home",
+      "overflow": 0,
+      "screenBottom": 733,
+      "navTop": 733,
+      "navBottom": 812,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Reset",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "My Path",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Support",
+          "top": 746,
+          "bottom": 800
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "mode": "your-space",
+      "overflow": 0,
+      "screenBottom": 733,
+      "navTop": 733,
+      "navBottom": 812,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Reset",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "My Path",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Support",
+          "top": 746,
+          "bottom": 800
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "mode": "reminders",
+      "overflow": 0,
+      "screenBottom": 733,
+      "navTop": 733,
+      "navBottom": 812,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Reset",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "My Path",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Support",
+          "top": 746,
+          "bottom": 800
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "mode": "reminder-categories",
+      "overflow": 0,
+      "screenBottom": 733,
+      "navTop": 733,
+      "navBottom": 812,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Reset",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "My Path",
+          "top": 746,
+          "bottom": 800
+        },
+        {
+          "text": "Support",
+          "top": 746,
+          "bottom": 800
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "home",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "your-space",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "reminders",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "reminder-categories",
+      "overflow": 0,
+      "screenBottom": 765,
+      "navTop": 765,
+      "navBottom": 844,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Reset",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "My Path",
+          "top": 778,
+          "bottom": 832
+        },
+        {
+          "text": "Support",
+          "top": 778,
+          "bottom": 832
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mode": "home",
+      "overflow": 0,
+      "screenBottom": 853,
+      "navTop": 853,
+      "navBottom": 932,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Reset",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "My Path",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Support",
+          "top": 866,
+          "bottom": 920
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mode": "your-space",
+      "overflow": 0,
+      "screenBottom": 853,
+      "navTop": 853,
+      "navBottom": 932,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Reset",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "My Path",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Support",
+          "top": 866,
+          "bottom": 920
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mode": "reminders",
+      "overflow": 0,
+      "screenBottom": 853,
+      "navTop": 853,
+      "navBottom": 932,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Reset",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "My Path",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Support",
+          "top": 866,
+          "bottom": 920
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mode": "reminder-categories",
+      "overflow": 0,
+      "screenBottom": 853,
+      "navTop": 853,
+      "navBottom": 932,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Reset",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "My Path",
+          "top": 866,
+          "bottom": 920
+        },
+        {
+          "text": "Support",
+          "top": 866,
+          "bottom": 920
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "mode": "home",
+      "overflow": 0,
+      "screenBottom": 787.421875,
+      "navTop": 787.421875,
+      "navBottom": 866.421875,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Reset",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "My Path",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Support",
+          "top": 800.421875,
+          "bottom": 854.421875
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "mode": "your-space",
+      "overflow": 0,
+      "screenBottom": 787.421875,
+      "navTop": 787.421875,
+      "navBottom": 866.421875,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Reset",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "My Path",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Support",
+          "top": 800.421875,
+          "bottom": 854.421875
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "mode": "reminders",
+      "overflow": 0,
+      "screenBottom": 787.421875,
+      "navTop": 787.421875,
+      "navBottom": 866.421875,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Reset",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "My Path",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Support",
+          "top": 800.421875,
+          "bottom": 854.421875
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "mode": "reminder-categories",
+      "overflow": 0,
+      "screenBottom": 787.421875,
+      "navTop": 787.421875,
+      "navBottom": 866.421875,
+      "navTargets": [
+        {
+          "text": "Today",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Reset",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "My Path",
+          "top": 800.421875,
+          "bottom": 854.421875
+        },
+        {
+          "text": "Support",
+          "top": 800.421875,
+          "bottom": 854.421875
+        }
+      ],
+      "tiny": [],
+      "brokenIcons": 0
+    }
+  ],
+  "flows": [
+    {
+      "width": 320,
+      "checks": [
+        "Today nav closes settings",
+        "Reset opens real Reset",
+        "Start opens canonical Day 1 with 17 tasks",
+        "Quick Kit opens Toolbox"
+      ]
+    },
+    {
+      "width": 375,
+      "checks": [
+        "Today nav closes settings",
+        "Reset opens real Reset",
+        "Start opens canonical Day 1 with 17 tasks",
+        "Quick Kit opens Toolbox"
+      ]
+    },
+    {
+      "width": 390,
+      "checks": [
+        "Today nav closes settings",
+        "Reset opens real Reset",
+        "Start opens canonical Day 1 with 17 tasks",
+        "Quick Kit opens Toolbox"
+      ]
+    },
+    {
+      "width": 390,
+      "checks": [
+        "Saved-active-reminder header entry from Support: visible overview, correct focus, consent preserved"
+      ]
+    },
+    {
+      "width": 390,
+      "checks": [
+        "Saved-active-reminder header entry from open Reminders: visible overview, correct focus, consent preserved"
+      ]
+    },
+    {
+      "width": 430,
+      "checks": [
+        "Today nav closes settings",
+        "Reset opens real Reset",
+        "Start opens canonical Day 1 with 17 tasks",
+        "Quick Kit opens Toolbox"
+      ]
+    },
+    {
+      "width": 1280,
+      "checks": [
+        "Today nav closes settings",
+        "Reset opens real Reset",
+        "Start opens canonical Day 1 with 17 tasks",
+        "Quick Kit opens Toolbox"
+      ]
+    }
+  ],
+  "limitations": [
+    "Automated Chromium only; physical phones, real screen readers and clinical/legal readiness not verified.",
+    "Reminder preferences/browser-tab delivery only; reliable closed-app push is not implemented."
+  ]
+}

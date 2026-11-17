@@ -48,7 +48,7 @@ test('native and nested disclosures position the trigger and content beginning',
   await trigger.click()
   await anchored(trigger, outer.locator(':scope > .disclosure-stack'))
   const nested = outer.locator('.notification-settings')
-  const nestedTrigger = nested.locator('summary')
+  const nestedTrigger = nested.locator(':scope > summary')
   await nestedTrigger.evaluate((element) => element.scrollIntoView({ block: 'end' }))
   await nestedTrigger.press('Enter')
   await anchored(nestedTrigger, nested.locator('.notification-stack'))

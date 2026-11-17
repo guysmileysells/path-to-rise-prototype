@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
+import './todayA.css'
+import { RiseIcon } from './RiseIcon'
 import { Disclosure, InlineExpansion } from './InlineExpansion'
 import type { ReactNode } from 'react'
 import { programContent, prompt5SourceIssues, type ProgramSection } from './programContent'
@@ -93,10 +95,10 @@ type StorageNotice = {
   message: string
 } | null
 const navItems = [
-  { key: 'today', label: 'Today', icon: '◐' },
-  { key: 'reset', label: 'Reset', icon: '↺' },
-  { key: 'path', label: 'My Path', icon: '▦' },
-  { key: 'support', label: 'Support', icon: '+' },
+  { key: 'today', label: 'Today', icon: 'sun' },
+  { key: 'reset', label: 'Reset', icon: 'wind' },
+  { key: 'path', label: 'My Path', icon: 'route' },
+  { key: 'support', label: 'Support', icon: 'heart-handshake' },
 ] as const
 
 const defaultProgress: ProgramProgress = {
@@ -232,6 +234,8 @@ function getProgramDay(day: number): ProgramDay {
 }
 
 function firstIncompleteDay(progress: ProgramProgress) {
+  // Legacy completed records may lack per-day history: review Day 28 without fabricating it.
+  if (progress.status === 'program_complete') return 28
   const complete = new Set(progress.completedDays)
   const first = programContent.find((day) => !complete.has(day.day))
   return first?.day ?? 28
@@ -297,8 +301,31 @@ function getHomeModel(progress: ProgramProgress): HomeModel {
   }
 }
 
+function closeTodayPanels() {
+  const details = document.querySelector<HTMLDetailsElement>('.today-data-settings')
+  if (details?.open) details.querySelector<HTMLElement>(':scope > summary')?.click()
+}
+
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(getInitialTab)
+  const [spaceRequest, setSpaceRequest] = useState(0)
+  const handledSpaceRequest = useRef(0)
+
+  useLayoutEffect(() => {
+    if (spaceRequest === handledSpaceRequest.current || activeTab !== 'today') return
+    const details = document.querySelector<HTMLDetailsElement>('.today-data-settings')
+    const summary = details?.querySelector<HTMLElement>(':scope > summary')
+    if (details && summary) {
+      // Enter the overview, even when saved active reminders opened its nested panel.
+      // This changes disclosure visibility only, never reminder consent/preferences.
+      const reminders = details.querySelector<HTMLDetailsElement>('.notification-settings')
+      if (reminders) reminders.open = false
+      if (!details.open) summary.click()
+      summary.focus({ preventScroll: true })
+      summary.scrollIntoView({ block: 'start', behavior: 'instant' })
+    }
+    handledSpaceRequest.current = spaceRequest
+  }, [spaceRequest, activeTab])
   const [progress, setProgress] = useState<ProgramProgress>(getStoredProgress)
   const [toolState, setToolState] = useState<ToolState>(getStoredToolState)
   const [selectedDay, setSelectedDay] = useState<number>(firstIncompleteDay(progress))
@@ -662,17 +689,17 @@ function App() {
   return (
     <main className="shell" aria-label="PATH to RISE prototype">
       <p className="concept-note">PATH to RISE · Prototype checkpoint · Progress and saved reflections stay local to this browser for now</p>
-      <section className="phone" aria-live="polite">
+      <section className={`phone${activeTab === 'today' ? ' today-phone' : ''}`} aria-live="polite">
         <header className="topbar">
-          <button className="brand" type="button" onClick={() => goTo('today')} aria-label="Go to Today">
+          <button className="brand" type="button" onClick={() => { closeTodayPanels(); goTo('today') }} aria-label="Go to Today">
             PATH <span>to</span> RISE
           </button>
-          <span className="privacy-pill" aria-label="Private space">Your space</span>
+          <button className="today-a-space-button" type="button" onClick={() => { goTo('today'); setSpaceRequest((current) => current + 1) }}><RiseIcon name="lock-keyhole" />Your space</button>
         </header>
         {storageNotice && <p className={`storage-status ${storageNotice.tone}`} role="status">{storageNotice.message}</p>}
 
         <div className="screen">
-          {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
+          {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenToolbox={() => { setResetView('toolbox'); goTo('reset') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
           {activeTab === 'reset' && <ResetExperience view={resetView} selectedNeedId={selectedNeedId} activeToolId={activeToolId} activeToolContext={activeToolContext} toolState={toolState} personalization={personalization} onSelectNeed={selectNeed} onSetView={setResetView} onStartTool={startTool} onCompleteTool={completeStandaloneTool} onToggleFavourite={toggleFavourite} onHome={() => goTo('today')} onSupport={() => goTo('support')} />}
           {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} dayDetailOpen={pathDayOpen} draftReflections={draftReflections} onSelectDay={(day) => { setSelectedDay(day); setPathDayOpen(true) }} onOpenDayDetail={() => setPathDayOpen(true)} onCloseDayDetail={() => setPathDayOpen(false)} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onToggleRoadmapTask={toggleRoadmapTask} onCompleteDay={completeDay} onSupport={() => goTo('support')} />}
           {activeTab === 'support' && <Support />}
@@ -684,11 +711,11 @@ function App() {
               className={activeTab === item.key ? 'active' : ''}
               type="button"
               key={item.key}
-              onClick={() => item.key === 'reset' ? openReset() : item.key === 'path' ? (setPathDayOpen(false), goTo('path')) : goTo(item.key)}
+              onClick={() => { if (item.key === 'today') closeTodayPanels(); return item.key === 'reset' ? openReset() : item.key === 'path' ? (setPathDayOpen(false), goTo('path')) : goTo(item.key) }}
               aria-current={activeTab === item.key ? 'page' : undefined}
               aria-label={`Open ${item.label}`}
             >
-              <span aria-hidden="true">{item.icon}</span>
+              <RiseIcon name={item.icon} />
               <span>{item.label}</span>
             </button>
           ))}
@@ -698,56 +725,72 @@ function App() {
   )
 }
 
-function Today({ progress, toolState, personalization, notificationPreferences, notificationPermission, notificationPlatform, notificationDeliveryStatus, onNotificationPreferencesChange, onRequestNotificationPermission, onOpenReset, onOpenPath, onOpenPersonalizedRecommendation, onClearProgramData, onClearToolData, onClearAllLocalData }: { progress: ProgramProgress; toolState: ToolState; personalization: PersonalizationBundle; notificationPreferences: NotificationPreferences; notificationPermission: NotificationPermissionState; notificationPlatform: NotificationPlatformCapability; notificationDeliveryStatus: string; onNotificationPreferencesChange: (preferences: NotificationPreferences | ((current: NotificationPreferences) => NotificationPreferences)) => void; onRequestNotificationPermission: () => void; onOpenReset: () => void; onOpenPath: () => void; onOpenPersonalizedRecommendation: (recommendation: PersonalizationRecommendation) => void; onClearProgramData: () => void; onClearToolData: () => void; onClearAllLocalData: () => void }) {
+function Today({ progress, toolState, personalization, notificationPreferences, notificationPermission, notificationPlatform, notificationDeliveryStatus, onNotificationPreferencesChange, onRequestNotificationPermission, onOpenReset, onOpenPath, onOpenToolbox, onOpenPersonalizedRecommendation, onClearProgramData, onClearToolData, onClearAllLocalData }: { progress: ProgramProgress; toolState: ToolState; personalization: PersonalizationBundle; notificationPreferences: NotificationPreferences; notificationPermission: NotificationPermissionState; notificationPlatform: NotificationPlatformCapability; notificationDeliveryStatus: string; onNotificationPreferencesChange: (preferences: NotificationPreferences | ((current: NotificationPreferences) => NotificationPreferences)) => void; onRequestNotificationPermission: () => void; onOpenReset: () => void; onOpenPath: () => void; onOpenToolbox: () => void; onOpenPersonalizedRecommendation: (recommendation: PersonalizationRecommendation) => void; onClearProgramData: () => void; onClearToolData: () => void; onClearAllLocalData: () => void }) {
   const model = useMemo(() => getHomeModel(progress), [progress])
   const currentDay = firstIncompleteDay(progress)
+  const programComplete = progress.status === 'program_complete' || progress.completedDays.length === 28
+  const roadmap = getRoadmapForDay(currentDay)
+  const roadmapStatus = roadmap ? deriveDayRoadmapStatus(roadmap, getCompletedRoadmapTaskIds(progress.dayTaskProgress, currentDay)) : null
   const primary = personalization.model.primary
   const shortcut = personalization.model.shortcut
   const permittedSignalCount = personalizationSignalInventory.filter((signal) => signal.permitted).length
 
   return (
-    <section className="stack page-enter" aria-labelledby="today-title">
-      <div className="page-kicker">
-        <p className="eyebrow">Home / Today</p>
-        <h1 id="today-title">Start where you are.</h1>
-        <p className="muted">One clear next step, plus quick access if you need support right now.</p>
+    <section className="stack page-enter today-a" aria-labelledby="today-title">
+      <div className="page-kicker today-a-intro">
+        <p className="eyebrow">A moment for you</p>
+        <h1 id="today-title">Leave the shift.{' '}<br />Keep yourself.</h1>
+        <p className="muted">Welcome back. Start where you are.</p>
       </div>
 
-      <article className="hero-card journey-card" aria-labelledby="journey-title">
-        <div className="status-row">
-          <p className="eyebrow">{model.eyebrow}</p>
-          <span className="status-pill">{model.statusLabel}</span>
-        </div>
-        <h2 id="journey-title">{model.title}</h2>
-        <p>{model.subtitle}</p>
-        <p className="fineprint left-copy">{primary.reason}</p>
-        <button className="primary" type="button" onClick={() => onOpenPersonalizedRecommendation(primary)}>{primary.label} →</button>
-        <button className="secondary" type="button" onClick={onOpenReset}>Reset now</button>
+      <article className="hero-card today-a-reset" aria-labelledby="today-reset-title">
+        <p className="eyebrow">Right here. Right now.</p>
+        <h2 id="today-reset-title">What would help today?</h2>
+        <p className="muted">A little space between what happened and what comes next.</p>
+        <button className="primary" type="button" onClick={onOpenReset}>Reset me now <span aria-hidden="true">→</span></button>
       </article>
 
-      <section className="supporting-grid" aria-label="Today supporting actions">
-        <button className="list-card" type="button" onClick={onOpenPath}>
-          <span>My Path</span>
-          <small>{model.progressLabel}. Movement, not performance.</small>
-        </button>
+      <article className="today-a-path" aria-labelledby="journey-title">
+        <div className="today-a-section-heading">
+          <h2>Your path</h2>
+          <button className="today-a-text-button" type="button" onClick={onOpenPath}>View program</button>
+        </div>
+        <p className="today-a-day-label">{programComplete ? '28-day program complete' : `Day ${currentDay} of 28 · Week ${getProgramDay(currentDay).week}`}</p>
+        <h3 id="journey-title">{model.title}</h3>
+        <p className="today-a-next">{model.statusLabel}</p>
+        <div className="today-a-count"><span>{programComplete || !roadmapStatus ? model.progressLabel : `${roadmapStatus.completedRequiredCount} of ${roadmapStatus.requiredCount} actions complete`}</span><span>Move at your pace.</span></div>
+        {!programComplete && roadmapStatus && <progress aria-label="Completed actions in current day" max={roadmapStatus.requiredCount} value={roadmapStatus.completedRequiredCount} />}
+        <button className="secondary today-a-continue" type="button" onClick={() => onOpenPersonalizedRecommendation(primary)}>{primary.label} <span aria-hidden="true">→</span></button>
+        <p className="fineprint left-copy">{primary.reason}</p>
+      </article>
+
+      <h2 className="today-a-within-title">Within reach</h2>
+      <section className="supporting-grid today-a-within" aria-label="Today supporting actions">
         {shortcut ? <PersonalizedShortcutCard recommendation={shortcut} onOpen={onOpenPersonalizedRecommendation} /> : (
           <article className="list-card static" aria-label="Today source status">
             <span>Source-backed</span>
             <small>Day {currentDay} opens the structured 28-day program extracted from the original DOCX source.</small>
           </article>
         )}
+        <button className="list-card today-a-kit" type="button" onClick={onOpenToolbox}>
+          <RiseIcon name="bookmark" /><span>My Quick Kit<small>Your favourites and recent practices.</small></span><span aria-hidden="true">›</span>
+        </button>
       </section>
 
       <Disclosure className="calm-disclosure today-data-settings">
         <summary>
-          <span>Privacy, reminders + local data</span>
-          <small>Prototype details when you need them.</small>
+          <span className="today-a-settings-closed">Privacy, reminders + local data<small>Optional settings, when you need them.</small></span>
+          <span className="today-a-settings-open">← Today</span>
         </summary>
         <div className="disclosure-stack">
-          <article className="notice-card compact" aria-label="Prompt 7 personalization scope note">
-            <strong>Personalization is transparent</strong>
-            <span>RESET + Toolbox active. Uses {permittedSignalCount} permitted signal types: program position, favourites and bounded recents. Private reflections are not analyzed or used for recommendations.</span>
-          </article>
+          <div className="today-a-space-overview">
+            <h1>Your space</h1><p className="muted">Privacy, reminders + local data.</p>
+            <article className="notice-card"><strong>Stored in this browser</strong><span>Progress, saved writing, favourites and recents stay here. No account sync. Clearing site data removes them.</span></article>
+          </div>
+          <Disclosure className="today-a-scope">
+            <summary>How suggestions work</summary>
+            <p>Personalization is transparent. RESET + Toolbox active. Uses {permittedSignalCount} permitted signal types: program position, favourites and bounded recents. Private reflections are not analyzed or used for recommendations.</p>
+          </Disclosure>
           <NotificationSettings progress={progress} toolState={toolState} preferences={notificationPreferences} permission={notificationPermission} platform={notificationPlatform} deliveryStatus={notificationDeliveryStatus} onChange={onNotificationPreferencesChange} onRequestPermission={onRequestNotificationPermission} />
           <LocalDataControls onClearProgramData={onClearProgramData} onClearToolData={onClearToolData} onClearAllLocalData={onClearAllLocalData} />
         </div>
@@ -756,6 +799,13 @@ function Today({ progress, toolState, personalization, notificationPreferences, 
   )
 }
 
+
+function ReminderGroup({ title, enabled, children }: { title: string; enabled: boolean; children: ReactNode }) {
+  return <Disclosure className="reminder-group" defaultOpen={enabled}>
+    <summary><span>{title}</span><small>{enabled ? 'On' : 'Off'}</small></summary>
+    <div className="reminder-group-body">{children}</div>
+  </Disclosure>
+}
 
 function NotificationSettings({ progress, toolState, preferences, permission, platform, deliveryStatus, onChange, onRequestPermission }: { progress: ProgramProgress; toolState: ToolState; preferences: NotificationPreferences; permission: NotificationPermissionState; platform: NotificationPlatformCapability; deliveryStatus: string; onChange: (preferences: NotificationPreferences | ((current: NotificationPreferences) => NotificationPreferences)) => void; onRequestPermission: () => void }) {
   const programComplete = progress.status === 'program_complete' || progress.completedDays.length === 28
@@ -772,8 +822,9 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
 
   return (
     <Disclosure className="notification-settings" defaultOpen={activeReminderCount > 0}>
-      <summary>Reminders — optional, discreet and shift-work aware</summary>
+      <summary><span className="today-a-reminders-closed">Reminders — optional, discreet and shift-work aware</span><span className="today-a-reminders-open">← Your space</span></summary>
       <div className="notification-stack">
+        <h1>Reminders</h1><p className="muted">Optional. Discreet. Built around your hours.</p>
         <article className="notice-card" aria-label="Notification platform capability">
           <strong>Platform truth</strong>
           <span>{platform.summary}</span>
@@ -796,11 +847,15 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
             <span className="status-pill">Discreet default</span>
           </div>
           <p className="muted">Lock-screen copy uses neutral wording only. Notifications never include journal/reflection text, RESET need selections, diagnosis language or urgency pressure.</p>
-          <div className="copy-preview" aria-label="Safe notification copy examples">
-            {Object.entries(notificationCopyRegistry).map(([type, copy]) => <span key={type}>{copy.title}: {copy.discreetBody}</span>)}
-          </div>
+          <Disclosure className="notification-copy-details">
+            <summary>Preview notification wording</summary>
+            <div className="copy-preview" aria-label="Safe notification copy examples">
+              {Object.entries(notificationCopyRegistry).map(([type, copy]) => <span key={type}>{copy.title}: {copy.discreetBody}</span>)}
+            </div>
+          </Disclosure>
         </section>
 
+        <ReminderGroup title="Program reminder" enabled={preferences.programReminder.enabled}>
         <section className="setting-panel" aria-labelledby="program-reminder-title">
           <div className="status-row">
             <h2 id="program-reminder-title">Program reminder</h2>
@@ -811,7 +866,9 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
           </label>
           <p className="fineprint left-copy">Optional continuation only. No streaks, missed-day pressure, escalation or Day 29.</p>
         </section>
+        </ReminderGroup>
 
+        <ReminderGroup title="Practice reminder" enabled={preferences.practiceReminder.enabled}>
         <section className="setting-panel" aria-labelledby="practice-reminder-title">
           <div className="status-row">
             <h2 id="practice-reminder-title">User-scheduled practice reminder</h2>
@@ -828,7 +885,9 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
           </label>
           <p className="fineprint left-copy">Favourite ≠ consent. A practice reminder starts only after you explicitly choose the practice and turn this on.</p>
         </section>
+        </ReminderGroup>
 
+        <ReminderGroup title="Return reminder" enabled={preferences.returnReminder.enabled}>
         <section className="setting-panel" aria-labelledby="return-reminder-title">
           <div className="status-row">
             <h2 id="return-reminder-title">Return reminder</h2>
@@ -842,7 +901,9 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
           </label>
           <p className="fineprint left-copy">Finite and non-shaming. Maximum {preferences.returnReminder.maxAttempts} gentle return reminder, then stop.</p>
         </section>
+        </ReminderGroup>
 
+        <ReminderGroup title="Post-program reminder" enabled={preferences.postProgramReminder.enabled}>
         <section className="setting-panel" aria-labelledby="post-program-title">
           <div className="status-row">
             <h2 id="post-program-title">Post-program reminder</h2>
@@ -853,6 +914,7 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
           </label>
           <p className="fineprint left-copy">Only active after Day 28. It opens reusable practices, not another Day.</p>
         </section>
+        </ReminderGroup>
 
         <section className="setting-panel" aria-labelledby="quiet-hours-title">
           <div className="status-row">
@@ -876,9 +938,9 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
 
 function LocalDataControls({ onClearProgramData, onClearToolData, onClearAllLocalData }: { onClearProgramData: () => void; onClearToolData: () => void; onClearAllLocalData: () => void }) {
   return (
-    <Disclosure className="local-data-controls">
+    <Disclosure className="local-data-controls" defaultOpen>
       <summary>Local prototype data controls</summary>
-      <p className="fineprint left-copy">This prototype stores progress, saved reflections, favourites and recent tools only in this browser. These controls are destructive and use confirmation prompts.</p>
+      <p className="fineprint left-copy">Choose what to clear from this browser. Each action asks for confirmation and cannot be undone.</p>
       <div className="button-grid three">
         <button className="secondary" type="button" onClick={onClearProgramData}>Clear progress + reflections</button>
         <button className="secondary" type="button" onClick={onClearToolData}>Clear Toolbox preferences</button>

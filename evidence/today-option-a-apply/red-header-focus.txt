@@ -1,0 +1,48 @@
+
+Running 2 tests using 1 worker
+
+  x  1 [mobile] › tests\browser\today-a-focus.spec.ts:5:3 › Your space opens visible overview with saved active reminders from Support (5.8s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [mobile] › tests\browser\today-a-focus.spec.ts:5:3 › Your space opens visible overview with saved active reminders from Support
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Your space', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Your space', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Your space', exact: true })
+
+
+      18 |     const overview = page.getByRole('heading', { name: 'Your space', exact: true })
+      19 |     const back = page.locator('.today-data-settings > summary')
+    > 20 |     await expect(overview).toBeVisible()
+         |                            ^
+      21 |     await expect(back).toBeVisible()
+      22 |     await expect(back).toBeFocused()
+      23 |     await expect(back).toBeInViewport({ ratio: 1 })
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\today-a-focus.spec.ts:20:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\today-a-focus-Your-space-o-9fc56-tive-reminders-from-Support-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\global-expansion\artifacts\today-a-focus-Your-space-o-9fc56-tive-reminders-from-Support-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\today-a-focus-Your-space-o-9fc56-tive-reminders-from-Support-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\global-expansion\artifacts\today-a-focus-Your-space-o-9fc56-tive-reminders-from-Support-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\today-a-focus.spec.ts:5:3 › Your space opens visible overview with saved active reminders from Support
+  1 did not run
+  1 error was not a part of any test, see above for details

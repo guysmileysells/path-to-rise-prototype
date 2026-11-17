@@ -1,0 +1,136 @@
+/* Approved Today A. Program/content engines and other screen typography remain unchanged. */
+.phone {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  min-height: 0;
+  height: min(900px, calc(100dvh - 100px));
+}
+.phone > .topbar { grid-row: 1; }
+.phone > .storage-status { grid-row: 2; margin: 0 20px 10px; }
+.phone > .screen { grid-row: 3; min-height: 0; }
+.phone > .bottom-nav { grid-row: 4; }
+.rise-icon { flex: 0 0 auto; width: 20px; height: 20px; object-fit: contain; }
+.bottom-nav button.active,
+.bottom-nav button[aria-current='page'] { background: #e7ede4; color: #203d33; }
+.bottom-nav button span:last-child { font-size: 11px; line-height: 1.4; }
+.today-a-space-button {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  padding: 8px; border: 1px solid #dce0d5; border-radius: 99px;
+  background: transparent; color: #384d40; font: inherit; font-size: 11px; cursor: pointer;
+}
+.today-a-space-button .rise-icon { width: 15px; height: 15px; }
+.today-phone {
+  --color-background: #f7f6ef;
+  --color-surface-reset: #e8eddf;
+  --color-surface-soft: #f1f1e9;
+  --color-text-primary: #203d33;
+  --color-text-secondary: #596756;
+  --color-text-tertiary: #596756;
+  --color-action-primary: #2a5c43;
+  background: #f7f6ef;
+}
+.today-phone .topbar { padding-block: 16px; }
+.today-phone .brand { font-family: Georgia, 'Times New Roman', serif; letter-spacing: .07em; font-size: 18px; }
+.today-phone .brand span { font-size: 12px; }
+.today-phone .screen { padding-inline: 22px; }
+.today-a { gap: 0; padding-bottom: 12px; }
+.today-a h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 34px; font-weight: 500; line-height: 1.12; letter-spacing: -.035em; }
+.today-a .eyebrow { font-size: 9px; letter-spacing: .15em; font-weight: 650; margin-bottom: 10px; }
+.today-a-intro { gap: 0; margin: 6px 0 22px; }
+.today-a-intro > .muted { margin-top: 11px; font-size: 13px; }
+.today-a-reset { padding: 22px; border-radius: 20px; margin-bottom: 24px; }
+.today-a-reset::after { display: none; }
+.today-a-reset h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; font-size: 25px; letter-spacing: -.035em; }
+.today-a-reset > p.muted { margin: 10px 0 17px; font-size: 13px; line-height: 1.5; }
+.today-a-reset .primary { width: 100%; border-radius: 11px; display: flex; justify-content: space-between; align-items: center; min-height: 48px; }
+.today-a-path { min-width: 0; margin-bottom: 24px; }
+.today-a-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.today-a-section-heading h2,
+.today-a-within-title { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; font-size: 20px; }
+.today-a-text-button { min-height: 44px; border: 0; background: transparent; color: #315f44; font: inherit; font-size: 12px; cursor: pointer; padding: 6px; }
+.today-a-day-label { text-transform: uppercase; font-size: 10px; letter-spacing: .1em; color: #596756; margin: 12px 0 8px; }
+.today-a-path h3 { margin: 0 0 8px; font-family: Georgia, 'Times New Roman', serif; font-weight: 500; font-size: 25px; line-height: 1.2; letter-spacing: -.03em; }
+.today-a-next { color: #4f6150; font-size: 13px; margin: 0 0 14px; }
+.today-a-count { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; font-size: 11px; color: #596756; }
+.today-a progress { display: block; width: 100%; height: 5px; appearance: none; border: 0; border-radius: 20px; overflow: hidden; background: #dce2d4; margin: 8px 0 14px; }
+.today-a progress::-webkit-progress-bar { background: #dce2d4; }
+.today-a progress::-webkit-progress-value { background: #2a5c43; }
+.today-a progress::-moz-progress-bar { background: #2a5c43; }
+.today-a-continue { display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 46px; margin-top: 14px; border: 1px solid #9aa991; border-radius: 11px; background: transparent; }
+.today-a-path > .fineprint { margin-top: 9px; font-size: 11px; }
+.today-a-within-title { margin: 0 0 12px; }
+.today-a-within { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 22px; }
+.today-a-within > .list-card { border: 1px solid #dce0d5; border-radius: 13px; background: #f2f2e9; padding: 15px; }
+.today-a-within .list-card > span:first-child { font-size: 14px; }
+.today-a-within small { font-size: 11px; color: #596756; }
+.today-a-kit { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; }
+.today-a-kit > span:nth-child(2) { flex: 1; font-size: 14px; }
+.today-a-kit small { display: block; margin-top: 4px; }
+.today-a-kit > span:last-child { font-size: 24px; }
+.today-data-settings { border: 0; border-radius: 0; padding: 0; background: transparent; }
+.today-data-settings > summary,
+.notification-settings > summary { list-style: none; min-height: 44px; padding: 8px 0; color: #315f44; font-size: 13px; cursor: pointer; }
+.today-data-settings > summary::-webkit-details-marker,
+.notification-settings > summary::-webkit-details-marker { display: none; }
+.today-data-settings > summary small { display: block; font-size: 11px; }
+.today-a-settings-open, .today-a-reminders-open { display: none; }
+.today-data-settings[open] > summary .today-a-settings-open,
+.notification-settings[open] > summary .today-a-reminders-open { display: inline; }
+.today-data-settings[open] > summary .today-a-settings-closed,
+.notification-settings[open] > summary .today-a-reminders-closed { display: none; }
+/* Native disclosures provide three Today-local views, not new navigation destinations. */
+.today-a:has(> .today-data-settings[open]) > :not(.today-data-settings) { display: none; }
+.today-data-settings[open] > .disclosure-stack { gap: 18px; }
+.today-a-space-overview > p { margin: 10px 0 18px; font-size: 13px; }
+.today-a-space-overview .notice-card,
+.today-a .notice-card { background: #eef0e5; border-radius: 13px; padding: 16px; display: grid; gap: 8px; }
+.today-a .notice-card strong { font-size: 13px; }
+.today-a .notice-card span { font-size: 12px; color: #596756; }
+.today-a .notification-settings { padding: 0; border: 0; background: transparent; }
+.today-a .notification-settings:not([open]) > summary { border: 1px solid #dce0d5; border-radius: 12px; padding: 14px; }
+.today-data-settings[open]:has(.notification-settings[open]) > summary,
+.today-data-settings[open]:has(.notification-settings[open]) .today-a-space-overview,
+.today-data-settings[open]:has(.notification-settings[open]) .today-a-scope,
+.today-data-settings[open]:has(.notification-settings[open]) .local-data-controls { display: none; }
+.today-a .local-data-controls { border: 1px solid #dce0d5; border-radius: 13px; background: transparent; padding: 14px; }
+.today-a .local-data-controls > summary { font-size: 14px; min-height: 44px; cursor: pointer; }
+.today-a .local-data-controls .button-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.today-a .local-data-controls button { text-align: left; border-radius: 10px; border-color: #d7c9bc; color: #744d35; font-size: 12px; min-height: 44px; }
+.today-a .notification-stack { gap: 16px; }
+.today-a .notification-stack > p { font-size: 13px; }
+.today-a .notification-stack .setting-panel { background: transparent; border: 1px solid #dce0d5; border-radius: 12px; padding: 14px; }
+.today-a .notification-stack h2 { font-size: 15px; }
+.today-a .notification-stack p,
+.today-a .notification-stack .fineprint { font-size: 12px; }
+.today-a .notification-stack button,
+.today-a .notification-stack input,
+.today-a .notification-stack select { min-height: 44px; }
+.today-a .notification-stack input,
+.today-a .notification-stack select { max-width: 100%; }
+.today-a .notification-stack .field-row { flex-wrap: wrap; }
+.today-a .reminder-group { border: 1px solid #dce0d5; border-radius: 12px; overflow: hidden; }
+.today-a .reminder-group > summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 56px; padding: 12px 14px; cursor: pointer; font-size: 13px; list-style: none; }
+.today-a .reminder-group > summary::-webkit-details-marker { display: none; }
+.today-a .reminder-group > summary small { color: #596756; font-size: 11px; }
+.today-a .reminder-group > summary::after { content: '+'; }
+.today-a .reminder-group[open] > summary::after { content: '−'; }
+.today-a .reminder-group > summary > span { flex: 1; }
+.today-a .reminder-group-body { padding: 0 12px 12px; }
+.today-a .reminder-group-body .setting-panel { margin: 0; }
+.today-a .today-a-scope { border: 1px solid #dce0d5; border-radius: 12px; padding: 8px 14px; }
+.today-a .today-a-scope > summary,
+.today-a .notification-copy-details > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: 13px; }
+.today-a .today-a-scope > summary::after { content: '+'; margin-left: auto; }
+.today-a .today-a-scope[open] > summary::after { content: '−'; }
+.today-a .today-a-scope > p { font-size: 12px; color: #596756; margin: 6px 0 8px; }
+.today-a .local-data-controls[open] > summary { margin-bottom: 8px; }
+.today-a .local-data-controls > .fineprint { margin-bottom: 12px; }
+.topbar .brand { min-height: 44px; }
+@media (max-width: 480px) {
+  .phone { height: 100dvh; min-height: 0; max-height: none; }
+  .today-phone .topbar { padding-inline: 22px; }
+}
+@media (max-width: 340px) {
+  .today-phone .screen, .today-phone .topbar { padding-inline: 16px; }
+  .today-a-reset { padding: 18px; }
+  .today-a-space-button { font-size: 10px; }
+}

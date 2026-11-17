@@ -1,0 +1,263 @@
+{
+  "purpose": "Design mock validation only; no hosted app implementation",
+  "layouts": [
+    {
+      "variant": "a-reset-first",
+      "width": 390,
+      "height": 960,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "a-reset-first",
+      "width": 390,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "a-reset-first",
+      "width": 320,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "b-continue-first",
+      "width": 390,
+      "height": 960,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "b-continue-first",
+      "width": 390,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "b-continue-first",
+      "width": 320,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "c-privacy-data",
+      "width": 390,
+      "height": 960,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "c-privacy-data",
+      "width": 390,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "c-privacy-data",
+      "width": 320,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "d-reminders",
+      "width": 390,
+      "height": 960,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "d-reminders",
+      "width": 390,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    },
+    {
+      "variant": "d-reminders",
+      "width": 320,
+      "height": 844,
+      "documentOverflow": false,
+      "contentOverflow": false,
+      "navWithinViewport": true,
+      "contentNavOverlap": 0,
+      "smallTargets": [],
+      "navLabels": [
+        "Today",
+        "Reset",
+        "My Path",
+        "Support"
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "variant": "a-reset-first",
+      "state": "fresh",
+      "primaryAction": "Start Day 1",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "a-reset-first",
+      "state": "partial",
+      "primaryAction": "Continue Day 1",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "a-reset-first",
+      "state": "returning",
+      "primaryAction": "Continue Day 1",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "a-reset-first",
+      "state": "complete",
+      "primaryAction": "Reset or revisit a practice",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "b-continue-first",
+      "state": "fresh",
+      "primaryAction": "Start Day 1",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "b-continue-first",
+      "state": "partial",
+      "primaryAction": "Continue Day 1",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "b-continue-first",
+      "state": "returning",
+      "primaryAction": "Continue Day 1",
+      "settingsAndReminders": true
+    },
+    {
+      "variant": "b-continue-first",
+      "state": "complete",
+      "primaryAction": "Reset or revisit a practice",
+      "settingsAndReminders": true
+    },
+    {
+      "scope": "three independent clear controls",
+      "cancelAndConfirmation": true,
+      "noStorageCalls": true
+    },
+    {
+      "scope": "reminder controls",
+      "permissionExplanation": true,
+      "copyPreview": true,
+      "practiceConsentAndSelector": true,
+      "allFourTimeInputs": true,
+      "returnDays": true,
+      "overnightQuietHoursFields": true
+    }
+  ],
+  "errors": [],
+  "result": "PASS"
+}
