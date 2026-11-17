@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+[1/1] [mobile] › tests\browser\daily-rhythm-state.spec.ts:89:1 › terminal program status reviews actual Day 28 content even when older per-day records are absent
+  1) [mobile] › tests\browser\daily-rhythm-state.spec.ts:89:1 › terminal program status reviews actual Day 28 content even when older per-day records are absent 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.task-detail-card')
+    Expected substring: "Day 28 · Morning Activation"
+    Received string:    "← Back to Day 1Day 1 · Morning Activation · Small WinSet Your AlarmSet your alarm 15 minutes earlier than your usual wake-up time.WHENWake-relative: before your usual wake-up timeHOW LONG15 min earlierSTATUS○ Not doneWHATSet your alarm 15 minutes earlier than your usual wake-up time.HOWChoose the time you normally need to wake up.Set your alarm 15 minutes earlier.Place your phone or alarm somewhere you can reach safely.Give yourself those extra minutes for your morning routine.WHYCreating a little extra time can reduce the feeling of rushing and give you an opportunity to begin the day intentionally.HOW LONG15 min earlierBENEFITSMore room to begin intentionallyA simple first Small WinImportantFor shift workers, use your actual sleep and wake schedule rather than a fixed morning clock time.Your Small WinOnce your alarm is set, tap Mark as Done.Mark as DoneReturn to daily roadmap"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" locator('.task-detail-card') with timeout 5000ms
+      - waiting for locator('.task-detail-card')
+        14 × locator resolved to <section class="task-detail-card" aria-labelledby="day-1-morning-01-set-your-alarm-detail-title">…</section>
+           - unexpected value "← Back to Day 1Day 1 · Morning Activation · Small WinSet Your AlarmSet your alarm 15 minutes earlier than your usual wake-up time.WHENWake-relative: before your usual wake-up timeHOW LONG15 min earlierSTATUS○ Not doneWHATSet your alarm 15 minutes earlier than your usual wake-up time.HOWChoose the time you normally need to wake up.Set your alarm 15 minutes earlier.Place your phone or alarm somewhere you can reach safely.Give yourself those extra minutes for your morning routine.WHYCreating a little extra time can reduce the feeling of rushing and give you an opportunity to begin the day intentionally.HOW LONG15 min earlierBENEFITSMore room to begin intentionallyA simple first Small WinImportantFor shift workers, use your actual sleep and wake schedule rather than a fixed morning clock time.Your Small WinOnce your alarm is set, tap Mark as Done.Mark as DoneReturn to daily roadmap"
+
+
+      91 |   await expect(page.locator('.rhythm-progress')).toContainText('Day 28 of 28 complete')
+      92 |   await page.getByRole('button', { name: 'Review morning', exact: true }).click()
+    > 93 |   await expect(page.locator('.task-detail-card')).toContainText('Day 28 · Morning Activation')
+         |                                                   ^
+      94 |   await expect(page.locator('.task-detail-card')).not.toContainText('Day 1 · Morning Activation')
+      95 | })
+      96 |
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\daily-rhythm-state.spec.ts:93:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\daily-rhythm-state-termina-bbe50--per-day-records-are-absent-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\global-expansion\artifacts\daily-rhythm-state-termina-bbe50--per-day-records-are-absent-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\global-expansion\artifacts\daily-rhythm-state-termina-bbe50--per-day-records-are-absent-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\global-expansion\artifacts\daily-rhythm-state-termina-bbe50--per-day-records-are-absent-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  1 failed
+    [mobile] › tests\browser\daily-rhythm-state.spec.ts:89:1 › terminal program status reviews actual Day 28 content even when older per-day records are absent 

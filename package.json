@@ -15,7 +15,8 @@
     "notifications": "node --experimental-transform-types scripts/notification-scenarios.mjs",
     "production-qa": "node --experimental-transform-types scripts/production-qa-scenarios.mjs",
     "final-audit": "node --experimental-transform-types scripts/final-launch-audit.mjs",
-    "test": "npm run contract && npm run personalization && npm run progress && npm run day-roadmap && npm run hardening && npm run notifications && npm run production-qa && npm run final-audit && npm run build",
+    "daily-rhythm": "node --experimental-transform-types scripts/daily-rhythm-scenarios.mjs",
+    "test": "npm run contract && npm run personalization && npm run progress && npm run day-roadmap && npm run daily-rhythm && npm run hardening && npm run notifications && npm run production-qa && npm run final-audit && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {

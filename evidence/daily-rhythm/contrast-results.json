@@ -1,0 +1,1026 @@
+{
+  "checked": [
+    {
+      "text": "PATH RISE",
+      "color": "rgb(107, 87, 159)",
+      "background": [
+        250,
+        249,
+        253
+      ],
+      "ratio": 5.742,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Home / Today",
+      "color": "rgb(107, 87, 159)",
+      "background": [
+        250,
+        249,
+        253
+      ],
+      "ratio": 5.742,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Settings",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        255,
+        254,
+        250
+      ],
+      "ratio": 8.029,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Today, in three parts.",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        250,
+        249,
+        253
+      ],
+      "ratio": 14.227,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "One small step at a time. Start where you are.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        250,
+        249,
+        253
+      ],
+      "ratio": 5.606,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Day 1 of 28 · Week 1 of 4",
+      "color": "rgb(107, 87, 159)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 5.09,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Your daily rhythm",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 6.853,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Resetting the Baseline",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 12.613,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 of 17 actions complete",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 6.853,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Small Wins are actions, not a recovery score. Move at your own pace.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 4.97,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 1 · Morning",
+      "color": "rgb(107, 87, 159)",
+      "background": [
+        252,
+        251,
+        255
+      ],
+      "ratio": 5.842,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Up next",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 6.853,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Morning",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        252,
+        251,
+        255
+      ],
+      "ratio": 14.475,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Set your alarm",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        252,
+        251,
+        255
+      ],
+      "ratio": 11.73,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Set your alarm 15 minutes earlier than your usual wake-up time.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        252,
+        251,
+        255
+      ],
+      "ratio": 5.703,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 of 6 actions complete",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        252,
+        251,
+        255
+      ],
+      "ratio": 5.703,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Open next step",
+      "color": "rgb(255, 255, 255)",
+      "background": [
+        107,
+        87,
+        159
+      ],
+      "ratio": 6.019,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 2 · Daily",
+      "color": "rgb(107, 87, 159)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.019,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Upcoming",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 6.853,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Daily",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "15-Minute Walk/Stroll + 5 Minutes Stretching",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 12.085,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Physical activity from Day 1's approved curriculum.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 of 6 actions complete",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Explore daily",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 3 · Evening",
+      "color": "rgb(107, 87, 159)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.019,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Upcoming",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 6.853,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Evening",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Brush teeth differently",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 12.085,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Brush your teeth using your non-dominant hand.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 of 5 actions complete",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Explore evening",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "My Path",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "0 of 28 days complete. Review any day and your original reflections.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Reset now",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "A pause is always available. No tasks or progress required.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Walk + Stretch Reset",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 12.613,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "CURRENT WEEK · From Week 1.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        238,
+        234,
+        248
+      ],
+      "ratio": 4.97,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Privacy, reminders + local data",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        254.10000000000002,
+        252.28,
+        248.9
+      ],
+      "ratio": 14.59,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Prototype details when you need them.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        254.10000000000002,
+        252.28,
+        248.9
+      ],
+      "ratio": 5.749,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Personalization is transparent",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        231,
+        240,
+        226
+      ],
+      "ratio": 10.336,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "RESET + Toolbox active. Uses 5 permitted signal types: program position, favourites and bounded recents. Private reflections are not analyzed or used for recommendations.",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        231,
+        240,
+        226
+      ],
+      "ratio": 10.336,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Reminders — optional, discreet and shift-work aware",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        254.10000000000002,
+        252.28,
+        248.9
+      ],
+      "ratio": 14.59,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Platform truth",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        231,
+        240,
+        226
+      ],
+      "ratio": 10.336,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "The browser exposes notification primitives, but this app has no registered service worker or push backend in the current prototype.",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        231,
+        240,
+        226
+      ],
+      "ratio": 10.336,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Current support: ARCHITECTURE_READY . No push backend, service-worker registration or native wrapper is present in this prototype.",
+      "color": "rgb(7, 61, 58)",
+      "background": [
+        231,
+        240,
+        226
+      ],
+      "ratio": 10.336,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Permission",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Browser permission denied",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        231.95999999999998,
+        240.92000000000002,
+        227.48000000000002
+      ],
+      "ratio": 5.07,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "PATH to RISE asks only after you choose reminders. Refusing notifications never blocks the program, RESET, Toolbox, reflections or Support.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Permission denied in browser settings",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "No reminders are active. Core PATH to RISE flows work normally with notifications off.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Privacy mode",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Discreet default",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        231.95999999999998,
+        240.92000000000002,
+        227.48000000000002
+      ],
+      "ratio": 5.07,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Lock-screen copy uses neutral wording only. Notifications never include journal/reflection text, RESET need selections, diagnosis language or urgency pressure.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "PATH to RISE : Your next practice is ready when you are.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "PATH to RISE : A few minutes for yourself, when you are ready.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "PATH to RISE : Continue when you are ready.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "PATH to RISE : Your saved practices are here when you want them.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Program reminder",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Off",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Time",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Optional continuation only. No streaks, missed-day pressure, escalation or Day 29.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "User-scheduled practice reminder",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Off",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Practice",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Time",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Favourite ≠ consent. A practice reminder starts only after you explicitly choose the practice and turn this on.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Return reminder",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Off",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "After days away",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Time",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Finite and non-shaming. Maximum 1 gentle return reminder, then stop.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Post-program reminder",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "Off",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Time",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Only active after Day 28. It opens reusable practices, not another Day.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Quiet hours",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 3,
+      "pass": true
+    },
+    {
+      "text": "On",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Start",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "End",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 14.914,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Overnight ranges are supported. If a reminder falls inside quiet hours, the rule is simple: delay until quiet hours end.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.876,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Local prototype data controls",
+      "color": "rgb(40, 37, 54)",
+      "background": [
+        254.10000000000002,
+        252.28,
+        248.9
+      ],
+      "ratio": 14.59,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "This prototype stores progress, saved reflections, favourites and recent tools only in this browser. These controls are destructive and use confirmation prompts.",
+      "color": "rgb(102, 98, 118)",
+      "background": [
+        254.10000000000002,
+        252.28,
+        248.9
+      ],
+      "ratio": 5.749,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Clear progress + reflections",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Clear Toolbox preferences",
+      "color": "rgb(88, 68, 135)",
+      "background": [
+        244,
+        241,
+        250
+      ],
+      "ratio": 7.258,
+      "required": 4.5,
+      "pass": true
+    },
+    {
+      "text": "Clear all local prototype data",
+      "color": "rgb(124, 45, 32)",
+      "background": [
+        251,
+        232,
+        228
+      ],
+      "ratio": 7.884,
+      "required": 4.5,
+      "pass": true
+    }
+  ],
+  "skipped": [],
+  "failures": []
+}

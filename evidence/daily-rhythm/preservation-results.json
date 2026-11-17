@@ -1,0 +1,76 @@
+{
+  "baseline": "8045621",
+  "content": [
+    {
+      "path": "src/dayRoadmap.ts",
+      "unchanged": true,
+      "normalizedSha256": "a86934c4d5563d8d2530a0c9b16ac4a520a25570b131e302687cc95fbe8518fe"
+    },
+    {
+      "path": "src/programContent.ts",
+      "unchanged": true,
+      "normalizedSha256": "33dc9a0ee4a42ce5a4f518868249eece566ce163b2ba17e9fd650d54fbcfe31e"
+    },
+    {
+      "path": "src/toolContent.ts",
+      "unchanged": true,
+      "normalizedSha256": "a8aaea4d361162d642f2367b98ca3760fcffefda4f87bee7b6a8569bb43a82f6"
+    },
+    {
+      "path": "src/progressContent.ts",
+      "unchanged": true,
+      "normalizedSha256": "280377ec0664a7231be654ef630c0ec2d1555e4abcb0c3108536d77310addc3b"
+    },
+    {
+      "path": "src/personalizationContent.ts",
+      "unchanged": true,
+      "normalizedSha256": "8d5ce5e0eecbd7708f10fd2dba9ba9e2aef0cd2ad0e6b7f1c82bbcef347172f6"
+    },
+    {
+      "path": "src/notificationContent.ts",
+      "unchanged": true,
+      "normalizedSha256": "cd5565507df38077b16fff73fdf178df44877c4348db71a24b4382c5db7141a6"
+    },
+    {
+      "path": "src/InlineExpansion.tsx",
+      "unchanged": true,
+      "normalizedSha256": "a66062cc9342ff898252f4840080c040aaef75c1e13f51455f5e8f29e916df66"
+    },
+    {
+      "path": "src/pathData.ts",
+      "unchanged": true,
+      "normalizedSha256": "426883f6caa0cee4fb7268833104c444ac6c5cfde84016c88376736fbf13df93"
+    }
+  ],
+  "checks": [
+    {
+      "name": "program schema",
+      "status": "UNCHANGED"
+    },
+    {
+      "name": "storage keys",
+      "status": "UNCHANGED"
+    },
+    {
+      "name": "progress parse and hydration",
+      "status": "UNCHANGED"
+    },
+    {
+      "name": "notification platform and routes",
+      "status": "UNCHANGED"
+    },
+    {
+      "name": "reflection save/delete",
+      "status": "UNCHANGED"
+    },
+    {
+      "name": "task/day progression",
+      "status": "UNCHANGED"
+    },
+    {
+      "name": "settings, Reset, tools, MyPath, all existing task/detail/support UIs",
+      "status": "UNCHANGED"
+    }
+  ],
+  "result": "PASS"
+}

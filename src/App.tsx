@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 import { Disclosure, InlineExpansion } from './InlineExpansion'
+import { deriveDailyRhythm } from './dailyRhythm'
 import type { ReactNode } from 'react'
 import { programContent, prompt5SourceIssues, type ProgramSection } from './programContent'
 import { activationAffirmations, deriveDayRoadmapStatus, feelingStuckOptions, getAllRoadmapTasks, getCompletedRoadmapTaskIds, getRoadmapForDay, sanitizeTaskProgress, toggleTaskCompletion, type DayRoadmap, type DayTaskProgress, type RoadmapTask, type SmallWinSection } from './dayRoadmap'
@@ -66,15 +67,6 @@ type ToolState = {
   favouriteToolIds: ToolId[]
   recentToolIds: ToolId[]
   completedStandaloneToolIds: ToolId[]
-}
-
-type HomeModel = {
-  eyebrow: string
-  title: string
-  subtitle: string
-  primaryLabel: string
-  progressLabel: string
-  statusLabel: string
 }
 
 type ProgramDay = typeof programContent[number]
@@ -243,58 +235,6 @@ function getSectionKey(day: number, sectionId: string) {
 
 function getCompletedSections(progress: ProgramProgress, day: number) {
   return progress.daySectionProgress[String(day)] ?? []
-}
-
-function getHomeModel(progress: ProgramProgress): HomeModel {
-  if (progress.status === 'program_complete' || progress.completedDays.length === 28) {
-    return {
-      eyebrow: '28-Day Journey complete',
-      title: 'Your reset is complete.',
-      subtitle: 'Review the skills you practiced and keep the next chapter gentle. There is no Day 29 to chase.',
-      primaryLabel: 'Review your path',
-      progressLabel: 'Day 28 of 28 complete',
-      statusLabel: 'Post-program maintenance',
-    }
-  }
-
-  const dayNumber = firstIncompleteDay(progress)
-  const day = getProgramDay(dayNumber)
-  const completedSectionCount = getCompletedSections(progress, dayNumber).length
-  const progressPrefix = `Day ${day.day} of 28 · Week ${day.week} of 4`
-  const roadmap = getRoadmapForDay(day.day)
-  const roadmapStatus = roadmap ? deriveDayRoadmapStatus(roadmap, getCompletedRoadmapTaskIds(progress.dayTaskProgress, day.day)) : null
-
-  if (roadmap && roadmapStatus) {
-    const nextLabel = roadmapStatus.nextTask ? `Next up: ${roadmapStatus.nextTask.order}. ${roadmapStatus.nextTask.shortTitle}` : 'Day complete'
-    return {
-      eyebrow: `${progressPrefix} · ${roadmapStatus.progressLabel}`,
-      title: day.title,
-      subtitle: roadmapStatus.completedRequiredCount > 0 ? 'PATH remembers where you stopped. Continue with the next ordered task.' : 'Start with Task 1. The Day is organized for you.',
-      primaryLabel: roadmapStatus.completedRequiredCount > 0 ? `Continue Day ${day.day}` : 'Start Day 1',
-      progressLabel: roadmapStatus.progressLabel,
-      statusLabel: nextLabel,
-    }
-  }
-
-  if (completedSectionCount > 0 || progress.status === 'in_progress') {
-    return {
-      eyebrow: progressPrefix,
-      title: day.title,
-      subtitle: progress.lastReturn === 'after_break' ? 'Welcome back. Resume without penalty or pressure.' : 'Pick up inside today’s source-backed experience.',
-      primaryLabel: `Continue Day ${day.day}`,
-      progressLabel: `${progress.completedDays.length} day${progress.completedDays.length === 1 ? '' : 's'} complete`,
-      statusLabel: day.weekTheme,
-    }
-  }
-
-  return {
-    eyebrow: progressPrefix,
-    title: day.title,
-    subtitle: 'Begin the next source-backed day when you are ready. Opening a day does not mark it complete.',
-    primaryLabel: day.day === 1 ? 'Start Day 1' : `Begin Day ${day.day}`,
-    progressLabel: `${progress.completedDays.length} day${progress.completedDays.length === 1 ? '' : 's'} complete`,
-    statusLabel: day.weekTheme,
-  }
 }
 
 function App() {
@@ -662,7 +602,7 @@ function App() {
   return (
     <main className="shell" aria-label="PATH to RISE prototype">
       <p className="concept-note">PATH to RISE · Prototype checkpoint · Progress and saved reflections stay local to this browser for now</p>
-      <section className="phone" aria-live="polite">
+      <section className={`phone${activeTab === 'today' ? ' rhythm-phone' : ''}`} aria-live="polite">
         <header className="topbar">
           <button className="brand" type="button" onClick={() => goTo('today')} aria-label="Go to Today">
             PATH <span>to</span> RISE
@@ -672,7 +612,7 @@ function App() {
         {storageNotice && <p className={`storage-status ${storageNotice.tone}`} role="status">{storageNotice.message}</p>}
 
         <div className="screen">
-          {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
+          {activeTab === 'today' && <Today progress={progress} draftReflections={draftReflections} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onToggleRoadmapTask={toggleRoadmapTask} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
           {activeTab === 'reset' && <ResetExperience view={resetView} selectedNeedId={selectedNeedId} activeToolId={activeToolId} activeToolContext={activeToolContext} toolState={toolState} personalization={personalization} onSelectNeed={selectNeed} onSetView={setResetView} onStartTool={startTool} onCompleteTool={completeStandaloneTool} onToggleFavourite={toggleFavourite} onHome={() => goTo('today')} onSupport={() => goTo('support')} />}
           {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} dayDetailOpen={pathDayOpen} draftReflections={draftReflections} onSelectDay={(day) => { setSelectedDay(day); setPathDayOpen(true) }} onOpenDayDetail={() => setPathDayOpen(true)} onCloseDayDetail={() => setPathDayOpen(false)} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onToggleRoadmapTask={toggleRoadmapTask} onCompleteDay={completeDay} onSupport={() => goTo('support')} />}
           {activeTab === 'support' && <Support />}
@@ -698,44 +638,105 @@ function App() {
   )
 }
 
-function Today({ progress, toolState, personalization, notificationPreferences, notificationPermission, notificationPlatform, notificationDeliveryStatus, onNotificationPreferencesChange, onRequestNotificationPermission, onOpenReset, onOpenPath, onOpenPersonalizedRecommendation, onClearProgramData, onClearToolData, onClearAllLocalData }: { progress: ProgramProgress; toolState: ToolState; personalization: PersonalizationBundle; notificationPreferences: NotificationPreferences; notificationPermission: NotificationPermissionState; notificationPlatform: NotificationPlatformCapability; notificationDeliveryStatus: string; onNotificationPreferencesChange: (preferences: NotificationPreferences | ((current: NotificationPreferences) => NotificationPreferences)) => void; onRequestNotificationPermission: () => void; onOpenReset: () => void; onOpenPath: () => void; onOpenPersonalizedRecommendation: (recommendation: PersonalizationRecommendation) => void; onClearProgramData: () => void; onClearToolData: () => void; onClearAllLocalData: () => void }) {
-  const model = useMemo(() => getHomeModel(progress), [progress])
-  const currentDay = firstIncompleteDay(progress)
-  const primary = personalization.model.primary
+type TodayTaskProps = {
+  draftReflections: Record<string, string>
+  onDraftReflection: (key: string, value: string) => void
+  onSaveReflection: (key: string, value: string) => void
+  onDeleteReflection: (key: string) => void
+  onToggleRoadmapTask: (day: number, taskId: string) => void
+}
+
+function Today({ progress, draftReflections, onDraftReflection, onSaveReflection, onDeleteReflection, onToggleRoadmapTask, toolState, personalization, notificationPreferences, notificationPermission, notificationPlatform, notificationDeliveryStatus, onNotificationPreferencesChange, onRequestNotificationPermission, onOpenReset, onOpenPath, onOpenPersonalizedRecommendation, onClearProgramData, onClearToolData, onClearAllLocalData }: TodayTaskProps & { progress: ProgramProgress; toolState: ToolState; personalization: PersonalizationBundle; notificationPreferences: NotificationPreferences; notificationPermission: NotificationPermissionState; notificationPlatform: NotificationPlatformCapability; notificationDeliveryStatus: string; onNotificationPreferencesChange: (preferences: NotificationPreferences | ((current: NotificationPreferences) => NotificationPreferences)) => void; onRequestNotificationPermission: () => void; onOpenReset: () => void; onOpenPath: () => void; onOpenPersonalizedRecommendation: (recommendation: PersonalizationRecommendation) => void; onClearProgramData: () => void; onClearToolData: () => void; onClearAllLocalData: () => void }) {
+  const programComplete = progress.status === 'program_complete' || progress.completedDays.length === 28
+  const currentDay = programComplete ? 28 : firstIncompleteDay(progress)
+  const roadmap = getRoadmapForDay(currentDay)
+  const rhythm = deriveDailyRhythm(roadmap, getCompletedRoadmapTaskIds(progress.dayTaskProgress, currentDay), programComplete)
+  const [expanded, setExpanded] = useState<{ phase: SmallWinSection; task: RoadmapTask } | null>(null)
+  const home = useRef<HTMLElement>(null)
   const shortcut = personalization.model.shortcut
   const permittedSignalCount = personalizationSignalInventory.filter((signal) => signal.permitted).length
+  const focusPhase = (phase: SmallWinSection) => {
+    const trigger = home.current?.querySelector<HTMLButtonElement>(`[data-phase="${phase}"] .inline-expansion > button`)
+    trigger?.focus({ preventScroll: true })
+    trigger?.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' })
+  }
+  const closeTask = () => {
+    if (expanded) focusPhase(expanded.phase)
+    setExpanded(null)
+  }
+  const openTask = (task: RoadmapTask) => {
+    setExpanded({ phase: task.winSection ?? 'daily', task })
+    // A same-phase next task keeps the expansion mounted; explicitly anchor its trigger.
+    requestAnimationFrame(() => focusPhase(task.winSection ?? 'daily'))
+  }
+  const openSettings = () => {
+    const settings = home.current?.querySelector<HTMLDetailsElement>('.today-data-settings')
+    const summary = settings?.querySelector<HTMLElement>(':scope > summary')
+    if (settings) settings.open = true
+    summary?.focus({ preventScroll: true })
+    summary?.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' })
+  }
 
   return (
-    <section className="stack page-enter" aria-labelledby="today-title">
-      <div className="page-kicker">
+    <section ref={home} className="stack page-enter daily-rhythm" aria-labelledby="today-title">
+      <div className="rhythm-heading-row">
         <p className="eyebrow">Home / Today</p>
-        <h1 id="today-title">Start where you are.</h1>
-        <p className="muted">One clear next step, plus quick access if you need support right now.</p>
+        <button className="rhythm-settings" type="button" onClick={openSettings}>Settings</button>
+      </div>
+      <div className="page-kicker">
+        <h1 id="today-title">Today, in three parts.</h1>
+        <p className="muted">One small step at a time. Start where you are.</p>
       </div>
 
-      <article className="hero-card journey-card" aria-labelledby="journey-title">
-        <div className="status-row">
-          <p className="eyebrow">{model.eyebrow}</p>
-          <span className="status-pill">{model.statusLabel}</span>
+      <section className="rhythm-progress" aria-label="Your daily rhythm">
+        <div className="rhythm-heading-row">
+          <p className="eyebrow">{programComplete ? '28-Day Journey complete' : `Day ${currentDay} of 28 · Week ${getProgramDay(currentDay).week} of 4`}</p>
+          <span className="rhythm-day-label">{programComplete ? 'Day 28 of 28 complete' : 'Your daily rhythm'}</span>
         </div>
-        <h2 id="journey-title">{model.title}</h2>
-        <p>{model.subtitle}</p>
-        <p className="fineprint left-copy">{primary.reason}</p>
-        <button className="primary" type="button" onClick={() => onOpenPersonalizedRecommendation(primary)}>{primary.label} →</button>
-        <button className="secondary" type="button" onClick={onOpenReset}>Reset now</button>
-      </article>
+        <h2>{programComplete ? 'Your reset is complete.' : getProgramDay(currentDay).title}</h2>
+        <p className="rhythm-total">{rhythm.completedCount} of {rhythm.totalCount} actions complete{programComplete ? ' · Day 28' : ''}</p>
+        {rhythm.totalCount > 0 && <progress aria-label="Completed daily actions" max={rhythm.totalCount} value={rhythm.completedCount} />}
+        <p className="fineprint left-copy">{programComplete ? 'Review the skills you practiced and keep the next chapter gentle. There is no Day 29 to chase.' : 'Small Wins are actions, not a recovery score. Move at your own pace.'}</p>
+        {programComplete && <button className="secondary" type="button" onClick={onOpenPath}>Review your path</button>}
+        {rhythm.totalCount === 0 && <p>Today’s actions are unavailable. Your saved progress is unchanged; My Path, Reset and Support remain open.</p>}
+      </section>
+
+      <section className="rhythm-sequence" aria-label="Morning, Daily and Evening actions">
+        {rhythm.cards.map((card, index) => {
+          const task = expanded?.phase === card.phase ? expanded.task : card.nextTask ?? card.tasks[0]
+          const taskRoadmap = task ? getRoadmapForDay(task.day) : undefined
+          const taskStatus = taskRoadmap ? deriveDayRoadmapStatus(taskRoadmap, getCompletedRoadmapTaskIds(progress.dayTaskProgress, taskRoadmap.day)) : null
+          const reflectionKey = task ? getTaskReflectionKey(task) : ''
+          const open = expanded?.phase === card.phase
+          return (
+            <article className={`rhythm-card ${card.status}`} data-phase={card.phase} key={card.phase} aria-labelledby={`rhythm-${card.phase}-title`}>
+              <div className="rhythm-heading-row">
+                <p className="eyebrow">0{index + 1} · {card.label}</p>
+                <span className="rhythm-status">{card.status === 'complete' ? '✓ Complete' : card.status === 'next' ? 'Up next' : card.status === 'unavailable' ? 'Unavailable' : programComplete ? 'Available to review' : 'Upcoming'}</span>
+              </div>
+              <h2 id={`rhythm-${card.phase}-title`}>{card.label}</h2>
+              <p className="rhythm-task-title">{task?.shortTitle ?? 'No actions available'}</p>
+              <p className="muted">{task?.shortDescription ?? 'No tasks are available for this part of the day.'}</p>
+              <p className="rhythm-count">{card.completedCount} of {card.totalCount} actions complete</p>
+              {task && taskStatus && <InlineExpansion open={open} onToggle={() => open ? closeTask() : openTask(task)} label={card.status === 'next' ? 'Open next step' : card.status === 'complete' || programComplete ? `Review ${card.label.toLowerCase()}` : `Explore ${card.label.toLowerCase()}`} buttonClassName={card.status === 'next' ? 'primary' : 'secondary'}>
+                {task.day !== currentDay && <p className="rhythm-review-note">Reviewing Day {task.day}. Your daily rhythm above has moved to Day {currentDay}.</p>}
+                <TaskDetail task={task} complete={taskStatus.completedTaskIds.includes(task.id)} progressLabel={taskStatus.progressLabel} nextTask={taskStatus.nextTask} reflectionKey={reflectionKey} reflectionValue={draftReflections[reflectionKey] ?? progress.savedReflections[reflectionKey] ?? ''} savedReflection={progress.savedReflections[reflectionKey]} draftReflections={draftReflections} savedReflections={progress.savedReflections} onDraftReflection={onDraftReflection} onSaveReflection={onSaveReflection} onDeleteReflection={onDeleteReflection} onMark={() => onToggleRoadmapTask(task.day, task.id)} onOpenTask={(taskId) => { const next = taskRoadmap && getAllRoadmapTasks(taskRoadmap).find((candidate) => candidate.id === taskId); if (next) openTask(next) }} onBack={closeTask} />
+              </InlineExpansion>}
+            </article>
+          )
+        })}
+      </section>
 
       <section className="supporting-grid" aria-label="Today supporting actions">
         <button className="list-card" type="button" onClick={onOpenPath}>
           <span>My Path</span>
-          <small>{model.progressLabel}. Movement, not performance.</small>
+          <small>{progress.completedDays.length} of 28 days complete. Review any day and your original reflections.</small>
         </button>
-        {shortcut ? <PersonalizedShortcutCard recommendation={shortcut} onOpen={onOpenPersonalizedRecommendation} /> : (
-          <article className="list-card static" aria-label="Today source status">
-            <span>Source-backed</span>
-            <small>Day {currentDay} opens the structured 28-day program extracted from the original DOCX source.</small>
-          </article>
-        )}
+        <button className="list-card" type="button" onClick={onOpenReset}>
+          <span>Reset now</span>
+          <small>A pause is always available. No tasks or progress required.</small>
+        </button>
+        {shortcut && <PersonalizedShortcutCard recommendation={shortcut} onOpen={onOpenPersonalizedRecommendation} />}
       </section>
 
       <Disclosure className="calm-disclosure today-data-settings">
