@@ -1,15 +1,15 @@
 # PATH to RISE — selected Today A handoff
 
-> **Current execution update:** owner explicitly requested applying A to the GitHub **functioning version** (`1572271883523596462`). This is now the authorized implementation/deployment target; the ChatGPT-hosted site stays untouched. Earlier main-host access restrictions below remain historical context, not a blocker for this release. See `docs/TODAY_A_IMPLEMENTATION.md`.
+> **Verified live release — 2026-11-17:** Approved A is published to the GitHub **functioning version**. Application commit `40d5b3a7fec1ad4684baaa7d01815583c3e432ee`; [Pages run 44126469949](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44126469949) succeeded. Hosted assets and real flows passed at five widths (20 layout states), including saved-active-reminder overview/focus. ChatGPT-hosted main/design reference is unchanged. Earlier main-host restrictions below are historical, not this release's status. See `docs/TODAY_A_IMPLEMENTATION.md` and `evidence/today-option-a-apply/hosted-verification.json`.
 
 ## Decision locked
 Owner selected **A — Reset first**, not B, from the labelled mock screenshots. Keep the approved main prototype's cream/forest-green styling and supportive headline. Do not swap to Continue-first or the rejected lavender Daily Rhythm redesign.
 
-- Main prototype to enhance: https://path-to-rise-review.gimidaloot.chatgpt.site/
+- Main prototype / unchanged design reference: https://path-to-rise-review.gimidaloot.chatgpt.site/
 - **Functioning version / functional source reference:** https://guysmileysells.github.io/path-to-rise-prototype/#today — owner-named working baseline, not a switch of the main design URL. See `docs/FUNCTIONING_VERSION.md`.
 - Approved layout artifact: `.planning/sketches/today-parity/a-reset-first/index.html` and `a-reset-first.png`.
 - Full source-function mapping: `docs/TODAY_FUNCTIONALITY_PARITY_MOCKS.md`.
-- This is a design/implementation handoff, not evidence of a modified hosted app.
+- Original mocks below are design references; live-release evidence is linked above and in the implementation record.
 
 ## Preserve this hierarchy
 1. Existing PATH to RISE header and Your space entry.
@@ -31,18 +31,18 @@ Owner selected **A — Reset first**, not B, from the labelled mock screenshots.
 - Reminder preference, actual browser permission and actual delivery are different states. No real push/backend expansion is authorized by visual approval. Keep prototype delivery limits honest.
 - Keep source storage schemas and state boundaries where applicable. Browser-local data cannot automatically move between the GitHub Pages and ChatGPT-hosted origins. No reset, migration, export or import is implicit in this selection.
 
-## Apply authorization
+## Historical main-host apply authorization
 - Owner said **ok apply** after reviewing A and its shared privacy/reminder screenshots (message `1572264775516430347`). The visual gate is closed; execute this scope once the correct editable project is available.
 - Do not repeat layout questions or apply the change to the secondary GitHub Pages repo as a substitute. Current blocker is main-project edit/publish access, not owner approval.
 
-## Next implementation gate
+## Historical main-host implementation gate
 1. Establish the actual editable project/source and publishing route for the **main** ChatGPT-hosted prototype. Captured iframe HTML is a visual reference, not verified project linkage or deployment control.
 2. Record the existing main-prototype behavior and create a recoverable checkpoint before edits.
 3. Wire the approved Today A surface using real shared program/tool/reminder state; preserve existing non-Today navigation and functionality.
 4. Test fresh/partial/returning/completed state, shortcut fallbacks, permission/quiet-hour/Day-28 behavior, clear-action boundaries and private-writing exclusion.
 5. Verify narrow layouts and navigation/focus, then obtain owner review before unrelated changes or infrastructure expansion. Publish only through an established, owner-authorized route and verify the served app.
 
-## Current evidence and limits
+## Mock-selection evidence and limits (historical)
 - Mock-only visual/interaction checks: 12 layouts and 10 scenario groups passed before selection. Selection changes review labels only; regenerate and rerun the same verifier.
 - No runtime files in `src`, `scripts`, `tests`, package files or deployment workflows changed for this choice.
 - Neither live app was edited, no user data was read/transferred/deleted, and no browser notification permission was requested.

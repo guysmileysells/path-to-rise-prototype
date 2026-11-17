@@ -1,6 +1,6 @@
 # Today functionality parity — mock review
 
-> **Current execution update:** owner explicitly requested applying A to the GitHub **functioning version** (`1572271883523596462`). This is now the authorized implementation/deployment target; the ChatGPT-hosted site stays untouched. Earlier main-host access restrictions below remain historical context, not a blocker for this release. See `docs/TODAY_A_IMPLEMENTATION.md`.
+> **Verified live release — 2026-11-17:** Approved A is published to the GitHub **functioning version**. Application commit `40d5b3a7fec1ad4684baaa7d01815583c3e432ee`; [Pages run 44126469949](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44126469949) succeeded. Hosted assets and real flows passed at five widths (20 layout states), including saved-active-reminder overview/focus. ChatGPT-hosted main/design reference is unchanged. Earlier main-host restrictions below are historical, not this release's status. See `docs/TODAY_A_IMPLEMENTATION.md` and `evidence/today-option-a-apply/hosted-verification.json`.
 
 ## Owner direction and boundary
 - Main prototype/design reference: https://path-to-rise-review.gimidaloot.chatgpt.site/
@@ -9,10 +9,10 @@
 - Owner selected **A — Reset first** in response to the labelled A/B/C/D screenshots. A is the approved Today visual hierarchy; B is not selected. Privacy/data and reminder functionality remain required shared parts of the parity scope, not extra primary destinations. This selection does not authorize backend expansion, real delivery, data transfer or deployment to an unverified host.
 - Preserve the main prototype's cream/sage/forest-green palette, Georgia headline, target brand and SVG navigation icons, supportive headline and Today/Reset/My Path/Support navigation. Do not reapply the rejected lavender Daily Rhythm design.
 
-## Implementation authorization
+## Original main-host authorization (historical)
 - Owner subsequently said **ok apply** in message `1572264775516430347`, replying to selected A plus the shared Your space/Reminders screenshots. This authorizes applying the approved Today A functionality to the main prototype; no need to ask again for layout approval.
 - Preserve the frontend/local-prototype scope, curriculum, privacy and notification limits. No unrelated backend, data transfer or replacement-host pivot is implied.
-- Implementation is not yet applied: access to the main prototype editable project/publishing route must be established. Public app loads, but its outer page exposes an iframe and no links, buttons or forms for editing; the local Git remote is the secondary GitHub Pages repository.
+- At the original main-host attempt, implementation was not applied: editable project/publishing access had to be established. Public app loads, but its outer page exposes an iframe and no links, buttons or forms for editing; the local Git remote is the secondary GitHub Pages repository.
 
 ## Direct inspection
 - Main prototype rendered `Leave the shift. Keep yourself.`, Reset me now, sample Seven-Day Reset Day 3 of 7, My Quick Kit and four bottom destinations. Inspected its actual embedded HTML/CSS and captured its mobile view.

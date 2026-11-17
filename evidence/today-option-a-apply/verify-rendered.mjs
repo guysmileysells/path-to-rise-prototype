@@ -9,6 +9,7 @@ const out = new URL('./', import.meta.url)
 const root = new URL('../../', import.meta.url)
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 const assets = []
+const iconChecks = []
 const htmlResponse = await fetch(base)
 assert.equal(htmlResponse.status, 200)
 const html = await htmlResponse.text()
@@ -27,7 +28,12 @@ for (const name of ['sun','wind','route','heart-handshake','bookmark','lock-keyh
   const response = await fetch(new URL(`icons/rise-${name}.svg`, base))
   assert.equal(response.status, 200)
   assert(response.headers.get('content-type').includes('image/svg+xml'))
-  assert.equal(digest(Buffer.from(await response.arrayBuffer())), digest(readFileSync(new URL(`public/icons/rise-${name}.svg`, root))))
+  const served = Buffer.from(await response.arrayBuffer())
+  const local = readFileSync(new URL(`public/icons/rise-${name}.svg`, root))
+  // Git checks out CRLF on Windows; Pages uses LF. Only normalize text line endings.
+  const normalize = bytes => bytes.toString('utf8').replace(/\r\n/g, '\n')
+  assert.equal(digest(normalize(served)), digest(normalize(local)), `icon ${name} content differs`)
+  iconChecks.push({ name, servedSha256: digest(served), localSha256: digest(local), normalizedSha256: digest(normalize(served)), normalization: 'CRLF to LF only' })
 }
 const browser = await chromium.launch()
 const results = []
@@ -42,6 +48,8 @@ try {
     await page.goto(new URL('#today', base).href)
     await page.getByRole('heading', { name: 'Leave the shift. Keep yourself.' }).waitFor()
     const snapshot = async mode => {
+      // React can render before remote icon requests finish; decode rejects real failures.
+      await page.locator('img.rise-icon').evaluateAll(images => Promise.all(images.map(image => image.decode())))
       const geometry = await page.evaluate(() => {
         const screen = document.querySelector('.screen').getBoundingClientRect()
         const nav = document.querySelector('nav').getBoundingClientRect()
@@ -106,6 +114,6 @@ try {
     await context.close()
   }
 } finally { await browser.close() }
-const report={ result:'PASS',base,checkedAt:new Date().toISOString(),assets,layouts:results.length,results,flows,limitations:['Automated Chromium only; physical phones, real screen readers and clinical/legal readiness not verified.','Reminder preferences/browser-tab delivery only; reliable closed-app push is not implemented.'] }
+const report={ result:'PASS',base,checkedAt:new Date().toISOString(),assets,iconChecks,layouts:results.length,results,flows,limitations:['Automated Chromium only; physical phones, real screen readers and clinical/legal readiness not verified.','Reminder preferences/browser-tab delivery only; reliable closed-app push is not implemented.'] }
 writeFileSync(new URL(`${label}-verification.json`,out),JSON.stringify(report,null,2)+'\n')
 console.log(JSON.stringify({result:report.result,base,layouts:results.length,assets:assets.map(a=>a.url),report:fileURLToPath(new URL(`${label}-verification.json`,out))},null,2))

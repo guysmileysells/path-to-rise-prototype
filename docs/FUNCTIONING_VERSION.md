@@ -7,7 +7,14 @@
 - This is the working functional baseline/reference. The label does not switch the main design/prototype URL, authorize a redesign or deploy anything.
 
 ## Current execution status
-Owner subsequently authorized updating this functioning-version URL in message `1572271883523596462` and continued in `1572283371986362511`. Approved A is implemented locally; the saved-active-reminder overview/focus regression has passed focused mobile/desktop tests. Final full verification and publication are pending. The main/design reference stays unchanged. The original status note below is a pre-A snapshot, not a claim that implementation is still blocked on ChatGPT editing access.
+**Approved A is live and hosted-verified, 2026-11-17.** Owner authorized this target in `1572271883523596462` and continued in `1572283371986362511`.
+- Current application commit: `40d5b3a7fec1ad4684baaa7d01815583c3e432ee`; [Pages build/deploy run 44126469949](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44126469949): success.
+- Today now shows **Leave the shift. Keep yourself.**, Reset first, and real program/current-action/progress/Start-or-Continue underneath. Your space contains privacy/data/reminders; the four navigation tabs remain unchanged.
+- Final local checks: aggregate/typecheck/build/lint PASS; 44 full browser tests, 18 production-preview focused tests PASS. Independent follow-up found no blocking issues.
+- Live verification: 20 layouts across five widths, real Reset/Day 1 (17 tasks)/Quick Kit/settings flows, saved-active-reminder overview/focus and preserved enabled preferences PASS; no captured page/resource errors. Served JavaScript/CSS match the tested build byte-for-byte; all six SVG icons match after CRLF/LF-only normalization and decode successfully.
+- Source storage keys/schemas, curriculum and existing state handlers preserved; no migration or data clearing. Synthetic QA contexts only, not inspection of the owner's device data.
+- Evidence: `evidence/today-option-a-apply/hosted-verification.json`, `deployment.json`, `candidate-manifest.json`, `preservation.json`; implementation/review details in `docs/TODAY_A_IMPLEMENTATION.md`.
+- Main/design reference stays unchanged. Original pre-A snapshot below is retained for history/rollback. Physical-device, manual screen-reader, clinical/legal/security sign-off and reliable closed-app notification delivery are not established by this release.
 
 ## Pre-A snapshot — checked 2026-11-17 UTC
 - Live page opened successfully with title `PATH to RISE Prototype`.
