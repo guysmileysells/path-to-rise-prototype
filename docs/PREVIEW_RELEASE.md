@@ -1,5 +1,18 @@
 # PATH to RISE preview release checkpoint
 
+## Daily Rhythm homepage — verified 2026-11-17 UTC
+
+- Live preview: https://guysmileysells.github.io/path-to-rise-prototype/
+- App commit `d9f91339490c188eba10cec5af0b40311f001247`; [build and deploy run 44012408616](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44012408616) passed.
+- Today now presents Morning / Daily / Evening with real saved-task counts and one next-step action. Existing task instructions, writing, completion/undo, navigation, settings and storage are preserved.
+- Fixed terminal recovery: older program-complete records missing completed-day entries review Day 28, not Day 1. No fabricated task completions or storage migration.
+- Local aggregate tests, lint/build, all 52 mobile/desktop browser cases and independent review passed.
+- Hosted JS/CSS HTTP 200 and SHA-256 exactly match the tested build. Four widths (320/375/430/1280), navigation/reload, keyboard task opening and recovery-state review passed; zero captured console/resource errors.
+- Automated contrast checks: 85 checked pairs, no failures. Physical phones, actual screen-reader usability and external approvals remain NOT VERIFIED.
+- Full acceptance: `docs/DAILY_RHYTHM_VERIFICATION.md`; reproducible raw evidence and before/after screenshots: `evidence/daily-rhythm/`.
+- Stop for owner review; no production-readiness claim.
+
+
 ## App-wide spelling correction — 2026-11-13
 
 - Owner direction: use **practice**, not the alternative spelling, throughout app-authored content and labels.

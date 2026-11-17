@@ -1,0 +1,110 @@
+{
+  "url": "https://guysmileysells.github.io/path-to-rise-prototype/",
+  "verifiedAt": "2026-11-17T03:50:06.995Z",
+  "assets": [
+    {
+      "asset": "./assets/index-CKbjNGIv.js",
+      "status": 200,
+      "sha256": "5e7b2ce3bbda0e874a088b5a510afb46b6ac67b53960ab26bb54a910bbedf5df",
+      "matchesLocal": true
+    },
+    {
+      "asset": "./assets/index-BS9CbtMT.css",
+      "status": 200,
+      "sha256": "05dfb693a7a261377e797ccbb6670087aeaadcef8c461161e6d87d28c03a3abd",
+      "matchesLocal": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "documentOverflow": false,
+      "screenOverflow": false,
+      "undersized": [],
+      "navVisible": true,
+      "navLabels": [
+        "Open Today",
+        "Open Reset",
+        "Open My Path",
+        "Open Support"
+      ],
+      "reducedMotion": "1e-05s",
+      "keyboardFocus": {
+        "style": "solid",
+        "width": "3px"
+      },
+      "nextTaskOpened": true,
+      "routesAndReload": true,
+      "consoleOrResourceErrors": 0
+    },
+    {
+      "width": 375,
+      "documentOverflow": false,
+      "screenOverflow": false,
+      "undersized": [],
+      "navVisible": true,
+      "navLabels": [
+        "Open Today",
+        "Open Reset",
+        "Open My Path",
+        "Open Support"
+      ],
+      "reducedMotion": "1e-05s",
+      "keyboardFocus": {
+        "style": "solid",
+        "width": "3px"
+      },
+      "nextTaskOpened": true,
+      "routesAndReload": true,
+      "consoleOrResourceErrors": 0
+    },
+    {
+      "width": 430,
+      "documentOverflow": false,
+      "screenOverflow": false,
+      "undersized": [],
+      "navVisible": true,
+      "navLabels": [
+        "Open Today",
+        "Open Reset",
+        "Open My Path",
+        "Open Support"
+      ],
+      "reducedMotion": "1e-05s",
+      "keyboardFocus": {
+        "style": "solid",
+        "width": "3px"
+      },
+      "nextTaskOpened": true,
+      "routesAndReload": true,
+      "consoleOrResourceErrors": 0
+    },
+    {
+      "width": 1280,
+      "documentOverflow": false,
+      "screenOverflow": false,
+      "undersized": [],
+      "navVisible": true,
+      "navLabels": [
+        "Open Today",
+        "Open Reset",
+        "Open My Path",
+        "Open Support"
+      ],
+      "reducedMotion": "1e-05s",
+      "keyboardFocus": {
+        "style": "solid",
+        "width": "3px"
+      },
+      "nextTaskOpened": true,
+      "routesAndReload": true,
+      "consoleOrResourceErrors": 0
+    }
+  ],
+  "recoveryState": {
+    "reviewDay": 28,
+    "fabricatedCompletions": false,
+    "storageUnchangedByReview": true
+  },
+  "result": "PASS"
+}

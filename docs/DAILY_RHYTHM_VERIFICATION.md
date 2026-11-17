@@ -6,7 +6,9 @@
 - Evidence paths below are relative to `evidence/daily-rhythm/`.
 
 ## Current result
-Local engineering acceptance PASS. Hosted publication and verification pending. Physical-device and external approvals remain NOT VERIFIED.
+Published and hosted engineering acceptance PASS, verified 2026-11-17 UTC. App commit `d9f91339490c188eba10cec5af0b40311f001247`; [build/deploy run 44012408616](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44012408616) succeeded. Preview: https://guysmileysells.github.io/path-to-rise-prototype/
+
+Hosted JavaScript/CSS returned HTTP 200 and SHA-256 matched the tested local build. All four viewport/navigation/keyboard checks passed with zero captured console/resource errors. The missing-records recovery fixture opens actual Day 28 content without fabricated completions or storage mutation. Proof: `hosted-verification.json`, `hosted-smoke.txt`, `hosted-after-*.png`, `deployment.txt`. Physical-device and external approvals remain NOT VERIFIED.
 
 ## Acceptance matrix
 | Requirement | Verified evidence | Result |
@@ -26,7 +28,7 @@ Local engineering acceptance PASS. Hosted publication and verification pending. 
 | Console/page/resource errors | Production smoke: zero errors across four widths | PASS |
 | Final regression, lint and build | `final-tests.txt`, `final-lint.txt`, `final-build.txt`; 52 browser tests passed, zero skipped/flaky/unexpected | PASS |
 | Independent acceptance review | `review-final.json`: passed, empty security/logic lists. Suggested cross-phase keyboard tests subsequently added and passed | PASS |
-| Committed preview and actual hosted assets/flows | Publication and hosted check still pending | PENDING |
+| Committed preview and actual hosted assets/flows | Commit `d9f9133`, successful run `44012408616`, `hosted-verification.json` | PASS |
 
 ## Recovery fix and test precision
 Completed-program heading used terminal status while task selection independently used the first missing completed-day record. The fix selects Day 28 for terminal homepage review without modifying storage, adding completions, or changing progression rules elsewhere.
