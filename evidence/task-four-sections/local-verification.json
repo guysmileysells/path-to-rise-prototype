@@ -1,0 +1,342 @@
+{
+  "result": "PASS",
+  "base": "http://127.0.0.1:4188/",
+  "checkedAt": "2026-11-22T19:02:02.455Z",
+  "assets": [
+    {
+      "name": "index-ZGyCBQhM.js",
+      "sha256": "c81a6149bd8816138ba2dc7115e2991d0f09beae6cc1d5b703ca74c543281b50"
+    },
+    {
+      "name": "index-Ct4dsaNr.css",
+      "sha256": "7cf7d343d556a9e962f070bdcd14ec40de0785f5e56c8c3dc776f49e01946de0"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "height": 844,
+      "day": 1,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "day": 2,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "day": 8,
+      "row": 7,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "day": 9,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "day": 16,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "day": 22,
+      "row": 6,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "day": 28,
+      "row": 16,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 1,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 2,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 8,
+      "row": 7,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 9,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 16,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 22,
+      "row": 6,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "day": 28,
+      "row": 16,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 1,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 2,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 8,
+      "row": 7,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 9,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 16,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 22,
+      "row": 6,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 960,
+      "day": 28,
+      "row": 16,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 1,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 2,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 8,
+      "row": 7,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 9,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 16,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 22,
+      "row": 6,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "day": 28,
+      "row": 16,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 1,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 2,
+      "row": 1,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 8,
+      "row": 7,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 9,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 16,
+      "row": 9,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 22,
+      "row": 6,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "day": 28,
+      "row": 16,
+      "sections": 4,
+      "rows": 16,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "sourceGaps": [
+    "Day 16 Intellectual",
+    "Day 16 Social",
+    "Day 16 Environmental"
+  ],
+  "limits": [
+    "Synthetic browser contexts only; no owner data accessed.",
+    "Not physical-phone, manual screen-reader or clinical validation."
+  ]
+}

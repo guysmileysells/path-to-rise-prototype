@@ -1,0 +1,86 @@
+{
+  "result": "PASS",
+  "baseline": "d8186e0cd9a09954646ef17e17edc8085b3fca2f",
+  "week1Tasks": 42,
+  "allNonInstructionFieldsUnchanged": true,
+  "onlyRestoredCanonicalSourceLines": [
+    {
+      "id": "day-1-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompt:",
+        "What has been on my mind lately?",
+        "What feels heavy right now?",
+        "What do I avoid thinking about?"
+      ]
+    },
+    {
+      "id": "day-2-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompt:",
+        "What do I try not to think about?",
+        "What bothers me but I ignore it?",
+        "What have I been carrying for a long time?",
+        "Do not analyze. Do not fix. Just write."
+      ]
+    },
+    {
+      "id": "day-3-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompt:",
+        "What do I think about every day?",
+        "What feels heavy lately?",
+        "What do I keep inside?",
+        "What do I not talk about?",
+        "Do not analyze and do not fix…just write."
+      ]
+    },
+    {
+      "id": "day-4-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompt:",
+        "Where do I feel pressure in my life?",
+        "What do I feel responsible for?",
+        "What feels like too much sometimes?",
+        "What do I keep to myself?",
+        "Do not fix anything. Do not analyze. Just write.",
+        "Writing allows the brain to process without losing control."
+      ]
+    },
+    {
+      "id": "day-5-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompt:",
+        "What do I keep to myself? (Be authentic, list everything)",
+        "What do I not talk about? (Be authentic, list everything)",
+        "What do I carry that others don’t see?",
+        "What feels heavy lately?",
+        "Do not fix. Do not judge. Do not explain. Just write."
+      ]
+    },
+    {
+      "id": "day-6-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompts:",
+        "What do I feel but don’t say and why?",
+        "What do I hide from people and why?",
+        "What do I act like doesn’t bother me and why?",
+        "When do I feel the most pressure inside and why?",
+        "Do not explain. Do not fix. Do not judge.",
+        "Just write."
+      ]
+    },
+    {
+      "id": "day-7-daily-02-emotional",
+      "restoredCanonicalLines": [
+        "Prompts:",
+        "How did this week feel? Be as descriptive and honest as possible.",
+        "What was harder than expected and why?",
+        "What felt helpful and why?",
+        "What did I notice about myself?",
+        "What do I usually avoid that I noticed this week?",
+        "Do not judge your answers. Just write honestly."
+      ]
+    }
+  ],
+  "unchangedSourceAndEngines": true
+}

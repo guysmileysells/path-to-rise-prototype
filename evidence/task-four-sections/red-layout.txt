@@ -1,0 +1,60 @@
+
+Running 1 test using 1 worker
+
+  x  1 [mobile] › tests\browser\task-four-sections.spec.ts:12:1 › all 28 days have four clean sections in every task, preserved prompts and exact affirmation cards (8.9s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [mobile] › tests\browser\task-four-sections.spec.ts:12:1 › all 28 days have four clean sections in every task, preserved prompts and exact affirmation cards 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('.roadmap-task-card').first().locator('.task-detail-card').locator('h4')
+    Timeout: 5000ms
+    - Expected  - 4
+    + Received  + 5
+
+      Array [
+    -   "What",
+    -   "When",
+    -   "How",
+    -   "Benefits",
+    +   "WHAT",
+    +   "HOW",
+    +   "WHY",
+    +   "HOW LONG",
+    +   "BENEFITS",
+      ]
+
+    Call log:
+      - Expect "toHaveText" locator('.roadmap-task-card').first().locator('.task-detail-card').locator('h4') with timeout 5000ms
+      - waiting for locator('.roadmap-task-card').first().locator('.task-detail-card').locator('h4')
+        14 × locator resolved to 5 elements
+
+
+      23 |       await row.locator('button[aria-expanded]').first().click()
+      24 |       const detail = row.locator('.task-detail-card')
+    > 25 |       await expect(detail.locator('h4')).toHaveText(['What', 'When', 'How', 'Benefits'])
+         |                                          ^
+      26 |       await expect(detail.getByRole('button', { name: 'Mark as Done', exact: true })).toBeVisible()
+      27 |       for (const prompt of tasks[i].prompts ?? []) await expect(detail).toContainText(prompt.replace(/_+/g, '').replace(/\s+/g, ' ').trim())
+      28 |       const texts = await detail.locator('p, li').allTextContents()
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\task-four-sections.spec.ts:25:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\task-four-sections\evidence\task-four-sections\artifacts\task-four-sections-all-28--d41ae-and-exact-affirmation-cards-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\task-four-sections\evidence\task-four-sections\artifacts\task-four-sections-all-28--d41ae-and-exact-affirmation-cards-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\task-four-sections\evidence\task-four-sections\artifacts\task-four-sections-all-28--d41ae-and-exact-affirmation-cards-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\task-four-sections\evidence\task-four-sections\artifacts\task-four-sections-all-28--d41ae-and-exact-affirmation-cards-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\task-four-sections.spec.ts:12:1 › all 28 days have four clean sections in every task, preserved prompts and exact affirmation cards 
+  1 error was not a part of any test, see above for details

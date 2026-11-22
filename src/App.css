@@ -957,8 +957,38 @@ summary {
 
 .task-detail-card {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
   border-color: var(--color-action-primary);
+}
+
+.task-content-section {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.task-content-section > h4 {
+  margin: 0;
+  color: var(--color-action-primary);
+}
+
+.task-content-section > p,
+.task-content-section > ul,
+.task-content-section > ol {
+  margin-block: 0;
+}
+
+.task-content-section .instruction-list li + li {
+  margin-top: 6px;
+}
+
+.task-safety-note {
+  border-left: 2px solid var(--color-border-strong);
+  padding-left: 10px;
+}
+
+.task-completion-status {
+  margin: 0;
 }
 
 .task-detail-grid {
@@ -1133,6 +1163,54 @@ summary {
     width: 48px;
     height: 48px;
   }
+}
+
+/* One day disclosure; task rows expand directly beneath their own trigger. */
+.today-tasks {
+  min-width: 0;
+}
+
+.today-tasks .roadmap-task-card {
+  display: block;
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+
+.today-tasks .roadmap-task-card::before {
+  display: none;
+}
+
+.today-tasks .task-row-trigger {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-soft);
+  color: var(--color-text-primary);
+  text-align: left;
+  white-space: normal;
+  font: inherit;
+  cursor: pointer;
+}
+
+.task-row-label {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.task-row-label > span {
+  font-weight: 750;
+}
+
+.task-row-label small {
+  font-size: 0.875em;
+  font-weight: 400;
 }
 
 @media (max-width: 340px) {

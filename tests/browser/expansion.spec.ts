@@ -3,6 +3,7 @@ import { expect, test, type Locator, type Page } from '@playwright/test'
 async function openDay(page: Page) {
   await page.goto('/#path')
   await page.getByRole('button', { name: 'Open Day 1', exact: true }).first().click()
+  await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
 }
 
 async function anchored(trigger: Locator, panel: Locator) {
@@ -63,14 +64,14 @@ test('native and nested disclosures position the trigger and content beginning',
 test('task opens beneath its own trigger, switches and collapses without replacing roadmap', async ({ page }) => {
   await openDay(page)
   const first = page.locator('.roadmap-task-card').first()
-  const firstTrigger = first.getByRole('button', { name: 'Open tab', exact: true })
+  const firstTrigger = first.locator('button[aria-expanded]')
   await firstTrigger.click()
   await expect(page.locator('#day-roadmap-title')).toBeVisible()
   await expect(first.locator('.task-detail-card')).toBeVisible()
   await expect(firstTrigger).toHaveAttribute('aria-expanded', 'true')
   await anchored(firstTrigger, first.locator('.inline-expansion-panel'))
   const second = page.locator('.roadmap-task-card').nth(1)
-  const secondTrigger = second.getByRole('button', { name: 'Open tab', exact: true })
+  const secondTrigger = second.locator('button[aria-expanded]')
   await secondTrigger.click()
   await expect(first.locator('.task-detail-card')).toHaveCount(0)
   await anchored(secondTrigger, second.locator('.inline-expansion-panel'))

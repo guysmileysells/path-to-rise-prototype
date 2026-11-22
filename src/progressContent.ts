@@ -406,7 +406,7 @@ export const progressInsightRules: ProgressInsightRule[] = [
     requiredData: ['daySectionProgress', 'completedStandaloneToolIds'],
     privacyClass: 'MODERATE',
     eligibility: (model) => model.sectionsCompleted > 0 || model.learnedToolIds.length > 0,
-    message: (model) => `You have completed ${model.smallWins.program.completed} of 476 Small Wins, and ${model.learnedToolIds.length} reusable tools are available.`,
+    message: (model) => `You have completed ${model.smallWins.program.completed} of ${model.smallWins.program.total} Small Wins, and ${model.learnedToolIds.length} reusable tools are available.`,
     userBenefit: 'Shows what the user has practiced and can return to.',
     confidenceLimit: 'This is engagement/practice history, not proof of clinical improvement.',
   },

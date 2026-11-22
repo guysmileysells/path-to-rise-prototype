@@ -6,7 +6,13 @@
 - Owner requested this label and a note of its current status in Discord message `1572266886320885934`.
 - This is the working functional baseline/reference. The label does not switch the main design/prototype URL, authorize a redesign or deploy anything.
 
-## Current execution status
+## Latest task-layout candidate — 2026-11-22
+The owner’s four-section Today’s Tasks instruction (`1574129028191752326`) is implemented and locally accepted: one downward Today’s Tasks on every day, 16 stable required tasks/day, individual title rows containing only What / When / How / Benefits and Mark as Done / Undo. Private writing and exact 3×/6×/9× affirmations remain inside How. Source questions on Days8/9 were repaired, not removed for brevity.
+- Frozen candidate: `c689bf84ea793ff705cf643856a89d12392c43bf02ab6c73f08fc0934f7fb7b9`; aggregate/build/lint and **52 browser tests** passed; 35 production-preview layout states passed; independent follow-up passed.
+- Three Day16 activities (Intellectual, Social, Environmental) still lack source instructions and show explicit notices. Owner-approved source is needed; no replacements invented.
+- GitHub Pages publication and hosted byte/UI verification are pending at this candidate checkpoint. Main/design URL remains unchanged. Details: `docs/WAKE_UP_FIRST_ACTION.md`; evidence: `evidence/task-four-sections/`.
+
+## Previous Today release — 2026-11-17 (history)
 **Approved A is live and hosted-verified, 2026-11-17.** Owner authorized this target in `1572271883523596462` and continued in `1572283371986362511`.
 - Current application commit: `40d5b3a7fec1ad4684baaa7d01815583c3e432ee`; [Pages build/deploy run 44126469949](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/44126469949): success.
 - Today now shows **Leave the shift. Keep yourself.**, Reset first, and real program/current-action/progress/Start-or-Continue underneath. Your space contains privacy/data/reminders; the four navigation tabs remain unchanged.

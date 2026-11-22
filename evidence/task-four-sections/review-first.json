@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "security_concerns": [],
+  "logic_errors": [
+    {
+      "file": "src/taskPresentation.ts",
+      "lines": "74–79",
+      "issue": "Structured rationale containing an important affirmation caveat is discarded when task.benefits exists. The action/safety extraction only processes task.instructions, not task.why.",
+      "repro": "Get the presentation for day-1-morning-06-morning-mirror-affirmations. Its source at src/dayRoadmap.ts:213 includes “The goal is repetition and reflection, not forcing yourself to believe or feel something immediately.” That sentence appears in neither How nor Benefits, and TaskDetail no longer renders task.why separately. The omission affects all 28 morning affirmation tasks.",
+      "recommendation": "Preserve instructional/goal/safety sentences from structured task.why within How independently of benefit selection, with a regression fixture using the actual affirmation task."
+    },
+    {
+      "file": "src/taskPresentation.ts",
+      "lines": "38–40",
+      "issue": "The imperative heuristic misclassifies a rationale-list noun as an instruction, producing a dangling “focus,” step.",
+      "repro": "Open Day 9 → Today’s Tasks → Environmental task. How ends with “focus,”. In src/programContent.ts:1746–1750, that word belongs to the WHY list describing what environments affect, not an action. The same malformed step is present in the actual content-inventory.json.",
+      "recommendation": "Distinguish noun/list fragments from imperative guidance before moving rationale into How; add this actual source case to metadata-classification scenarios."
+    }
+  ],
+  "suggestions": [
+    "evidence/task-four-sections/snapshot.mjs:7 decodes every file as UTF-8, including hero.png. Hash binary assets as bytes and normalize line endings only for text; the current snapshot check passes but is not a byte-faithful binary integrity check.",
+    "Keep the three inherited Day 16 Intellectual/Social/Environmental source gaps explicitly disclosed and obtain owner-approved canonical instructions separately; this review does not establish clinical or source-content completeness."
+  ],
+  "summary": "Scoped read-only review found two presentation defects above. Otherwise, the four-heading renderer, combined physical timing/action classification, restored questions, affirmation wording/repetitions, explicit special notes, stable IDs, historical completion handling and existing writing keys were supported by inspection. npm run day-roadmap passed, covering 448 task presentations and 469 question lines; snapshot --check matched the stated 51-file candidate digest. The actual 28-day inventory matched current projections and showed no whitespace, joined-word or encoding anomalies in the automated scan. No obvious added secrets, unsafe DOM rendering or application network calls were found. No journal/completion regression was identified statically; browser/runtime verification remains parent-owned. No files were modified."
+}
