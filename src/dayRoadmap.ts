@@ -80,7 +80,7 @@ export type DayRoadmap = {
   eveningActions: RoadmapTask[]
   reflection: RoadmapTask
   dailyReminder: string[]
-  expectedWins: { morning: 6; daily: 6; evening: 5; total: 17; weekly: 119; program: 476 }
+  expectedWins: { morning: number; daily: number; evening: number; total: number; weekly: number; program: number }
 }
 
 export type DayRoadmapStatus = {
@@ -94,9 +94,9 @@ export type DayRoadmapStatus = {
 }
 
 export type SmallWinsSummary = {
-  today: { completed: number; total: 17; morning: number; daily: number; evening: number }
-  week: { completed: number; total: 119; week: number }
-  program: { completed: number; total: 476 }
+  today: { completed: number; total: number; morning: number; daily: number; evening: number }
+  week: { completed: number; total: number; week: number }
+  program: { completed: number; total: number }
 }
 
 export type DayTaskProgress = Record<string, string[]>
@@ -119,14 +119,11 @@ const morningTemplate = [
     slug: 'set-your-alarm',
     title: 'Set Your Alarm',
     short: 'Set your alarm',
-    what: 'Set your alarm 15 minutes earlier than your usual wake-up time.',
-    timing: 'Wake-relative: before your usual wake-up time',
-    duration: '15 min earlier',
+    what: 'Tonight, set your alarm 15 minutes earlier and, if you can, move bedtime earlier too.',
+    timing: 'Tonight, before bed',
+    duration: null,
     instructions: [
-      'Choose the time you normally need to wake up.',
-      'Set your alarm 15 minutes earlier.',
-      'Place your phone or alarm somewhere you can reach safely.',
-      'Give yourself those extra minutes for your morning routine.',
+      'Tonight, set your alarm 15 minutes earlier than you usually wake up. Those extra minutes give you room to start the day at your own pace. If you can, move bedtime 15 minutes earlier too so you keep that sleep time.',
     ],
     why: 'Creating a little extra time can reduce the feeling of rushing and give you an opportunity to begin the day intentionally.',
     smallWinInstruction: 'Once your alarm is set, tap Mark as Done.',
@@ -135,16 +132,13 @@ const morningTemplate = [
   },
   {
     slug: 'five-four-three-two-one-get-up',
-    title: 'The 5–4–3–2–1 Get-Up',
+    title: 'First Win — 5–4–3–2–1, Get Up',
     short: '5–4–3–2–1 get-up',
-    what: 'When your alarm sounds, count backward from five and get out of bed without snoozing.',
-    timing: 'Immediately when the alarm sounds',
-    duration: '1 min',
+    what: 'When your alarm goes off at the time set on Day 1, count down 5–4–3–2–1 and get out of bed on 1.',
+    timing: 'When your alarm goes off at the time set on Day 1',
+    duration: null,
     instructions: [
-      'Hear your alarm.',
-      'Begin counting to yourself in a soft voice: 5 … 4 … 3 … 2 … 1.',
-      'Then sit up and place your feet on the floor.',
-      'Stand up and begin your day.',
+      'When your alarm goes off at the time you set on Day 1, count down 5–4–3–2–1 and get out of bed on 1. Mark it done once you’re up. That’s your first win of the day.',
     ],
     why: 'The countdown creates a simple cue to move from intention into action, rather than getting caught in hesitation or negotiation with yourself.',
     smallWinInstruction: "Once you're up, tap Mark as Done.",
@@ -420,10 +414,9 @@ function parseDailyActivity(day: ProgramDay, category: DailyActivityCategory, or
   const howLine = lineAfterPrefix(block, 'HOW:')
   const whyLine = lineAfterPrefix(block, 'WHY:')
   const benefitIndex = block.findIndex((line) => /^BENEFITS?:?/i.test(line))
-  const promptIndex = block.findIndex((line) => /^Prompts?:?/i.test(line))
-  const nextMetaIndex = [benefitIndex, promptIndex].filter((index) => index > -1).sort((a, b) => a - b)[0] ?? block.length
+  const nextMetaIndex = benefitIndex === -1 ? block.length : benefitIndex
   const howExtras = block.slice(2, nextMetaIndex).filter((line) => !/^WHEN:|^HOW:|^WHY:/i.test(line) && !/^After the walk:$/i.test(line))
-  const instructions = [...splitInstructionText(howLine), ...howExtras.filter((line) => !line.includes('_____') && !/^Examples:?/i.test(line))]
+  const instructions = [...splitInstructionText(howLine), ...howExtras.filter((line) => !/^Examples:?/i.test(line))].map((line) => line.replace(/_{2,}/g, '').trim()).filter(Boolean)
   const prompts = block.filter((line) => line.includes('?')).flatMap((line) => line.split(/_+/).map((part) => part.trim()).filter((part) => part.endsWith('?')))
   const benefits = benefitIndex === -1
     ? []
@@ -454,7 +447,57 @@ function parseDailyActivity(day: ProgramDay, category: DailyActivityCategory, or
   }
 }
 
+function parseSourceDomainActivities(day: ProgramDay): RoadmapTask[] | null {
+  // Later weeks use numbered DOMAIN / Wellness / Reset headings rather than
+  // Week 1's literal "Physical Task" labels. Keep section labels as source text:
+  // the original document extractor sometimes promotes a task line to a label.
+  const lines = day.sections.flatMap((section) => [section.label, ...section.content])
+  const heading = /^(?:\d+\.\s*)?(Physical|Emotional|Spiritual|Intellectual|Social|Environmental)\s+(?:DOMAIN|Wellness|Reset)(?:\s*[—–-]\s*(.+))?$/i
+  const first = lines.findIndex((line) => heading.test(line.trim()))
+  if (first === -1) return null
+  const endRelative = lines.slice(first).findIndex((line) => /^(?:Day \d+ Evening|Evening Reset|End.of.Day Reflection)/i.test(line.trim()))
+  const daily = lines.slice(first, endRelative === -1 ? lines.length : first + endRelative)
+  const starts = daily.flatMap((line, index) => {
+    const match = line.trim().match(heading)
+    return match ? [{ index, category: match[1].toLowerCase(), inlineTitle: match[2] }] : []
+  })
+  return activityCategories.map((category, index) => {
+    const blocks = starts.flatMap((start, position) => start.category === category.toLowerCase()
+      ? [{ title: start.inlineTitle ?? daily[start.index + 1], lines: daily.slice(start.index + 1, starts[position + 1]?.index ?? daily.length) }]
+      : [])
+    // Day 16's supplied source has no Intellectual/Social/Environmental blocks.
+    // Preserve those existing fallback records rather than invent instructions.
+    if (!blocks.length) return parseDailyActivity(day, category, index + 1, [])
+    const task = parseDailyActivity(day, category, index + 1, [])
+    const title = blocks.map((block) => block.title).join(' + ')
+    const instructions = blocks.flatMap((block) => block.lines).map((line) => line.replace(/_{2,}/g, '').trim()).filter(Boolean)
+    const timings = instructions.flatMap((line) => {
+      const match = line.match(/^WHEN:\s*(.*?)(?=\s+WHAT:|$)/i)
+      return match ? [match[1].trim()] : []
+    })
+    const what = instructions.flatMap((line) => {
+      const match = line.match(/\bWHAT:\s*(.*?)(?=\s+(?:HOW|WHY):|$)/i)
+      return match ? [match[1].trim()] : []
+    }).join(' ')
+    return {
+      ...task,
+      title,
+      shortTitle: title,
+      shortDescription: what || title,
+      what: what || title,
+      timingLabel: timings.join(' → ') || 'Follow the source instructions below.',
+      durationLabel: extractDuration(title, instructions),
+      instructions,
+      prompts: instructions.filter((line) => line.includes('?')),
+      why: 'The original source instructions and rationale are preserved below.',
+      benefits: [],
+    }
+  })
+}
+
 function parseDailyActivities(day: ProgramDay): RoadmapTask[] {
+  const sourceDomains = parseSourceDomainActivities(day)
+  if (sourceDomains) return sourceDomains
   const section = getContinueSection(day)
   const lines = section?.content ?? []
   return activityCategories.map((category, index) => {
@@ -471,7 +514,8 @@ function parseDailyActivities(day: ProgramDay): RoadmapTask[] {
 }
 
 function parseReflection(day: ProgramDay): RoadmapTask {
-  const lines = getContinueSection(day)?.content ?? []
+  const sourceSection = day.sections.find((section) => /^End.of.Day Reflection/i.test(section.label))
+  const lines = sourceSection ? [sourceSection.label, ...sourceSection.content] : getContinueSection(day)?.content ?? []
   const start = lines.findIndex((line) => /^End-of-Day Reflection/i.test(line))
   const block = start === -1 ? [] : lines.slice(start)
   const prompts = block.filter((line) => line.includes('?')).flatMap((line) => line.split(/_+/).map((part) => part.trim()).filter((part) => part.endsWith('?')))
@@ -488,7 +532,7 @@ function parseReflection(day: ProgramDay): RoadmapTask {
     durationLabel: null,
     required: false,
     sequenceType: 'FLEXIBLE',
-    instructions: block.length > 1 ? block.slice(1).filter((line) => !line.includes('_____')) : ['Use the original daily reflection prompt if available.'],
+    instructions: block.length > 1 ? block.slice(1).map((line) => line.replace(/_{2,}/g, '').trim()).filter(Boolean) : ['Use the original daily reflection prompt if available.'],
     prompts: prompts.length > 0 ? prompts : undefined,
     why: 'This reflection remains accessible but does not add Small Wins or block completion.',
     benefits: ['A private review point', 'A gentle close to the source day'],
@@ -498,32 +542,37 @@ function parseReflection(day: ProgramDay): RoadmapTask {
 }
 
 function buildMorningActions(day: ProgramDay): RoadmapTask[] {
-  return morningTemplate.map((item, index) => ({
-    id: `day-${day.day}-morning-${String(index + 1).padStart(2, '0')}-${item.slug}`,
-    day: day.day,
-    order: index + 1,
-    kind: 'MORNING',
-    category: 'Morning Activation',
-    winSection: 'morning',
-    title: item.title,
-    shortTitle: item.short,
-    shortDescription: item.what,
-    what: item.what,
-    timingLabel: item.timing,
-    durationLabel: item.duration,
-    required: true,
-    sequenceType: 'RECOMMENDED_SEQUENCE',
-    instructions: [...item.instructions],
-    prompts: optionalStringArray((item as Record<string, unknown>).prompts),
-    writingFieldLabels: optionalStringArray((item as Record<string, unknown>).writingFieldLabels),
-    examples: optionalStringArray((item as Record<string, unknown>).examples),
-    smallWinInstruction: item.smallWinInstruction,
-    specialNote: 'specialNote' in item ? item.specialNote : undefined,
-    why: item.why,
-    benefits: [...item.benefits],
-    reminderEligible: true,
-    sourceReference: 'Owner-approved Master 28-Day Experience · Morning Activation',
-  }))
+  // Select the day-specific wake action before assigning display order. Stored IDs
+  // keep their original template index so existing completions stay on that action.
+  return morningTemplate
+    .map((item, index) => ({ item, originalIndex: index + 1 }))
+    .filter(({ originalIndex }) => originalIndex > 2 || originalIndex === (day.day === 1 ? 1 : 2))
+    .map(({ item, originalIndex }, index) => ({
+      id: `day-${day.day}-morning-${String(originalIndex).padStart(2, '0')}-${item.slug}`,
+      day: day.day,
+      order: index + 1,
+      kind: 'MORNING',
+      category: 'Morning Activation',
+      winSection: 'morning',
+      title: item.title,
+      shortTitle: item.short,
+      shortDescription: item.what,
+      what: item.what,
+      timingLabel: item.timing,
+      durationLabel: item.duration,
+      required: true,
+      sequenceType: 'RECOMMENDED_SEQUENCE',
+      instructions: [...item.instructions],
+      prompts: optionalStringArray((item as Record<string, unknown>).prompts),
+      writingFieldLabels: optionalStringArray((item as Record<string, unknown>).writingFieldLabels),
+      examples: optionalStringArray((item as Record<string, unknown>).examples),
+      smallWinInstruction: item.smallWinInstruction,
+      specialNote: 'specialNote' in item ? item.specialNote : undefined,
+      why: item.why,
+      benefits: [...item.benefits],
+      reminderEligible: true,
+      sourceReference: 'Owner-approved Master 28-Day Experience · Morning Activation',
+    }))
 }
 
 function buildEveningActions(day: ProgramDay): RoadmapTask[] {
@@ -566,6 +615,13 @@ function buildWords(day: ProgramDay): WordsAlongTheWayEntry {
 }
 
 function buildRoadmap(day: ProgramDay): DayRoadmap {
+  const morningActions = buildMorningActions(day)
+  const tasks = parseDailyActivities(day)
+  const eveningActions = buildEveningActions(day)
+  const countRequired = (items: RoadmapTask[]) => items.filter((task) => task.required).length
+  const morning = countRequired(morningActions)
+  const daily = countRequired(tasks)
+  const evening = countRequired(eveningActions)
   return {
     day: day.day,
     week: day.week,
@@ -578,16 +634,20 @@ function buildRoadmap(day: ProgramDay): DayRoadmap {
     sourceReference: day.sourceLocation,
     resetAffectsCompletion: false,
     wordsAlongTheWay: buildWords(day),
-    morningActions: buildMorningActions(day),
-    tasks: parseDailyActivities(day),
-    eveningActions: buildEveningActions(day),
+    morningActions,
+    tasks,
+    eveningActions,
     reflection: parseReflection(day),
     dailyReminder: getReminder(day),
-    expectedWins: { morning: 6, daily: 6, evening: 5, total: 17, weekly: 119, program: 476 },
+    expectedWins: { morning, daily, evening, total: morning + daily + evening, weekly: 0, program: 0 },
   }
 }
 
 export const dayRoadmaps: DayRoadmap[] = programContent.map(buildRoadmap)
+for (const roadmap of dayRoadmaps) {
+  roadmap.expectedWins.weekly = dayRoadmaps.filter((candidate) => candidate.week === roadmap.week).reduce((sum, candidate) => sum + candidate.expectedWins.total, 0)
+  roadmap.expectedWins.program = dayRoadmaps.reduce((sum, candidate) => sum + candidate.expectedWins.total, 0)
+}
 export const day1Roadmap = dayRoadmaps[0]
 
 export function getRoadmapForDay(day: number): DayRoadmap | null {
@@ -606,9 +666,17 @@ export function getRoadmapTaskIds(roadmap: DayRoadmap): Set<string> {
   return new Set(getAllRoadmapTasks(roadmap).map((task) => task.id))
 }
 
+function getStoredRoadmapTaskIds(roadmap: DayRoadmap): Set<string> {
+  // Only the exact removed wake action is accepted as historical progress.
+  // Do not expose it through renderable tasks or completion/next-action status.
+  const originalIndex = roadmap.day === 1 ? 2 : 1
+  const archivedId = `day-${roadmap.day}-morning-${String(originalIndex).padStart(2, '0')}-${morningTemplate[originalIndex - 1].slug}`
+  return new Set([...getRoadmapTaskIds(roadmap), archivedId])
+}
+
 export function sanitizeTaskProgress(value: unknown): DayTaskProgress {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
-  const validByDay = new Map(dayRoadmaps.map((roadmap) => [String(roadmap.day), getRoadmapTaskIds(roadmap)]))
+  const validByDay = new Map(dayRoadmaps.map((roadmap) => [String(roadmap.day), getStoredRoadmapTaskIds(roadmap)]))
   return Object.fromEntries(
     Object.entries(value as Record<string, unknown>).flatMap(([dayKey, taskIds]) => {
       const validIds = validByDay.get(dayKey)
@@ -661,11 +729,18 @@ export function deriveDayRoadmapStatus(roadmap: DayRoadmap, completedTaskIds: st
 
 export function toggleTaskCompletion(completedTaskIds: string[], taskId: string, roadmap: DayRoadmap): string[] {
   const validIds = getRoadmapTaskIds(roadmap)
-  if (!validIds.has(taskId)) return completedTaskIds.filter((id) => validIds.has(id))
-  const current = new Set(completedTaskIds.filter((id) => validIds.has(id)))
-  if (current.has(taskId)) current.delete(taskId)
-  else current.add(taskId)
-  return getAllRoadmapTasks(roadmap).filter((task) => current.has(task.id)).map((task) => task.id)
+  const storedIds = getStoredRoadmapTaskIds(roadmap)
+  const current = new Set(completedTaskIds.filter((id) => storedIds.has(id)))
+  // Historical records survive active/invalid toggles, but cannot be newly
+  // completed or undone as if they were still interactive tasks.
+  if (validIds.has(taskId)) {
+    if (current.has(taskId)) current.delete(taskId)
+    else current.add(taskId)
+  }
+  return [
+    ...getAllRoadmapTasks(roadmap).filter((task) => current.has(task.id)).map((task) => task.id),
+    ...[...current].filter((id) => !validIds.has(id)),
+  ]
 }
 
 export function calculateSmallWins(progress: DayTaskProgress | undefined, currentDay: number): SmallWinsSummary {
@@ -680,12 +755,12 @@ export function calculateSmallWins(progress: DayTaskProgress | undefined, curren
   return {
     today: {
       completed: todayStatus.completedRequiredCount,
-      total: 17,
+      total: todayStatus.requiredCount,
       morning: todayStatus.sectionCounts.morning.completed,
       daily: todayStatus.sectionCounts.daily.completed,
       evening: todayStatus.sectionCounts.evening.completed,
     },
-    week: { completed: weekCompleted, total: 119, week },
-    program: { completed: programCompleted, total: 476 },
+    week: { completed: weekCompleted, total: weekDays.reduce((sum, candidate) => sum + getRequiredTasks(candidate).length, 0), week },
+    program: { completed: programCompleted, total: dayRoadmaps.reduce((sum, candidate) => sum + getRequiredTasks(candidate).length, 0) },
   }
 }

@@ -1,0 +1,210 @@
+{
+  "sourceDigest": "c689bf84ea793ff705cf643856a89d12392c43bf02ab6c73f08fc0934f7fb7b9",
+  "normalization": "CRLF to LF text only",
+  "files": [
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha256": "bd37af2256be99b27ec6332bd4150a05ab328cbd180c2c27fd6d22dc8f605a08"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "3627046d3afac6b07c0b8074ffd3886549fdca07e991bb4d935fc66528484e73"
+    },
+    {
+      "path": "package.json",
+      "sha256": "99160a3569ecf8f5c8a13f7d22bd2210f2838cd2000a32d6ebf13e979acda68e"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "e0e64dd6bf005255b2291288399b5d109fa4f83c8e5c84db8cc9bbcb4450acce"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66"
+    },
+    {
+      "path": "public/icons.svg",
+      "sha256": "b45fa506195cfcdef406ba9f0c77b36ddc1a7c224040926ec70abc2fdea7b93a"
+    },
+    {
+      "path": "public/icons/LICENSE.txt",
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    {
+      "path": "public/icons/SOURCE.md",
+      "sha256": "2630009016c5f8f1ec63d87f83d9f1934d0709485eed06e75b3fe1be5e1f24f3"
+    },
+    {
+      "path": "public/icons/rise-bookmark.svg",
+      "sha256": "f4a4667658b8545b54dbd0eb168f700aaf1bcaf5a1c6ecb7cb33c8660c24c454"
+    },
+    {
+      "path": "public/icons/rise-heart-handshake.svg",
+      "sha256": "e1dad25211d7accfc1226ca99922a42360ff11439118ef453bd1308d417a8d4f"
+    },
+    {
+      "path": "public/icons/rise-lock-keyhole.svg",
+      "sha256": "2d8e56ba04552cd2f99b0a2d86647b533494d8a4584c99cd54be74c954eab725"
+    },
+    {
+      "path": "public/icons/rise-route.svg",
+      "sha256": "0554f3d8aa59acb921aab8197c42a589b52a6b43650adca821337f1d0d034149"
+    },
+    {
+      "path": "public/icons/rise-sun.svg",
+      "sha256": "364668285275fa2edd082dd428436198171519721411b651c77b5b1ba7104c6d"
+    },
+    {
+      "path": "public/icons/rise-wind.svg",
+      "sha256": "370acaaf3b271bc5525ba632e8913e234f07cdb9367870be8aa974246885a1a6"
+    },
+    {
+      "path": "scripts/contract-check.mjs",
+      "sha256": "3d7936b6b2c83be758423ebe25967eb1fa45ee75312e051c67b839ac0b10fd27"
+    },
+    {
+      "path": "scripts/daily-task-source-scenarios.mjs",
+      "sha256": "88016fa0d2db2fc8da437dda50b2e49afddf63142b15d447f202696ea076cbf8"
+    },
+    {
+      "path": "scripts/day-roadmap-scenarios.mjs",
+      "sha256": "8a75a7f75678c995fb00c040e20b2f00bf6d00043ffb148e551216b095d634e2"
+    },
+    {
+      "path": "scripts/expansion-cross-browser.mjs",
+      "sha256": "32339a4b007779c6e3027aef6787c46714b80e199237d51c33538287c1fb3b24"
+    },
+    {
+      "path": "scripts/final-launch-audit.mjs",
+      "sha256": "e5ee5e1a928be896c067b8e1618afe60b763699f0900380f88d9afd75c8440b5"
+    },
+    {
+      "path": "scripts/hardening-scenarios.mjs",
+      "sha256": "f26ba6ae67e2b6ee5d9f19459e9f96c8220098685dca9251295ab442b7894328"
+    },
+    {
+      "path": "scripts/notification-scenarios.mjs",
+      "sha256": "b614c6f7a0861fef831766b0306bc1d46c17f7877afb84c77e5ad22594cd9ede"
+    },
+    {
+      "path": "scripts/personalization-scenarios.mjs",
+      "sha256": "770b6f8c66d6892e9799cc56d262b324a531a4fd30da3c284a2cdfc730c34bed"
+    },
+    {
+      "path": "scripts/production-qa-scenarios.mjs",
+      "sha256": "503ac9d831520c367fb67343a3fb35b71b6c97bb15a1d3a8abfd2e66198d3540"
+    },
+    {
+      "path": "scripts/progress-scenarios.mjs",
+      "sha256": "58131629e3980f802e190a2b3fd020594a455f230e97f616065122818fdba968"
+    },
+    {
+      "path": "scripts/task-presentation-scenarios.mjs",
+      "sha256": "b83a0cfca4d281cf89668a3b3f516e0ddd95d6e4710dccba1360dcb026f0465c"
+    },
+    {
+      "path": "src/App.css",
+      "sha256": "f45115b8907c4d75cfd67dfaafe0393450bcb8ffe54e0aeb3bac5c8fc95b40f2"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "d15e6ffc04833d538ac781184bf6dc1064652d74a60e0813f55e7a7039d27ff4"
+    },
+    {
+      "path": "src/InlineExpansion.tsx",
+      "sha256": "a66062cc9342ff898252f4840080c040aaef75c1e13f51455f5e8f29e916df66"
+    },
+    {
+      "path": "src/RiseIcon.tsx",
+      "sha256": "98d57692df4075527f6ab6be6262675562fe7e4393b85a72d20374a2854ff9e7"
+    },
+    {
+      "path": "src/assets/hero.png",
+      "sha256": "881ffbcaafc212e49addad08846a5b82761355fa20624253af3477ba33262c5c"
+    },
+    {
+      "path": "src/assets/react.svg",
+      "sha256": "35ef61ed53b323ae94a16a8ec659b3d0af3880698791133f23b084085ab1c2e5"
+    },
+    {
+      "path": "src/assets/vite.svg",
+      "sha256": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f"
+    },
+    {
+      "path": "src/dayRoadmap.ts",
+      "sha256": "60fe8ab6173b68b11497007e38ed04461353ae1832656fad0747218c50f59d31"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "6a8e6d250a12ac6a494498df7a30eb76fd1cb2f6f706a49a48b5d0ca6dee2bb1"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "6e9e5807fcbd48b75a96db5cbef36c996262196be42e6d4760dc86babbe61ad2"
+    },
+    {
+      "path": "src/notificationContent.ts",
+      "sha256": "cd5565507df38077b16fff73fdf178df44877c4348db71a24b4382c5db7141a6"
+    },
+    {
+      "path": "src/pathData.ts",
+      "sha256": "426883f6caa0cee4fb7268833104c444ac6c5cfde84016c88376736fbf13df93"
+    },
+    {
+      "path": "src/personalizationContent.ts",
+      "sha256": "8d5ce5e0eecbd7708f10fd2dba9ba9e2aef0cd2ad0e6b7f1c82bbcef347172f6"
+    },
+    {
+      "path": "src/programContent.ts",
+      "sha256": "33dc9a0ee4a42ce5a4f518868249eece566ce163b2ba17e9fd650d54fbcfe31e"
+    },
+    {
+      "path": "src/progressContent.ts",
+      "sha256": "52da184911a7a7e58480edd9865bb3e4520763ce2767780b5ec188e3492ac669"
+    },
+    {
+      "path": "src/taskPresentation.ts",
+      "sha256": "e798971db06209a811e55ce5d8dc05dacd1fe7afccb09438b4c1f4b9a7880b64"
+    },
+    {
+      "path": "src/todayA.css",
+      "sha256": "4d8730a1fae65fbbe5dcc60c911c048db5ad9e5fc3a171ba0e9ad6f6b41209be"
+    },
+    {
+      "path": "src/toolContent.ts",
+      "sha256": "a8aaea4d361162d642f2367b98ca3760fcffefda4f87bee7b6a8569bb43a82f6"
+    },
+    {
+      "path": "tests/browser/coverage.spec.ts",
+      "sha256": "e7da6a30595fc4a32947935bd45de803c20fe3d789aee71b80ce35c3cc1f8ecb"
+    },
+    {
+      "path": "tests/browser/edge-cases.spec.ts",
+      "sha256": "7623ea27ea475e4c1721b2cb04ea533558b81a00d79f2af7aea26d1ca866dee0"
+    },
+    {
+      "path": "tests/browser/expansion.spec.ts",
+      "sha256": "0056b585a1332503615226495049313f3cf36aff319980539237e7d5ce56a176"
+    },
+    {
+      "path": "tests/browser/task-four-sections.spec.ts",
+      "sha256": "b299df5e9d833b06da9ba70d2616f647fd8a353e7f41b0829cef1edce0bb57bd"
+    },
+    {
+      "path": "tests/browser/today-a-focus.spec.ts",
+      "sha256": "96b60a0d6678e4021b8a8844c3864126a5df0b9af56d068b904fe2e3b590d6fc"
+    },
+    {
+      "path": "tests/browser/today-a.spec.ts",
+      "sha256": "af3617187e8a754a413bbe6e6076cdd174e4c9a97a33205403198c6a7a4c4618"
+    },
+    {
+      "path": "tests/browser/today-tasks.spec.ts",
+      "sha256": "2ca5121263c3e94eb3bf2d549438011165f4621f4093af78fa5cfa3d68ec87aa"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "766972629c21360eaf7fe7137bad0dab3ec9cd8670da8f17bd819aed502fc594"
+    }
+  ]
+}

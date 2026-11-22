@@ -5,6 +5,7 @@ const stored = (page: Page) => page.evaluate(() => Object.fromEntries(Object.ent
 async function openDay(page: Page) {
   await page.goto('/#path')
   await page.getByRole('button', { name: 'Open Day 1', exact: true }).first().click()
+  await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
 }
 async function anchored(trigger: Locator, panel: Locator) {
   const content = await panel.elementHandle()
@@ -24,7 +25,7 @@ async function disclosure(page: Page, text: string) {
   await expect(details).not.toHaveAttribute('open')
 }
 
-test('all 28 days, all 17 action cards and separate reflections expand inline without data changes', async ({ page }) => {
+test('all 28 days, all 16 action rows and separate reflections expand inline without data changes', async ({ page }) => {
   test.setTimeout(180_000)
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/#path')
@@ -34,6 +35,8 @@ test('all 28 days, all 17 action cards and separate reflections expand inline wi
   for (let day = 1; day <= 28; day++) {
     await page.locator('.day-progress-grid button').nth(day - 1).click()
     await expect(page.locator('#day-roadmap-title')).toContainText(`Day ${day}:`)
+    await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
+    await page.locator('summary').filter({ hasText: `About Day ${day}` }).click()
     const expectations = page.locator('summary').filter({ hasText: 'What to expect' })
     if (await expectations.count()) {
       await expectations.click()
@@ -41,8 +44,8 @@ test('all 28 days, all 17 action cards and separate reflections expand inline wi
       await expectations.click()
     }
     const cards = page.locator('.roadmap-task-card')
-    await expect(cards).toHaveCount(17)
-    for (let i = 0; i < 17; i++) {
+    await expect(cards).toHaveCount(16)
+    for (let i = 0; i < 16; i++) {
       const card = cards.nth(i), trigger = card.locator('button[aria-expanded]')
       await trigger.click()
       await expect(card.locator('.task-detail-card')).toBeVisible()
@@ -58,9 +61,9 @@ test('all 28 days, all 17 action cards and separate reflections expand inline wi
   expect(await stored(page)).toEqual(before)
 })
 
-test('shortcut ownership, completion, next navigation, undo and collapse focus', async ({ page }) => {
+test('task row ownership, completion, next navigation, undo and collapse focus', async ({ page }) => {
   await openDay(page)
-  const shortcut = page.getByRole('button', { name: 'Open next action', exact: true })
+  const shortcut = page.locator('.roadmap-task-card').first().locator('button[aria-expanded]')
   await shortcut.click()
   await anchored(shortcut, shortcut.locator('..').locator('.inline-expansion-panel'))
   await page.getByRole('button', { name: 'Mark as Done', exact: true }).click()
@@ -72,7 +75,7 @@ test('shortcut ownership, completion, next navigation, undo and collapse focus',
   await expect(second.locator('button[aria-expanded]')).toBeFocused()
   await expect(second.locator('.task-detail-card')).toHaveCount(0)
   const first = page.locator('.roadmap-task-card').first()
-  await first.getByRole('button', { name: 'Review tab', exact: true }).click()
+  await first.locator('button[aria-expanded]').click()
   await first.getByRole('button', { name: 'Undo Mark as Done', exact: true }).click()
   const progress = await page.evaluate(key => JSON.parse(localStorage.getItem(key)!), storageKey)
   expect(progress.dayTaskProgress['1']).toEqual([])
@@ -89,7 +92,7 @@ test('single and multiple writing fields retain drafts, save, reload and delete 
   await original.click()
   await expect(field).toHaveValue('QA synthetic private reflection')
   await page.locator('.end-of-day-card').getByRole('button', { name: 'Save locally', exact: true }).click()
-  const evening = page.locator('.roadmap-task-card').nth(14)
+  const evening = page.locator('.roadmap-task-card').nth(13)
   await evening.locator('button[aria-expanded]').click()
   const fields = evening.locator('textarea')
   await expect(fields).toHaveCount(5)
@@ -102,6 +105,7 @@ test('single and multiple writing fields retain drafts, save, reload and delete 
   expect(before.dayTaskProgress).toEqual({})
   await page.reload()
   await page.getByRole('button', { name: 'Open Day 1', exact: true }).first().click()
+  await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
   await original.click()
   await expect(field).toHaveValue('QA synthetic private reflection')
   page.once('dialog', dialog => dialog.accept())

@@ -38,13 +38,13 @@ test('saved reflections remain individually collapsed within My Path and do not 
 })
 
 for (const collapseVia of ['return button', 'same trigger'] as const) {
-  test(`final win shortcut collapse via ${collapseVia} restores focus to permanent task trigger`, async ({ page }) => {
+  test(`final win row collapse via ${collapseVia} restores focus to permanent task trigger`, async ({ page }) => {
     const tasks = getAllRoadmapTasks(getRoadmapForDay(28)!).filter(task => task.winSection)
-    const finalTask = tasks[tasks.length - 1]
     await page.addInitScript(({ key, ids }) => localStorage.setItem(key, JSON.stringify({ currentDay: 28, status: 'in_progress', completedDays: Array.from({ length: 27 }, (_, i) => i + 1), dayTaskProgress: { '28': ids }, daySectionProgress: {}, savedReflections: {}, lastReturn: 'today' })), { key, ids: tasks.slice(0, -1).map(t => t.id) })
     await page.goto('/#path')
     await page.getByRole('button', { name: 'Open Day 28', exact: true }).first().click()
-    const shortcut = page.getByRole('button', { name: 'Open next action', exact: true })
+    await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
+    const shortcut = page.locator('.roadmap-task-card').last().locator('button[aria-expanded]')
     await shortcut.focus()
     await shortcut.press('Enter')
     await page.getByRole('button', { name: 'Mark as Done', exact: true }).press('Enter')
@@ -55,8 +55,8 @@ for (const collapseVia of ['return button', 'same trigger'] as const) {
     await collapse.focus()
     await collapse.press('Enter')
     await expect(page.locator('.task-detail-card')).toHaveCount(0)
-    await expect(shortcut).toHaveCount(0)
-    const permanentTrigger = page.locator(`.roadmap-task-card[aria-labelledby="${finalTask.id}-title"]`).getByRole('button', { name: 'Review tab', exact: true })
+    await expect(shortcut).toHaveCount(1)
+    const permanentTrigger = page.locator('.roadmap-task-card').last().locator('button[aria-expanded]')
     await expect(permanentTrigger).toBeFocused()
     await expect(permanentTrigger).toBeInViewport({ ratio: 1 })
     await expect(permanentTrigger).toHaveAttribute('aria-expanded', 'false')
@@ -67,12 +67,13 @@ for (const collapseVia of ['return button', 'same trigger'] as const) {
   })
 }
 
-test('final win in shortcut remains reviewable and undoable, including Day 28', async ({ page }) => {
+test('final win in its own row remains reviewable and undoable, including Day 28', async ({ page }) => {
   const tasks = getAllRoadmapTasks(getRoadmapForDay(28)!).filter(task => task.winSection)
   await page.addInitScript(({ key, ids }) => localStorage.setItem(key, JSON.stringify({ currentDay: 28, status: 'in_progress', completedDays: Array.from({ length: 27 }, (_, i) => i + 1), dayTaskProgress: { '28': ids }, daySectionProgress: {}, savedReflections: {}, lastReturn: 'today' })), { key, ids: tasks.slice(0, -1).map(t => t.id) })
   await page.goto('/#path')
   await page.getByRole('button', { name: 'Open Day 28', exact: true }).first().click()
-  await page.getByRole('button', { name: 'Open next action', exact: true }).click()
+  await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
+  await page.locator('.roadmap-task-card').last().locator('button[aria-expanded]').click()
   await page.getByRole('button', { name: 'Mark as Done', exact: true }).click()
   await expect(page.locator('.task-detail-card')).toHaveCount(1)
   await expect(page.getByRole('button', { name: 'Undo Mark as Done', exact: true })).toBeVisible()
@@ -82,5 +83,5 @@ test('final win in shortcut remains reviewable and undoable, including Day 28', 
   await page.getByRole('button', { name: 'Undo Mark as Done', exact: true }).click()
   const undone = await page.evaluate(key => JSON.parse(localStorage.getItem(key)!), key)
   expect(undone.completedDays).not.toContain(28)
-  expect(undone.dayTaskProgress['28']).toHaveLength(16)
+  expect(undone.dayTaskProgress['28']).toHaveLength(15)
 })
