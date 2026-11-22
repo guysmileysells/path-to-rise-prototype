@@ -114,5 +114,10 @@ for (const day of [15, 22, 28]) {
 }
 for (const roadmap of dayRoadmaps) assert.equal(getAllWinTasks(roadmap).length, 16)
 assert.equal(createHash('sha256').update(JSON.stringify(dayRoadmaps.map(day => getAllWinTasks(day).map(task => task.id)))).digest('hex'), 'b8b3fbb79632422083f65fd3ac17dfe45fc983b63c3ed972af01bdd41c86749e', 'All existing win IDs must stay byte-identical')
-assert.equal(createHash('sha256').update(readFileSync(new URL('../src/programContent.ts', import.meta.url))).digest('hex'), '14a6c3d49153cb3962c6747c33501b2f291127bce51110752d7ac5982ccbbd72', 'Raw programContent stays byte-identical')
+const sourceText = readFileSync(new URL('../src/programContent.ts', import.meta.url), 'utf8')
+const canonicalSourceHash = text => createHash('sha256').update(text.replace(/\r\n/g, '\n')).digest('hex')
+const expectedSourceHash = '33dc9a0ee4a42ce5a4f518868249eece566ce163b2ba17e9fd650d54fbcfe31e'
+assert.equal(canonicalSourceHash(sourceText), expectedSourceHash, 'Canonical programContent is unchanged except Git-managed LF/CRLF line endings')
+assert.equal(canonicalSourceHash(sourceText.replace(/\r?\n/g, '\r\n')), expectedSourceHash, 'The preservation gate accepts the same source checked out on Windows')
+assert.notEqual(canonicalSourceHash(sourceText + ' '), expectedSourceHash, 'Any actual text change still fails the preservation gate')
 console.log(JSON.stringify({ result: 'PASS', days: 21, questionFixtures: questions.map(({ day, category, count }) => ({ day, category, count })), sourceBackedDomainTasks, sourceGaps, stableIds: true }))

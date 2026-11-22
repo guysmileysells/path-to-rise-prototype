@@ -52,6 +52,9 @@ Frozen runtime/test source `c689bf84ea793ff705cf643856a89d12392c43bf02ab6c73f08f
 
 Publication authorized only to the functioning-version GitHub Pages target after these gates; hosted verification remains pending here. All evidence is under `evidence/task-four-sections/`. The three known Day16 source gaps remain disclosed; no real-phone, manual screen-reader, clinical/legal or security certification is implied.
 
+## Cross-platform release-test correction
+GitHub run `45058961543` stopped before deployment because a new source-preservation test hashed Windows CRLF bytes against Linux LF checkout bytes. Canonical text was independently proved unchanged against baseline `d8186e0`; the LF hash exactly matches CI’s observed value. Only the checksum test now normalizes CRLF→LF, with separate Windows-equivalence and actual-content-mutation rejection assertions. No curriculum, UI, state logic, dependencies or workflow gates changed. Aggregate/build/lint passed again. New release-test checkpoint: `1b01fa55ad00db9f69fe24a5e0886d80fd3fc7c56098630374116279bdedd0b4`; earlier runtime/browser/independent-review results still describe byte-identical app source, and CI will rerun the full suite before deployment.
+
 ## Independent-review corrections before final acceptance
 The first read-only review found two defects despite passing preliminary checks: a non-forcing caveat in structured affirmation rationale was omitted, and the Day 9 Environmental rationale noun `focus,` appeared as a dangling How step. Both actual-source cases were reproduced RED, fixed in the presentation layer, and covered by regression fixtures. Structured action/goal/safety guidance is retained independently of short benefits; noun fragments are no longer treated as commands. The complete browser suite is rerun against the repaired frozen source; earlier runs are superseded, not release proof. The first review is retained at `evidence/task-four-sections/review-first.json`.
 

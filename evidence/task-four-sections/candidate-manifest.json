@@ -1,5 +1,5 @@
 {
-  "sourceDigest": "c689bf84ea793ff705cf643856a89d12392c43bf02ab6c73f08fc0934f7fb7b9",
+  "sourceDigest": "1b01fa55ad00db9f69fe24a5e0886d80fd3fc7c56098630374116279bdedd0b4",
   "normalization": "CRLF to LF text only",
   "files": [
     {
@@ -64,7 +64,7 @@
     },
     {
       "path": "scripts/daily-task-source-scenarios.mjs",
-      "sha256": "88016fa0d2db2fc8da437dda50b2e49afddf63142b15d447f202696ea076cbf8"
+      "sha256": "1482ceb3299eaeab4dd08cb8d82f13b49e6606a27357108c101bec5fa4a2656a"
     },
     {
       "path": "scripts/day-roadmap-scenarios.mjs",

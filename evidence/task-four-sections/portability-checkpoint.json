@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "before": "c689bf84ea793ff705cf643856a89d12392c43bf02ab6c73f08fc0934f7fb7b9",
+  "after": "1b01fa55ad00db9f69fe24a5e0886d80fd3fc7c56098630374116279bdedd0b4",
+  "changedPaths": [
+    "scripts/daily-task-source-scenarios.mjs"
+  ],
+  "applicationSourceUnchanged": true
+}
