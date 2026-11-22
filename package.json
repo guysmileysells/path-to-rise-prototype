@@ -10,7 +10,7 @@
     "contract": "node scripts/contract-check.mjs",
     "personalization": "node --experimental-transform-types scripts/personalization-scenarios.mjs",
     "progress": "node --experimental-transform-types scripts/progress-scenarios.mjs",
-    "day-roadmap": "node --experimental-transform-types scripts/day-roadmap-scenarios.mjs && node --experimental-transform-types scripts/daily-task-source-scenarios.mjs && node --experimental-transform-types scripts/task-presentation-scenarios.mjs",
+    "day-roadmap": "node --experimental-transform-types scripts/day-roadmap-scenarios.mjs && node --experimental-transform-types scripts/daily-task-source-scenarios.mjs && node --experimental-transform-types scripts/task-presentation-scenarios.mjs && node --experimental-transform-types scripts/task-order-scenarios.mjs",
     "hardening": "node scripts/hardening-scenarios.mjs",
     "notifications": "node --experimental-transform-types scripts/notification-scenarios.mjs",
     "production-qa": "node --experimental-transform-types scripts/production-qa-scenarios.mjs",

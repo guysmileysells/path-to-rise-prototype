@@ -88,7 +88,7 @@ for (const roadmap of dayRoadmaps) {
   assert.equal(empty.completedRequiredCount, 0, `Day ${day} fresh status starts at 0`)
   assert.equal(empty.requiredCount, 16, `Day ${day} required Small Win count must be 16`)
   assert.equal(empty.dayComplete, false, `Day ${day} must not start complete`)
-  assert.equal(empty.nextTask?.id, wakeTask.id, `Day ${day} next action must be the day-specific wake task`)
+  assert.equal(empty.nextTask?.id, day === 1 ? roadmap.morningActions[1].id : wakeTask.id, `Day ${day} next action must follow chronological waking-to-bedtime display`)
   assert.deepEqual(empty.sectionCounts, { morning: { completed: 0, total: 5 }, daily: { completed: 0, total: 6 }, evening: { completed: 0, total: 5 } }, `Day ${day} section totals must derive correctly`)
 
   const allIds = getAllWinTasks(roadmap).map((task) => task.id)
@@ -187,7 +187,7 @@ for (const roadmap of dayRoadmaps) {
   const archivedOnly = deriveDayRoadmapStatus(roadmap, [archivedId])
   assert.equal(archivedOnly.completedRequiredCount, 0, `Day ${roadmap.day} archived action is not a win`)
   assert.equal(archivedOnly.dayComplete, false, `Day ${roadmap.day} historical data cannot fabricate completion`)
-  assert.equal(archivedOnly.nextTask?.id, firstId, `Day ${roadmap.day} archived action is not the next action or a replacement completion`)
+  assert.equal(archivedOnly.nextTask?.id, roadmap.day === 1 ? roadmap.morningActions[1].id : firstId, `Day ${roadmap.day} archived action is not the next action or a replacement completion`)
   assert.deepEqual(archivedOnly.completedTaskIds, [], `Day ${roadmap.day} display status contains only active/optional tasks`)
   assert.equal(deriveDayRoadmapStatus(roadmap, [archivedId, firstId]).nextTask?.id, roadmap.morningActions[1].id, `Day ${roadmap.day} resume skips the obsolete wake action`)
   assert.equal(deriveDayRoadmapStatus(roadmap, [archivedId, ...allIds]).completedRequiredCount, 16, `Day ${roadmap.day} archived action cannot inflate a complete day`)

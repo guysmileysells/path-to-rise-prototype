@@ -658,6 +658,52 @@ export function getAllWinTasks(roadmap: DayRoadmap): RoadmapTask[] {
   return [...roadmap.morningActions, ...roadmap.tasks, ...roadmap.eveningActions]
 }
 
+export type ChronologicalTaskGroup = {
+  id: 'morning' | 'midday' | 'evening' | 'bedtime'
+  title: string
+  tasks: RoadmapTask[]
+}
+
+// Presentation order only. Keep every source task object, ID and timing label
+// intact; flexible activities remain flexible, without inventing clock times.
+export function getChronologicalTaskGroups(roadmap: DayRoadmap): ChronologicalTaskGroup[] {
+  const groups: ChronologicalTaskGroup[] = [
+    { id: 'morning', title: 'Morning', tasks: [] },
+    { id: 'midday', title: 'Midday + afternoon', tasks: [] },
+    { id: 'evening', title: 'Evening', tasks: [] },
+    { id: 'bedtime', title: 'Bedtime', tasks: [] },
+  ]
+  const [morning, midday, evening, bedtime] = groups
+  const alarm = roadmap.day === 1 ? roadmap.morningActions.find(task => task.id.endsWith('-set-your-alarm')) : undefined
+  morning.tasks.push(...roadmap.morningActions.filter(task => task !== alarm))
+  let writingGroup = midday
+  let stillnessGroup = midday
+  for (const task of roadmap.tasks) {
+    let group = midday
+    if (task.category === 'Physical') group = morning
+    if (task.category === 'Emotional') {
+      group = /after.*physical/i.test(task.timingLabel) ? morning : midday
+      writingGroup = group
+    }
+    if (task.category === 'Spiritual') {
+      group = /mid.morning/i.test(task.timingLabel) ? morning
+        : /after.*(?:writ|journal)/i.test(task.timingLabel) ? writingGroup : midday
+      stillnessGroup = group
+    }
+    if (task.category === 'Intellectual' && /after.*stillness/i.test(task.timingLabel)) group = stillnessGroup
+    if (task.category === 'Environmental' && /^evening\b/i.test(task.timingLabel)) group = evening
+    group.tasks.push(task)
+  }
+  evening.tasks.push(...roadmap.eveningActions.slice(0, -1))
+  bedtime.tasks.push(...roadmap.eveningActions.slice(-1))
+  if (alarm) bedtime.tasks.push(alarm)
+  return groups
+}
+
+export function getChronologicalWinTasks(roadmap: DayRoadmap): RoadmapTask[] {
+  return getChronologicalTaskGroups(roadmap).flatMap(group => group.tasks)
+}
+
 export function getAllRoadmapTasks(roadmap: DayRoadmap): RoadmapTask[] {
   return [...getAllWinTasks(roadmap), roadmap.reflection]
 }
@@ -697,7 +743,7 @@ export function getRequiredTasks(roadmap: DayRoadmap): RoadmapTask[] {
 
 export function getNextRequiredTask(roadmap: DayRoadmap, completedTaskIds: string[]): RoadmapTask | null {
   const completed = new Set(completedTaskIds)
-  return getRequiredTasks(roadmap).find((task) => !completed.has(task.id)) ?? null
+  return getChronologicalWinTasks(roadmap).find((task) => task.required && !completed.has(task.id)) ?? null
 }
 
 export function deriveDayRoadmapStatus(roadmap: DayRoadmap, completedTaskIds: string[]): DayRoadmapStatus {

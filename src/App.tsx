@@ -6,7 +6,7 @@ import { getTaskPresentation } from './taskPresentation'
 import { Disclosure, InlineExpansion } from './InlineExpansion'
 import type { ReactNode } from 'react'
 import { programContent, prompt5SourceIssues, type ProgramSection } from './programContent'
-import { activationAffirmations, deriveDayRoadmapStatus, feelingStuckOptions, getCompletedRoadmapTaskIds, getRoadmapForDay, sanitizeTaskProgress, toggleTaskCompletion, type DayRoadmap, type DayTaskProgress, type RoadmapTask } from './dayRoadmap'
+import { activationAffirmations, deriveDayRoadmapStatus, feelingStuckOptions, getCompletedRoadmapTaskIds, getChronologicalTaskGroups, getChronologicalWinTasks, getRoadmapForDay, sanitizeTaskProgress, toggleTaskCompletion, type DayRoadmap, type DayTaskProgress, type RoadmapTask } from './dayRoadmap'
 import {
   canonicalTools,
   getCanonicalTool,
@@ -270,7 +270,7 @@ function getHomeModel(progress: ProgramProgress): HomeModel {
   const roadmapStatus = roadmap ? deriveDayRoadmapStatus(roadmap, getCompletedRoadmapTaskIds(progress.dayTaskProgress, day.day)) : null
 
   if (roadmap && roadmapStatus) {
-    const nextLabel = roadmapStatus.nextTask ? `Next up: ${roadmapStatus.nextTask.order}. ${roadmapStatus.nextTask.shortTitle}` : 'Day complete'
+    const nextLabel = roadmapStatus.nextTask ? `Next up: ${getChronologicalWinTasks(roadmap).findIndex(task => task.id === roadmapStatus.nextTask?.id) + 1}. ${roadmapStatus.nextTask.shortTitle}` : 'Day complete'
     return {
       eyebrow: `${progressPrefix} · ${roadmapStatus.progressLabel}`,
       title: day.title,
@@ -1480,6 +1480,7 @@ function getTaskReflectionKey(task: RoadmapTask) {
 function DayRoadmapExperience({ roadmap, progress, draftReflections, onDraftReflection, onSaveReflection, onDeleteReflection, onToggleRoadmapTask, onSupport }: { roadmap: DayRoadmap; progress: ProgramProgress; draftReflections: Record<string, string>; onDraftReflection: (key: string, value: string) => void; onSaveReflection: (key: string, value: string) => void; onDeleteReflection: (key: string) => void; onToggleRoadmapTask: (day: number, taskId: string) => void; onSupport: () => void }) {
   const [tasksOpen, setTasksOpen] = useState(false)
   const [expandedTaskId, setExpandedTaskId] = useState<string | null>(null)
+  const taskGroups = getChronologicalTaskGroups(roadmap)
   const completedTaskIds = getCompletedRoadmapTaskIds(progress.dayTaskProgress, roadmap.day)
   const completedSet = new Set(completedTaskIds)
   const roadmapStatus = deriveDayRoadmapStatus(roadmap, completedTaskIds)
@@ -1528,9 +1529,9 @@ function DayRoadmapExperience({ roadmap, progress, draftReflections, onDraftRefl
           setTasksOpen(!tasksOpen)
         }} label="Today’s Tasks">
           <p className="fineprint left-copy">Open a task for instructions. Mark it done when finished; you can undo it at any time.</p>
-          <ActionGroup title="Morning" progress={`${roadmapStatus.sectionCounts.morning.completed}/${roadmapStatus.sectionCounts.morning.total}`} description={roadmap.day === 1 ? "Start here: set your alarm tonight, then follow the routine for this day." : "Start with getting up, then follow your morning routine."} tasks={roadmap.morningActions} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} renderExpansion={taskExpansion} />
-          <ActionGroup title="During your day" progress={`${roadmapStatus.sectionCounts.daily.completed}/${roadmapStatus.sectionCounts.daily.total}`} description="Your day-specific activities, in source order from morning through midday and evening. Follow each task’s timing." tasks={roadmap.tasks} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} renderExpansion={taskExpansion} />
-          <ActionGroup title="Evening + bedtime" progress={`${roadmapStatus.sectionCounts.evening.completed}/${roadmapStatus.sectionCounts.evening.total}`} description="Your evening routine and private writing before rest." tasks={roadmap.eveningActions} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} renderExpansion={taskExpansion} />
+          {taskGroups.map(group => (
+            <ActionGroup key={group.id} title={group.title} progress={`${group.tasks.filter(task => completedSet.has(task.id)).length}/${group.tasks.length}`} description="Follow each task’s original timing. Flexible activities can fit your day." tasks={group.tasks} completedSet={completedSet} currentTaskId={nextTask?.id ?? null} renderExpansion={taskExpansion} />
+          ))}
           <section className="end-of-day-card" aria-label="Optional end-of-day reflection">
             <p className="fineprint left-copy">Optional · Separate from task totals</p>
             {taskExpansion(roadmap.reflection, 'Original End-of-Day Reflection')}
@@ -1586,9 +1587,9 @@ function SmallWinsMeter({ roadmap, status }: { roadmap: DayRoadmap; status: Retu
       </div>
       <div className="section-progress" aria-hidden="true"><span style={{ width: `${Math.max(status.completedRequiredCount === 0 ? 0 : 6, percent)}%` }} /></div>
       <div className="summary-metrics small-win-metrics">
-        <span><strong>Morning</strong>{status.sectionCounts.morning.completed}/{status.sectionCounts.morning.total}</span>
-        <span><strong>Activities</strong>{status.sectionCounts.daily.completed}/6</span>
-        <span><strong>Evening</strong>{status.sectionCounts.evening.completed}/5</span>
+        {getChronologicalTaskGroups(roadmap).map(group => (
+          <span key={group.id}><strong>{group.title}</strong>{group.tasks.filter(task => status.completedTaskIds.includes(task.id)).length}/{group.tasks.length}</span>
+        ))}
       </div>
       <p className="fineprint left-copy">Weekly target: {roadmap.expectedWins.weekly} possible Small Wins. Full 28-day journey: {roadmap.expectedWins.program} possible Small Wins. No streaks, rankings, guilt or penalties.</p>
     </section>
@@ -1605,7 +1606,7 @@ function ActionGroup({ title, progress, description, tasks, completedSet, curren
       <p className="fineprint left-copy">{description}</p>
       <div className="roadmap-timeline" aria-label={`${title} actions`}>
         {tasks.map((task) => (
-          <article key={task.id} className={`roadmap-task-card ${completedSet.has(task.id) ? 'complete' : ''} ${currentTaskId === task.id ? 'current' : ''}`} aria-label={task.title}>
+          <article key={task.id} data-task-id={task.id} className={`roadmap-task-card ${completedSet.has(task.id) ? 'complete' : ''} ${currentTaskId === task.id ? 'current' : ''}`} aria-label={task.title}>
             {renderExpansion(task, <span className="task-row-label"><span>{task.title}</span><small>{completedSet.has(task.id) ? '✓ Done' : '○ Not done'} · {task.timingLabel}</small></span>)}
           </article>
         ))}

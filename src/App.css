@@ -1170,6 +1170,26 @@ summary {
   min-width: 0;
 }
 
+/* Normal document flow is mandatory: panels grow BELOW their own title and
+   push every later row down. Never inherit a popup/side-by-side panel layout. */
+.today-tasks .inline-expansion {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.today-tasks .inline-expansion-panel {
+  position: static;
+  inset: auto;
+  transform: none;
+  width: 100%;
+}
+
+.today-tasks .roadmap-timeline {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .today-tasks .roadmap-task-card {
   display: block;
   padding: 0;
