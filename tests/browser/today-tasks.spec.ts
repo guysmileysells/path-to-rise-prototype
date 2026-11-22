@@ -20,7 +20,7 @@ async function openTasks(page: import('@playwright/test').Page, day = 1) {
   return tab
 }
 
-test('Today’s Tasks opens downward with the new Day 1 first row and persists independent completion', async ({ page }) => {
+test('Today’s Tasks opens downward with the Day 1 bedtime alarm and persists independent completion', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.addInitScript(key => {
@@ -29,7 +29,7 @@ test('Today’s Tasks opens downward with the new Day 1 first row and persists i
   const tab = await openTasks(page)
   const cards = page.locator('.roadmap-task-card')
   await expect(cards).toHaveCount(16)
-  const first = cards.first()
+  const first = page.locator('[data-task-id="day-1-morning-01-set-your-alarm"]')
   await expect(first).toContainText('Set Your Alarm')
   await expect(page.locator('.today-tasks')).not.toContainText('First Win —')
   const row = first.locator('button[aria-expanded]')
@@ -49,8 +49,8 @@ test('Today’s Tasks opens downward with the new Day 1 first row and persists i
   await page.reload()
   await page.getByRole('button', { name: 'Open Day 1', exact: true }).first().click()
   await page.getByRole('button', { name: 'Today’s Tasks', exact: true }).click()
-  await cards.first().locator('button[aria-expanded]').click()
-  await cards.first().getByRole('button', { name: 'Undo Mark as Done', exact: true }).click()
+  await first.locator('button[aria-expanded]').click()
+  await first.getByRole('button', { name: 'Undo Mark as Done', exact: true }).click()
   const undone = await page.evaluate(key => JSON.parse(localStorage.getItem(key)!), key)
   expect(undone.dayTaskProgress['1']).toEqual([])
   expect(undone.dayTaskProgress['2']).toEqual(saved.dayTaskProgress['2'])

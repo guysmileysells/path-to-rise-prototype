@@ -92,7 +92,7 @@ test('single and multiple writing fields retain drafts, save, reload and delete 
   await original.click()
   await expect(field).toHaveValue('QA synthetic private reflection')
   await page.locator('.end-of-day-card').getByRole('button', { name: 'Save locally', exact: true }).click()
-  const evening = page.locator('.roadmap-task-card').nth(13)
+  const evening = page.locator('[data-task-id="day-1-evening-03-five-things-grateful-for"]')
   await evening.locator('button[aria-expanded]').click()
   const fields = evening.locator('textarea')
   await expect(fields).toHaveCount(5)

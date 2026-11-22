@@ -11,7 +11,7 @@ test('approved A keeps Reset first and starts the real source-backed day', async
   await expect(reset).toBeVisible()
   expect(await reset.evaluate((el) => el.getBoundingClientRect().top)).toBeLessThan(await path.evaluate((el) => el.getBoundingClientRect().top))
   await expect(path).toContainText('Day 1 of 28')
-  await expect(path).toContainText('Set your alarm')
+  await expect(path.locator('.today-a-next')).toHaveText('Next up: 1. 10 mirror breaths')
   await expect(path.getByRole('progressbar')).toHaveAttribute('value', '0')
   await path.getByRole('button', { name: /Start Day 1/ }).click()
   await expect(page.locator('#day-roadmap-title')).toContainText('Day 1:')

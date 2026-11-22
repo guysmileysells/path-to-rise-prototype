@@ -1,0 +1,12 @@
+{
+  "src/App.tsx": "f50015bf2a0f1a0f01aa458424d9f592ee503b1c032d14b7454c335b6b08b25a",
+  "src/App.css": "8e4f9758fda7b495b865a76ac7dcea620b3f64edfc4e2b824b2de16cc69942ea",
+  "src/dayRoadmap.ts": "76e641fc1676e830fea01f7932d261add60f97f8bebda9d8e9a68b42334c8cce",
+  "src/InlineExpansion.tsx": "a66062cc9342ff898252f4840080c040aaef75c1e13f51455f5e8f29e916df66",
+  "src/programContent.ts": "14a6c3d49153cb3962c6747c33501b2f291127bce51110752d7ac5982ccbbd72",
+  "src/taskPresentation.ts": "41ffa28b7006703891302be49a09ad86d68055d2d675c1e5d01e1f15d43f2cd2",
+  "src/progressContent.ts": "45c0d02173f7df45fb8ab1a89e268b1e3311056dc8d582b1f200c0e21974702f",
+  "docs/FUNCTIONING_VERSION.md": "290d143525a26d7f8464282db4891e7dbdf62eb640c814786b90baad31070a8d",
+  "docs/WAKE_UP_FIRST_ACTION.md": "5848655fa214e93b0c279cc0748a91c1f649052882c30b888094a5232120464e",
+  "docs/PATH_TO_RISE_MASTER_HANDOFF.md": "9c91edd724f9279df3f2b948034baed05b30d2d01b9f04c6953d9bd3c1a45af3"
+}

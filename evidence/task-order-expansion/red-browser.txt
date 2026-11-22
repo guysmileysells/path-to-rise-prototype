@@ -1,0 +1,63 @@
+
+Running 1 test using 1 worker
+
+  x  1 [mobile] › tests\browser\task-order.spec.ts:4:1 › all 28 days show waking-to-bedtime rows and every panel pushes neighbours downward (6.7s)
+
+
+  1) [mobile] › tests\browser\task-order.spec.ts:4:1 › all 28 days show waking-to-bedtime rows and every panel pushes neighbours downward 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('.roadmap-task-card').locator('.task-row-label > span')
+    Timeout: 5000ms
+    - Expected  - 1
+    + Received  + 1
+
+    @@ -1,6 +1,7 @@
+      Array [
+    +   "Set Your Alarm",
+        "Mirror Breathwork",
+        "Hydrate Your Body",
+        "Brush With Your Non-Dominant Hand",
+        "Morning Mirror Affirmations",
+        "15-Minute Walk/Stroll + 5 Minutes Stretching",
+    @@ -12,7 +13,6 @@
+        "Brush With Your Non-Dominant Hand",
+        "Evening Mirror Affirmations",
+        "Five Things I'm Grateful For",
+        "Three Small Wins From Today",
+        "One Thing I'm Proud Of",
+    -   "Set Your Alarm",
+      ]
+
+    Call log:
+      - Expect "toHaveText" locator('.roadmap-task-card').locator('.task-row-label > span') with timeout 5000ms
+      - waiting for locator('.roadmap-task-card').locator('.task-row-label > span')
+        14 × locator resolved to 16 elements
+
+
+      15 |     const rows = page.locator('.roadmap-task-card')
+      16 |     const tasks = getChronologicalWinTasks(day)
+    > 17 |     await expect(rows.locator('.task-row-label > span')).toHaveText(tasks.map(t => t.title))
+         |                                                          ^
+      18 |     await expect(page.locator('.action-group > .status-row h3')).toHaveText(getChronologicalTaskGroups(day).map(g => g.title))
+      19 |     for (let i = 0; i < tasks.length; i++) {
+      20 |       const row = rows.nth(i)
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\task-order.spec.ts:17:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\task-order-expansion\red-artifacts\task-order-all-28-days-sho-06d9b--pushes-neighbours-downward-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\task-order-expansion\red-artifacts\task-order-all-28-days-sho-06d9b--pushes-neighbours-downward-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\task-order-expansion\red-artifacts\task-order-all-28-days-sho-06d9b--pushes-neighbours-downward-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\task-order-expansion\red-artifacts\task-order-all-28-days-sho-06d9b--pushes-neighbours-downward-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\task-order.spec.ts:4:1 › all 28 days show waking-to-bedtime rows and every panel pushes neighbours downward 

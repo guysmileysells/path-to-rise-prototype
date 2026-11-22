@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { dayRoadmaps } from '../../src/dayRoadmap'
+import { dayRoadmaps, getChronologicalWinTasks } from '../../src/dayRoadmap'
 
 // Exhaustive content checks need no animation; other suites exercise smooth/reduced motion.
 test.use({ reducedMotion: 'reduce' })
@@ -18,7 +18,7 @@ test('all 28 days have four clean sections in every task, preserved prompts and 
   page.on('pageerror', e => errors.push(e.message))
   for (const roadmap of dayRoadmaps) {
     await openDay(page, roadmap.day)
-    const tasks = [...roadmap.morningActions, ...roadmap.tasks, ...roadmap.eveningActions]
+    const tasks = getChronologicalWinTasks(roadmap)
     const rows = page.locator('.roadmap-task-card')
     await expect(rows).toHaveCount(16)
     for (let i = 0; i < tasks.length; i++) {
