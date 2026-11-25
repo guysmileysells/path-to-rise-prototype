@@ -10,8 +10,51 @@ export type TaskPresentation = {
 
 type Section = 'when' | 'what' | 'how' | 'why' | 'benefits'
 
+// Only source-origin defects confirmed by the app-wide spacing audit. This
+// allowlist deliberately preserves countdowns such as 5…4…3…2…1…MOVE.
+const observedSourceJoins = [
+  "fix…just",
+  "seconds…Hold",
+  "seconds…Exhale",
+  "MOVE…No",
+  "lifestyle…Your",
+  "identity…And",
+  "building…Keep",
+  "up…Keep",
+  "journey…This",
+  "perfection…The",
+  "momentum…You",
+  "possible…You",
+  "perfection…Healing",
+  "growing…Keep",
+  "yourself…Not",
+  "once…Not",
+  "easy…Not",
+  "motivated…But",
+  "weeks…That",
+  "effort…It",
+  "discipline…It",
+  "evidence….Evidence",
+  "confidence…Confidence",
+  "follows…Then",
+  "follows…Action",
+  "gradually…Trust",
+  "process…The",
+  "line…It",
+  "point…Continue",
+  "grown& reflected"
+]
+const sourceJoinPattern = new RegExp(observedSourceJoins.map(fragment => fragment.replaceAll('.', '\\.')).join('|'), 'g')
+
+// Display only: raw source/task records and user-authored writing stay untouched.
+export function formatProgramText(value: string): string {
+  return value
+    .replace(/(^|\n)(\s*\d+\.)(?=(?:Physical|Emotional|Spiritual|Intellectual|Social|Environmental)\b)/g, '$1$2 ')
+    .replace(sourceJoinPattern, fragment => fragment === 'grown& reflected' ? 'grown & reflected' : fragment.replace(/(…\.?)(?=\p{L})/u, '$1 '))
+}
+
 function clean(value: string): string {
-  return value.replace(/_{2,}/g, '').replace(/[\t ]+/g, ' ').trim()
+  return formatProgramText(value.replace(/_{2,}/g, '').replace(/[\t ]+/g, ' ').trim())
 }
 
 function unique(values: string[]): string[] {

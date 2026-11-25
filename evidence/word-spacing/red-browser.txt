@@ -1,0 +1,121 @@
+
+Running 1 test using 1 worker
+
+  x  1 [mobile] › tests\browser\word-spacing.spec.ts:21:1 › whole-prototype labels retain real word spaces across every shared screen (12.6s)
+
+
+  1) [mobile] › tests\browser\word-spacing.spec.ts:21:1 › whole-prototype labels retain real word spaces across every shared screen 
+
+    Error: Adjacent labels/counts must include actual spaces, not only CSS gaps
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 80
+
+    - Array []
+    + Array [
+    +   "BUTTON.list-card personalized-card: Walk + Stretch Reset|CURRENT WEEK · From Week 1.",
+    +   "ARTICLE.notice-card: Stored in this browser|Progress, saved writing, favourites and recents stay here. No acc",
+    +   "ARTICLE.notice-card: Platform truth|The browser exposes notification primitives, but this app has no ",
+    +   "SUMMARY.: Program reminder|Off",
+    +   "SUMMARY.: Practice reminder|Off",
+    +   "SUMMARY.: Return reminder|Off",
+    +   "SUMMARY.: Post-program reminder|Off",
+    +   "SPAN.: Week|1 · Stabilize",
+    +   "SPAN.: Day|1 / 28",
+    +   "SPAN.: Small Wins|0",
+    +   "SPAN.: This Week|0",
+    +   "SPAN.: Journey|0",
+    +   "SUMMARY.: Path map + insights|Weeks, day picker and descriptive progress notes.",
+    +   "BUTTON.day active state-current: 1|current",
+    +   "BUTTON.day state-available: 2|available",
+    +   "BUTTON.day state-upcoming: 3|upcoming",
+    +   "BUTTON.day state-upcoming: 4|upcoming",
+    +   "BUTTON.day state-upcoming: 5|upcoming",
+    +   "BUTTON.day state-upcoming: 6|upcoming",
+    +   "BUTTON.day state-upcoming: 7|upcoming",
+    +   "BUTTON.day state-upcoming: 8|upcoming",
+    +   "BUTTON.day state-upcoming: 9|upcoming",
+    +   "BUTTON.day state-upcoming: 10|upcoming",
+    +   "BUTTON.day state-upcoming: 11|upcoming",
+    +   "BUTTON.day state-upcoming: 12|upcoming",
+    +   "BUTTON.day state-upcoming: 13|upcoming",
+    +   "BUTTON.day state-upcoming: 14|upcoming",
+    +   "BUTTON.day state-upcoming: 15|upcoming",
+    +   "BUTTON.day state-upcoming: 16|upcoming",
+    +   "BUTTON.day state-upcoming: 17|upcoming",
+    +   "BUTTON.day state-upcoming: 18|upcoming",
+    +   "BUTTON.day state-upcoming: 19|upcoming",
+    +   "BUTTON.day state-upcoming: 20|upcoming",
+    +   "BUTTON.day state-upcoming: 21|upcoming",
+    +   "BUTTON.day state-upcoming: 22|upcoming",
+    +   "BUTTON.day state-upcoming: 23|upcoming",
+    +   "BUTTON.day state-upcoming: 24|upcoming",
+    +   "BUTTON.day state-upcoming: 25|upcoming",
+    +   "BUTTON.day state-upcoming: 26|upcoming",
+    +   "BUTTON.day state-upcoming: 27|upcoming",
+    +   "BUTTON.day state-upcoming: 28|upcoming",
+    +   "SUMMARY.: Practices + private reflections|Saved tools and local-only reflection review.",
+    +   "SUMMARY.: Progress privacy|What this prototype uses and does not use.",
+    +   "ARTICLE.notice-card compact: Progress uses minimal data|8 permitted/caution signal groups are used for display. Reflectio",
+    +   "SPAN.: Morning|0",
+    +   "SPAN.: Midday + afternoon|0",
+    +   "SPAN.: Evening|0",
+    +   "SPAN.: Bedtime|0",
+    +   "SECTION.notice-card compact daily-reminder-card: Daily Reminder|Do not judge the program today. Do not try to feel amazing. Just ",
+    +   "DETAILS.source-banner roadmap-source: Program source|week-01-source.docx · extracted block 87–197",
+    +   "DETAILS.source-banner roadmap-source: week-01-source.docx · extracted block 87–197|Daily activities remain day-specific source curriculum. The first",
+    +   "BUTTON.need-card: I'm overwhelmed|Start with something body-first and simple.",
+    +   "BUTTON.need-card: I can't switch off|Use a transition or wind-down practice.",
+    +   "BUTTON.need-card: I'm stuck in my head|Use a small action or reflection to get unstuck.",
+    +   "BUTTON.need-card: I'm coming home from shift|Choose a transition tool before you walk into the next part of th",
+    +   "BUTTON.need-card: I need to ground|Try a repeatable source-backed grounding practice.",
+    +   "SUMMARY.: More RESET needs|4 more source-backed routes.",
+    +   "BUTTON.need-card: I need to sleep|Keep it quiet, simple and low-stimulation.",
+    +   "BUTTON.need-card: I feel numb|Use a low-pressure action that does not require a lot of words.",
+    +   "BUTTON.need-card: I'm struggling with control|Choose an intentional-action practice.",
+    +   "BUTTON.need-card: I need to connect|Start with a simple source-backed connection step.",
+    +   "ARTICLE.notice-card: Recent shortcut|Walk + Stretch Reset · From Week 1. RESET still starts with your ",
+    +   "SUMMARY.: Saved + recent practices|Quick returns when you have them.",
+    +   "SUMMARY.: Browse all Toolbox practices|All 10 canonical tools, grouped by purpose.",
+    +   "DIV.source-banner: Source-backed|week-02-source.docx · extracted block 469–574 · Step 2 - Mirror B",
+    +   "DIV.source-banner: Source-backed|week-02-source.docx · extracted block 469–574 · Step 3 - Hydratio",
+    +   "DIV.source-banner: Source-backed|week-02-source.docx · extracted block 469–574 · Step 4 - Non-Domi",
+    +   "DIV.source-banner: Source-backed|week-03-source.docx · extracted block 112–262 · Step 5 - Mirror W",
+    +   "DIV.source-banner: Source-backed|week-02-source.docx · extracted block 469–574 · Step 3 - Gratitud",
+    +   "DIV.source-banner: Source-backed|week-03-source.docx · extracted block 263–406 · Step 1 - Immediat",
+    +   "DIV.source-banner: Source-backed|week-03-source.docx · extracted block 263–406 · Day 16 Evening Re",
+    +   "DIV.source-banner: Source-backed|week-03-source.docx · extracted block 926–1075 · check-in with so",
+    +   "DIV.source-banner: Source-backed|week-04-source.docx · extracted block 1362–1699 · reflection & in",
+    +   "DIV.source-banner: Source-backed|week-01-source.docx · extracted block 87–197 · Continue",
+    +   "ARTICLE.support-card: Level 1|Personal tools, education and journal",
+    +   "ARTICLE.support-card: Level 2|Trusted person, peer, mentor or chaplain",
+    +   "ARTICLE.support-card: Level 3|Counsellor, psychologist, physician, EAP or specialized service",
+    +   "ARTICLE.support-card: Level 4|9-8-8 in Canada, emergency services and local crisis resources",
+    + ]
+
+      74 |   await check('Support and crisis guidance')
+      75 |   await testInfo.attach('word-spacing-audit', { body: JSON.stringify({ visited, findings: [...findings] }, null, 2), contentType: 'application/json' })
+    > 76 |   expect([...findings], 'Adjacent labels/counts must include actual spaces, not only CSS gaps').toEqual([])
+         |                                                                                                 ^
+      77 | })
+      78 |
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\word-spacing.spec.ts:76:97
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\word-spacing\red-artifacts\word-spacing-whole-prototy-8829d--across-every-shared-screen-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\word-spacing\red-artifacts\word-spacing-whole-prototy-8829d--across-every-shared-screen-mobile\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\word-spacing\red-artifacts\word-spacing-whole-prototy-8829d--across-every-shared-screen-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\word-spacing\red-artifacts\word-spacing-whole-prototy-8829d--across-every-shared-screen-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\word-spacing.spec.ts:21:1 › whole-prototype labels retain real word spaces across every shared screen 

@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "base": "http://127.0.0.1:4183/",
+  "metrics": [
+    "Week 1 · Stabilize",
+    "Day 1 / 28",
+    "Small Wins 0/16 today",
+    "This Week 0/112",
+    "Journey 0/448"
+  ],
+  "correctedBreathingInstruction": true,
+  "pageErrors": []
+}

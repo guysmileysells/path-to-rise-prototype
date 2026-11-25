@@ -1,0 +1,15 @@
+{
+  "src/App.css": true,
+  "src/dayRoadmap.ts": true,
+  "src/index.css": true,
+  "src/InlineExpansion.tsx": true,
+  "src/main.tsx": true,
+  "src/notificationContent.ts": true,
+  "src/pathData.ts": true,
+  "src/personalizationContent.ts": true,
+  "src/programContent.ts": true,
+  "src/progressContent.ts": true,
+  "src/RiseIcon.tsx": true,
+  "src/todayA.css": true,
+  "src/toolContent.ts": true
+}

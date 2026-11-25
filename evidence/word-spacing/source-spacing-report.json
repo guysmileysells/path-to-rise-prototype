@@ -1,0 +1,418 @@
+{
+  "result": "PASS",
+  "sourceStrings": 4552,
+  "correctedSourceStrings": 58,
+  "spacesAdded": 73,
+  "taskViews": 476,
+  "nonWhitespaceSourcePreserved": true,
+  "originalSourceUnmodified": true,
+  "baselineTaskViewsPreserved": true,
+  "changes": [
+    {
+      "day": 1,
+      "section": "day-section-03-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page writing exercise",
+      "after": "2. Emotional | One-page writing exercise"
+    },
+    {
+      "day": 1,
+      "section": "day-section-03-source-table",
+      "index": 4,
+      "before": "3.Spiritual | 5 minutes of breathing",
+      "after": "3. Spiritual | 5 minutes of breathing"
+    },
+    {
+      "day": 1,
+      "section": "day-section-03-source-table",
+      "index": 5,
+      "before": "4.Intellectual | Clarity questions",
+      "after": "4. Intellectual | Clarity questions"
+    },
+    {
+      "day": 1,
+      "section": "day-section-03-source-table",
+      "index": 6,
+      "before": "5.Social | One simple connection",
+      "after": "5. Social | One simple connection"
+    },
+    {
+      "day": 1,
+      "section": "day-section-03-source-table",
+      "index": 7,
+      "before": "6.Environmental | 10-minute reset",
+      "after": "6. Environmental | 10-minute reset"
+    },
+    {
+      "day": 2,
+      "section": "day-section-03-source-table",
+      "index": 2,
+      "before": "1.Physical | 15-minute nature walk/stroll + stretching",
+      "after": "1. Physical | 15-minute nature walk/stroll + stretching"
+    },
+    {
+      "day": 2,
+      "section": "day-section-03-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page writing with specific prompt",
+      "after": "2. Emotional | One-page writing with specific prompt"
+    },
+    {
+      "day": 2,
+      "section": "day-section-03-source-table",
+      "index": 4,
+      "before": "3.Spiritual | 6 minutes breathing",
+      "after": "3. Spiritual | 6 minutes breathing"
+    },
+    {
+      "day": 2,
+      "section": "day-section-03-source-table",
+      "index": 5,
+      "before": "4.Intellectual | Awareness questions",
+      "after": "4. Intellectual | Awareness questions"
+    },
+    {
+      "day": 2,
+      "section": "day-section-03-source-table",
+      "index": 6,
+      "before": "5.Social | One simple conversation",
+      "after": "5. Social | One simple conversation"
+    },
+    {
+      "day": 2,
+      "section": "day-section-03-source-table",
+      "index": 7,
+      "before": "6.Environmental | 10-minute organization reset",
+      "after": "6. Environmental | 10-minute organization reset"
+    },
+    {
+      "day": 3,
+      "section": "day-section-03-source-table",
+      "index": 2,
+      "before": "1.Physical | 20-minute nature walk + stretching",
+      "after": "1. Physical | 20-minute nature walk + stretching"
+    },
+    {
+      "day": 3,
+      "section": "day-section-03-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page writing with deeper prompt",
+      "after": "2. Emotional | One-page writing with deeper prompt"
+    },
+    {
+      "day": 3,
+      "section": "day-section-03-source-table",
+      "index": 4,
+      "before": "3.Spiritual | 6 minutes breathing + stillness",
+      "after": "3. Spiritual | 6 minutes breathing + stillness"
+    },
+    {
+      "day": 3,
+      "section": "day-section-03-source-table",
+      "index": 5,
+      "before": "4.Intellectual | Pattern awareness questions",
+      "after": "4. Intellectual | Pattern awareness questions"
+    },
+    {
+      "day": 3,
+      "section": "day-section-03-source-table",
+      "index": 6,
+      "before": "5.Social | Simple connection",
+      "after": "5. Social | Simple connection"
+    },
+    {
+      "day": 3,
+      "section": "day-section-03-source-table",
+      "index": 7,
+      "before": "6.Environmental | 10-minute reset",
+      "after": "6. Environmental | 10-minute reset"
+    },
+    {
+      "day": 3,
+      "section": "day-section-04-continue",
+      "index": 21,
+      "before": "Do not analyze and do not fix…just write.",
+      "after": "Do not analyze and do not fix… just write."
+    },
+    {
+      "day": 3,
+      "section": "day-section-04-continue",
+      "index": 31,
+      "before": "Inhale 4 seconds…Hold 2 seconds…Exhale 6 seconds",
+      "after": "Inhale 4 seconds… Hold 2 seconds… Exhale 6 seconds"
+    },
+    {
+      "day": 4,
+      "section": "day-section-03-source-table",
+      "index": 2,
+      "before": "1.Physical | 20-minute nature walk/stroll + stretching",
+      "after": "1. Physical | 20-minute nature walk/stroll + stretching"
+    },
+    {
+      "day": 4,
+      "section": "day-section-03-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page writing – pressure and tension",
+      "after": "2. Emotional | One-page writing – pressure and tension"
+    },
+    {
+      "day": 4,
+      "section": "day-section-03-source-table",
+      "index": 4,
+      "before": "3.Spiritual | Breathing + stillness",
+      "after": "3. Spiritual | Breathing + stillness"
+    },
+    {
+      "day": 4,
+      "section": "day-section-03-source-table",
+      "index": 5,
+      "before": "4.Intellectual | Control and habits awareness",
+      "after": "4. Intellectual | Control and habits awareness"
+    },
+    {
+      "day": 4,
+      "section": "day-section-03-source-table",
+      "index": 6,
+      "before": "5.Social | Simple connection",
+      "after": "5. Social | Simple connection"
+    },
+    {
+      "day": 4,
+      "section": "day-section-03-source-table",
+      "index": 7,
+      "before": "6.Environmental | 12-minute reset",
+      "after": "6. Environmental | 12-minute reset"
+    },
+    {
+      "day": 5,
+      "section": "day-section-04-source-table",
+      "index": 2,
+      "before": "1.Physical | 20-minute nature walk/stroll + stretching",
+      "after": "1. Physical | 20-minute nature walk/stroll + stretching"
+    },
+    {
+      "day": 5,
+      "section": "day-section-04-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page writing – what I hold inside",
+      "after": "2. Emotional | One-page writing – what I hold inside"
+    },
+    {
+      "day": 5,
+      "section": "day-section-04-source-table",
+      "index": 4,
+      "before": "3.Spiritual | Breathing + stillness",
+      "after": "3. Spiritual | Breathing + stillness"
+    },
+    {
+      "day": 5,
+      "section": "day-section-04-source-table",
+      "index": 5,
+      "before": "4.Intellectual | Stress triggers awareness",
+      "after": "4. Intellectual | Stress triggers awareness"
+    },
+    {
+      "day": 5,
+      "section": "day-section-04-source-table",
+      "index": 6,
+      "before": "5.Social | One honest interaction",
+      "after": "5. Social | One honest interaction"
+    },
+    {
+      "day": 5,
+      "section": "day-section-04-source-table",
+      "index": 7,
+      "before": "6.Environmental | 12-minute reset",
+      "after": "6. Environmental | 12-minute reset"
+    },
+    {
+      "day": 6,
+      "section": "day-section-04-source-table",
+      "index": 2,
+      "before": "1.Physical | 20-minute walk + stretching",
+      "after": "1. Physical | 20-minute walk + stretching"
+    },
+    {
+      "day": 6,
+      "section": "day-section-04-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page writing – what I feel but don’t show",
+      "after": "2. Emotional | One-page writing – what I feel but don’t show"
+    },
+    {
+      "day": 6,
+      "section": "day-section-04-source-table",
+      "index": 4,
+      "before": "3.Spiritual | Breathing + stillness",
+      "after": "3. Spiritual | Breathing + stillness"
+    },
+    {
+      "day": 6,
+      "section": "day-section-04-source-table",
+      "index": 5,
+      "before": "4.Intellectual | Reaction awareness",
+      "after": "4. Intellectual | Reaction awareness"
+    },
+    {
+      "day": 6,
+      "section": "day-section-04-source-table",
+      "index": 6,
+      "before": "5.Social | One real conversation",
+      "after": "5. Social | One real conversation"
+    },
+    {
+      "day": 6,
+      "section": "day-section-04-source-table",
+      "index": 7,
+      "before": "6.Environmental | 15-minute reset",
+      "after": "6. Environmental | 15-minute reset"
+    },
+    {
+      "day": 7,
+      "section": "day-section-03-source-table",
+      "index": 2,
+      "before": "1.Physical | 20-minute walk + stretching",
+      "after": "1. Physical | 20-minute walk + stretching"
+    },
+    {
+      "day": 7,
+      "section": "day-section-03-source-table",
+      "index": 3,
+      "before": "2.Emotional | One-page reflection on the week",
+      "after": "2. Emotional | One-page reflection on the week"
+    },
+    {
+      "day": 7,
+      "section": "day-section-03-source-table",
+      "index": 4,
+      "before": "3.Spiritual | Breathing + stillness",
+      "after": "3. Spiritual | Breathing + stillness"
+    },
+    {
+      "day": 7,
+      "section": "day-section-03-source-table",
+      "index": 5,
+      "before": "4.Intellectual | What I learned this week",
+      "after": "4. Intellectual | What I learned this week"
+    },
+    {
+      "day": 7,
+      "section": "day-section-03-source-table",
+      "index": 6,
+      "before": "5.Social | One real connection",
+      "after": "5. Social | One real connection"
+    },
+    {
+      "day": 7,
+      "section": "day-section-03-source-table",
+      "index": 7,
+      "before": "6.Environmental | 15-minute reset",
+      "after": "6. Environmental | 15-minute reset"
+    },
+    {
+      "day": 17,
+      "section": "day-section-03-morning-reset-complete-within-60-m",
+      "index": 3,
+      "before": "5…4…3…2…1…MOVE…No phone. No scrolling. No negotiating.",
+      "after": "5…4…3…2…1…MOVE… No phone. No scrolling. No negotiating."
+    },
+    {
+      "day": 27,
+      "section": "day-section-14-day-27-closing-message",
+      "index": 3,
+      "before": "The habits you practice repeatedly eventually become your lifestyle…Your lifestyle becomes your identity…And your identity shapes your future.",
+      "after": "The habits you practice repeatedly eventually become your lifestyle… Your lifestyle becomes your identity… And your identity shapes your future."
+    },
+    {
+      "day": 27,
+      "section": "day-section-14-day-27-closing-message",
+      "index": 4,
+      "before": "Keep building…Keep showing up…Keep becoming the person you know you are capable of being.",
+      "after": "Keep building… Keep showing up… Keep becoming the person you know you are capable of being."
+    },
+    {
+      "day": 28,
+      "section": "day-section-03-reflection-integration",
+      "index": 4,
+      "before": "This is not the end of the journey…This is the beginning of your next chapter.",
+      "after": "This is not the end of the journey… This is the beginning of your next chapter."
+    },
+    {
+      "day": 28,
+      "section": "day-section-03-reflection-integration",
+      "index": 5,
+      "before": "The goal is not perfection…The goal is progress.",
+      "after": "The goal is not perfection… The goal is progress."
+    },
+    {
+      "day": 28,
+      "section": "day-section-15-day-28-closing-message",
+      "index": 10,
+      "before": "You have built momentum…You have created evidence that change is possible…You have shown yourself that healing is not found in perfection…Healing is found in consistent action.",
+      "after": "You have built momentum… You have created evidence that change is possible… You have shown yourself that healing is not found in perfection… Healing is found in consistent action."
+    },
+    {
+      "day": 28,
+      "section": "day-section-15-day-28-closing-message",
+      "index": 12,
+      "before": "Keep building…Keep growing…Keep showing up.",
+      "after": "Keep building… Keep growing… Keep showing up."
+    },
+    {
+      "day": 28,
+      "section": "day-section-17-rebuilding-identity-purpose-forwar",
+      "index": 4,
+      "before": "You showed up for yourself…Not once…Not when it was easy…Not only when you felt motivated…But consistently over the course of four weeks…That matters. Because lasting transformation is not created through occasional effort…It is created through repeated action.",
+      "after": "You showed up for yourself… Not once… Not when it was easy… Not only when you felt motivated… But consistently over the course of four weeks… That matters. Because lasting transformation is not created through occasional effort… It is created through repeated action."
+    },
+    {
+      "day": 28,
+      "section": "day-section-17-rebuilding-identity-purpose-forwar",
+      "index": 15,
+      "before": "It was not simply about discipline…It was not simply about purpose.",
+      "after": "It was not simply about discipline… It was not simply about purpose."
+    },
+    {
+      "day": 28,
+      "section": "day-section-17-rebuilding-identity-purpose-forwar",
+      "index": 30,
+      "before": "Every healthy decision you made became evidence….Evidence creates belief.",
+      "after": "Every healthy decision you made became evidence…. Evidence creates belief."
+    },
+    {
+      "day": 28,
+      "section": "day-section-17-rebuilding-identity-purpose-forwar",
+      "index": 31,
+      "before": "Belief creates confidence…Confidence creates change.",
+      "after": "Belief creates confidence… Confidence creates change."
+    },
+    {
+      "day": 28,
+      "section": "day-section-18-reflection-allows-awareness-to-bec",
+      "index": 13,
+      "before": "Then confidence follows…Then momentum follows…Then transformation follows…Action comes first.",
+      "after": "Then confidence follows… Then momentum follows… Then transformation follows… Action comes first."
+    },
+    {
+      "day": 28,
+      "section": "day-section-18-reflection-allows-awareness-to-bec",
+      "index": 28,
+      "before": "Many of these changes happen gradually…Trust the process…The nervous system responds to consistency.",
+      "after": "Many of these changes happen gradually… Trust the process… The nervous system responds to consistency."
+    },
+    {
+      "day": 28,
+      "section": "day-section-18-reflection-allows-awareness-to-bec",
+      "index": 30,
+      "before": "The completion of Week 4 is not the finish line…It is a launch point…Continue protecting the routines that helped you most.",
+      "after": "The completion of Week 4 is not the finish line… It is a launch point… Continue protecting the routines that helped you most."
+    },
+    {
+      "day": 28,
+      "section": "day-section-19-journaling-along-with-self-reflect",
+      "index": 14,
+      "before": "grown& reflected",
+      "after": "grown & reflected"
+    }
+  ]
+}
