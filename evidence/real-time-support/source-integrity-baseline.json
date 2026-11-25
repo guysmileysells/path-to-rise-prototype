@@ -1,0 +1,19 @@
+{
+  "baseline": "ed0e9a31e8a65dbd50ad1acc729e3a40a2d344ae",
+  "normalization": "checkout CRLF to LF only; no other whitespace normalization",
+  "protected": {
+    "src/App.css": "603ecd268f33a6413b936a372d335b25d33208d1b927727b95b7755d790a4f98",
+    "src/dayRoadmap.ts": "1fcd7e273755f34ca3767bc5cd61f909e1da02e41b6c9a8c02d51f8329891bc8",
+    "src/index.css": "6a8e6d250a12ac6a494498df7a30eb76fd1cb2f6f706a49a48b5d0ca6dee2bb1",
+    "src/InlineExpansion.tsx": "a66062cc9342ff898252f4840080c040aaef75c1e13f51455f5e8f29e916df66",
+    "src/main.tsx": "6e9e5807fcbd48b75a96db5cbef36c996262196be42e6d4760dc86babbe61ad2",
+    "src/notificationContent.ts": "cd5565507df38077b16fff73fdf178df44877c4348db71a24b4382c5db7141a6",
+    "src/pathData.ts": "426883f6caa0cee4fb7268833104c444ac6c5cfde84016c88376736fbf13df93",
+    "src/personalizationContent.ts": "8d5ce5e0eecbd7708f10fd2dba9ba9e2aef0cd2ad0e6b7f1c82bbcef347172f6",
+    "src/programContent.ts": "33dc9a0ee4a42ce5a4f518868249eece566ce163b2ba17e9fd650d54fbcfe31e",
+    "src/progressContent.ts": "52da184911a7a7e58480edd9865bb3e4520763ce2767780b5ec188e3492ac669",
+    "src/RiseIcon.tsx": "98d57692df4075527f6ab6be6262675562fe7e4393b85a72d20374a2854ff9e7",
+    "src/taskPresentation.ts": "8f4864f6a0b753a2650cfc90c695a36381b2f55051fe736152439396d97e1b90",
+    "src/toolContent.ts": "a8aaea4d361162d642f2367b98ca3760fcffefda4f87bee7b6a8569bb43a82f6"
+  }
+}

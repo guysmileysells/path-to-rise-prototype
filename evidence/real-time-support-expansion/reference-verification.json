@@ -1,0 +1,81 @@
+[
+  {
+    "kind": "doi",
+    "requested": "10.2147/PRBM.S437277",
+    "url": "https://api.crossref.org/works/10.2147/PRBM.S437277",
+    "finalUrl": "https://api.crossref.org/works/10.2147/PRBM.S437277",
+    "status": 200,
+    "title": "Efficacy of Progressive Muscle Relaxation in Adults for Stress, Anxiety, and Depression: A Systematic Review",
+    "returnedDOI": "10.2147/prbm.s437277",
+    "doiMatches": true
+  },
+  {
+    "kind": "doi",
+    "requested": "10.1016/S0065-2601(06)38002-1",
+    "url": "https://api.crossref.org/works/10.1016/S0065-2601(06)38002-1",
+    "finalUrl": "https://api.crossref.org/works/10.1016/S0065-2601(06)38002-1",
+    "status": 429,
+    "title": "",
+    "returnedDOI": null,
+    "doiMatches": false
+  },
+  {
+    "kind": "doi",
+    "requested": "10.1002/14651858.CD013305.pub2",
+    "url": "https://api.crossref.org/works/10.1002/14651858.CD013305.pub2",
+    "finalUrl": "https://api.crossref.org/works/10.1002/14651858.CD013305.pub2",
+    "status": 200,
+    "title": "Behavioural activation therapy for depression in adults",
+    "returnedDOI": "10.1002/14651858.cd013305.pub2",
+    "doiMatches": true
+  },
+  {
+    "kind": "doi",
+    "requested": "10.1001/jamapsychiatry.2013.4546",
+    "url": "https://api.crossref.org/works/10.1001/jamapsychiatry.2013.4546",
+    "finalUrl": "https://api.crossref.org/works/10.1001/jamapsychiatry.2013.4546",
+    "status": 200,
+    "title": "Relative Efficacy of Mindfulness-Based Relapse Prevention, Standard Relapse Prevention, and Treatment as Usual for Substance Use Disorders",
+    "returnedDOI": "10.1001/jamapsychiatry.2013.4546",
+    "doiMatches": true
+  },
+  {
+    "kind": "doi",
+    "requested": "10.1002/jclp.21923",
+    "url": "https://api.crossref.org/works/10.1002/jclp.21923",
+    "finalUrl": "https://api.crossref.org/works/10.1002/jclp.21923",
+    "status": 200,
+    "title": "A Pilot Study and Randomized Controlled Trial of the Mindful Self‐Compassion Program",
+    "returnedDOI": "10.1002/jclp.21923",
+    "doiMatches": true
+  },
+  {
+    "kind": "guidance",
+    "requested": "NHS alcohol",
+    "url": "https://www.nhs.uk/conditions/alcohol-use-disorder/",
+    "finalUrl": "https://www.nhs.uk/conditions/alcohol-use-disorder/",
+    "status": 200,
+    "title": "Alcohol-use disorder - NHS",
+    "returnedDOI": null,
+    "doiMatches": null
+  },
+  {
+    "kind": "guidance",
+    "requested": "NHS lorazepam",
+    "url": "https://www.nhs.uk/medicines/lorazepam/",
+    "finalUrl": "https://www.nhs.uk/medicines/lorazepam/",
+    "status": 200,
+    "title": "Lorazepam: a medicine to treat anxiety - NHS",
+    "returnedDOI": null,
+    "doiMatches": null
+  },
+  {
+    "kind": "doi-content-negotiation-retry",
+    "requested": "10.1016/S0065-2601(06)38002-1",
+    "url": "https://doi.org/10.1016/S0065-2601(06)38002-1",
+    "finalUrl": "https://api.crossref.org/v1/works/10.1016%2FS0065-2601%2806%2938002-1/transform",
+    "status": 200,
+    "title": "Implementation Intentions and Goal Achievement: A Meta‐analysis of Effects and Processes",
+    "returnedDOI": "10.1016/s0065-2601(06)38002-1"
+  }
+]

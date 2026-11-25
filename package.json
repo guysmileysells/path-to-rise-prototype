@@ -15,8 +15,10 @@
     "notifications": "node --experimental-transform-types scripts/notification-scenarios.mjs",
     "production-qa": "node --experimental-transform-types scripts/production-qa-scenarios.mjs",
     "final-audit": "node --experimental-transform-types scripts/final-launch-audit.mjs",
-    "test": "npm run contract && npm run personalization && npm run progress && npm run day-roadmap && npm run hardening && npm run notifications && npm run production-qa && npm run final-audit && npm run word-spacing && npm run build",
+    "test": "npm run contract && npm run personalization && npm run progress && npm run day-roadmap && npm run hardening && npm run notifications && npm run production-qa && npm run final-audit && npm run word-spacing && npm run real-time-support && npm run support-expansion && npm run build",
     "word-spacing": "node --experimental-transform-types scripts/word-spacing-scenarios.mjs",
+    "real-time-support": "node --experimental-transform-types scripts/real-time-support-scenarios.mjs && node --experimental-transform-types scripts/real-time-support-content-scenarios.mjs",
+    "support-expansion": "node --experimental-transform-types scripts/additional-support-scenarios.mjs && node --experimental-transform-types scripts/additional-support-content-scenarios.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

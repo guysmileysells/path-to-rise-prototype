@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 import './todayA.css'
+import { RealTimeSupport } from './RealTimeSupport'
+import { favouriteStorageKey } from './additionalSupportState'
 import { RiseIcon } from './RiseIcon'
 import { getTaskPresentation, formatProgramText } from './taskPresentation'
 import { Disclosure, InlineExpansion } from './InlineExpansion'
@@ -309,6 +311,8 @@ function closeTodayPanels() {
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(getInitialTab)
+  const [realTimeSupportOpen, setRealTimeSupportOpen] = useState(false)
+  const realTimeSupportLaunch = useRef<HTMLButtonElement>(null)
   const [spaceRequest, setSpaceRequest] = useState(0)
   const handledSpaceRequest = useRef(0)
 
@@ -350,7 +354,7 @@ function App() {
   }, [activeRemindersForNotificationStatus.length, notificationPermission])
 
   useEffect(() => {
-    const onHashChange = () => setActiveTab(getInitialTab())
+    const onHashChange = () => { setRealTimeSupportOpen(false); setActiveTab(getInitialTab()) }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
@@ -401,6 +405,7 @@ function App() {
   }, [toolState])
 
   const goTo = useCallback((tab: Tab) => {
+    setRealTimeSupportOpen(false)
     setActiveTab(tab)
     window.location.hash = tab
   }, [])
@@ -515,6 +520,7 @@ function App() {
     if (!window.confirm('Clear local Toolbox favourites, recents and standalone tool history from this browser? Program progress and reflections will remain.')) return
     setToolState(defaultToolState)
     window.localStorage.removeItem(toolStorageKey)
+    window.localStorage.removeItem(favouriteStorageKey)
     setStorageNotice({ tone: 'success', message: 'Local Toolbox favourites, recents and standalone tool history were cleared from this browser.' })
   }
 
@@ -527,6 +533,7 @@ function App() {
     window.localStorage.removeItem(storageKey)
     window.localStorage.removeItem(legacyStorageKey)
     window.localStorage.removeItem(toolStorageKey)
+    window.localStorage.removeItem(favouriteStorageKey)
     window.localStorage.removeItem(notificationStorageKey)
     setNotificationPreferences(defaultNotificationPreferences)
     reminderTimers.current.forEach((timer) => window.clearTimeout(timer))
@@ -696,14 +703,18 @@ function App() {
             PATH <span>to</span> RISE
           </button>
           <button className="today-a-space-button" type="button" onClick={() => { goTo('today'); setSpaceRequest((current) => current + 1) }}><RiseIcon name="lock-keyhole" />Your space</button>
+          <button ref={realTimeSupportLaunch} className="secondary rts-launch" type="button" aria-pressed={realTimeSupportOpen} onClick={() => setRealTimeSupportOpen(current => !current)}>{realTimeSupportOpen ? 'Exit Real-Time Support' : 'Real-Time Support'}</button>
         </header>
         {storageNotice && <p className={`storage-status ${storageNotice.tone}`} role="status">{storageNotice.message}</p>}
 
         <div className="screen">
+          <div hidden={realTimeSupportOpen}>
           {activeTab === 'today' && <Today progress={progress} toolState={toolState} personalization={personalization} notificationPreferences={notificationPreferences} notificationPermission={notificationPermission} notificationPlatform={notificationPlatform} notificationDeliveryStatus={notificationDeliveryStatus} onNotificationPreferencesChange={setNotificationPreferences} onRequestNotificationPermission={requestNotificationPermission} onOpenReset={openReset} onOpenPath={() => { setPathDayOpen(false); goTo('path') }} onOpenToolbox={() => { setResetView('toolbox'); goTo('reset') }} onOpenPersonalizedRecommendation={openPersonalizedRecommendation} onClearProgramData={clearProgramData} onClearToolData={clearToolData} onClearAllLocalData={clearAllLocalData} />}
           {activeTab === 'reset' && <ResetExperience view={resetView} selectedNeedId={selectedNeedId} activeToolId={activeToolId} activeToolContext={activeToolContext} toolState={toolState} personalization={personalization} onSelectNeed={selectNeed} onSetView={setResetView} onStartTool={startTool} onCompleteTool={completeStandaloneTool} onToggleFavourite={toggleFavourite} onHome={() => goTo('today')} onSupport={() => goTo('support')} />}
           {activeTab === 'path' && <MyPath progress={progress} progressModel={progressViewModel} toolState={toolState} selectedDay={selectedDay} dayDetailOpen={pathDayOpen} draftReflections={draftReflections} onSelectDay={(day) => { setSelectedDay(day); setPathDayOpen(true) }} onOpenDayDetail={() => setPathDayOpen(true)} onCloseDayDetail={() => setPathDayOpen(false)} onReset={openReset} onStartTool={startTool} onToggleFavourite={toggleFavourite} onToggleSection={toggleSection} onDraftReflection={(key, value) => setDraftReflections((current) => ({ ...current, [key]: value }))} onSaveReflection={saveReflection} onDeleteReflection={deleteReflection} onToggleRoadmapTask={toggleRoadmapTask} onCompleteDay={completeDay} onSupport={() => goTo('support')} />}
           {activeTab === 'support' && <Support />}
+          </div>
+          {realTimeSupportOpen && <RealTimeSupport onExit={() => { setRealTimeSupportOpen(false); requestAnimationFrame(() => realTimeSupportLaunch.current?.focus()) }} onSupport={() => goTo('support')} />}
         </div>
 
         <nav className="bottom-nav" aria-label="Main navigation">

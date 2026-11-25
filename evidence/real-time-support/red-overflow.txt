@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+  x  1 [mobile] › tests\browser\real-time-support.spec.ts:43:1 › expanded reminder selects stay within mobile fields under wider font metrics (1.9s)
+
+
+  1) [mobile] › tests\browser\real-time-support.spec.ts:43:1 › expanded reminder selects stay within mobile fields under wider font metrics 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 391
+    Received:    420
+
+      55 |       return { right: box.right, fieldRight: field.right, height: box.height, scroll: screen.scrollWidth, width: screen.clientWidth }
+      56 |     })
+    > 57 |     expect(shape.scroll).toBeLessThanOrEqual(shape.width + 1)
+         |                          ^
+      58 |     expect(shape.right).toBeLessThanOrEqual(shape.fieldRight + 1)
+      59 |     expect(shape.height).toBeGreaterThanOrEqual(44)
+      60 |   }
+        at C:\Users\I9-10900KF\projects\path-to-rise\app\tests\browser\real-time-support.spec.ts:57:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    evidence\real-time-support\red-overflow-artifacts\real-time-support-expanded-57d0b-ds-under-wider-font-metrics-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence\real-time-support\red-overflow-artifacts\real-time-support-expanded-57d0b-ds-under-wider-font-metrics-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    evidence\real-time-support\red-overflow-artifacts\real-time-support-expanded-57d0b-ds-under-wider-font-metrics-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace evidence\real-time-support\red-overflow-artifacts\real-time-support-expanded-57d0b-ds-under-wider-font-metrics-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [mobile] › tests\browser\real-time-support.spec.ts:43:1 › expanded reminder selects stay within mobile fields under wider font metrics 
