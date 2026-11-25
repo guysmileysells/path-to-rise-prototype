@@ -1,0 +1,13 @@
+{
+  "normalization": "UTF-8 text, LF line endings",
+  "files": {
+    "src/App.tsx": "3ef859c38c8e4e81b7eb8cc1dcc135c3ce051ac44d29ce8be5a70bcd30a8c61d",
+    "src/taskPresentation.ts": "8f4864f6a0b753a2650cfc90c695a36381b2f55051fe736152439396d97e1b90",
+    "package.json": "e7c84459475606506bec976b56a631169631d5978e66fef27682e75440cd2bce",
+    "scripts/word-spacing-scenarios.mjs": "9295b247d5780ff61b76db7c021755cd63aadd1d4638d04795d61f7f014ff44d",
+    "tests/browser/word-spacing.spec.ts": "632314dcb08dea247f408fc271f278b4c04100e91ff86c1a28a5c60eef729753",
+    "playwright.config.ts": "e0e64dd6bf005255b2291288399b5d109fa4f83c8e5c84db8cc9bbcb4450acce",
+    "evidence/word-spacing/source-spacing-baseline.json": "4f3e205265fbc10f15110d4f29bd8483de746de0e36489ca1c65c24190a14fdb",
+    "evidence/word-spacing/verify-served.mjs": "5069e0feb42f59395e7d23076af0c9bdf53a50597501e9fea7020f4f878f2df3"
+  }
+}

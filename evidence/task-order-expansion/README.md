@@ -19,7 +19,7 @@
 - `baseline-files.json`: pre-existing dirty documentation and protected runtime files recorded before work. Parent rechecked all7 protected paths byte-for-byte unchanged, including the three pre-existing modified docs. Unrelated untracked artifacts remain untouched.
 
 ## Status
-Final full browser run: **54 passed**, mobile+desktop, two isolated workers (`browser-final.txt`, process exit0). All source/test/config files remain at the final candidate snapshot. Hosted deployment confirmation pending; do not substitute HTTP200 for served-asset and product checks.
+Final full browser run: **54 passed**, mobile+desktop, two isolated workers (`browser-final.txt`, process exit0). All source/test/config files remain at the final candidate snapshot. Hosted deployment and verification PASSED for merge `692217b875966fd984877e3a5196701552b7141a`: [Pages run 45085345429](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/45085345429), `deployment.json` (`conclusion: success`) and `hosted-verification.json` (`result: PASS`, 28 days, 448 required rows, 2 matching JS/CSS assets). Earlier local helper failures were superseded by corrected state-aware checks; HTTP 200 alone was not accepted as product evidence.
 
 ## Limits
 No physical iPhone/Android or manual screen-reader approval; no new clinical/legal/privacy/security certification. Existing Day16 Intellectual/Social/Environmental source notices remain. Source content completeness is separate from verified layout/order.

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "day-3-daily-02-emotional",
+    "before": {
+      "what": "Write One Page – What Do I Carry With Me Every Day?",
+      "when": "After physical task",
+      "how": [
+        "Write one full page",
+        "What do I think about every day?",
+        "What feels heavy lately?",
+        "What do I keep inside?",
+        "What do I not talk about?",
+        "Do not analyze and do not fix…just write."
+      ],
+      "benefits": [
+        "Less internal pressure",
+        "More emotional awareness",
+        "Reduced anxiety"
+      ],
+      "sourceGap": false
+    },
+    "after": {
+      "what": "Write One Page – What Do I Carry With Me Every Day?",
+      "when": "After physical task",
+      "how": [
+        "Write one full page",
+        "What do I think about every day?",
+        "What feels heavy lately?",
+        "What do I keep inside?",
+        "What do I not talk about?",
+        "Do not analyze and do not fix… just write."
+      ],
+      "benefits": [
+        "Less internal pressure",
+        "More emotional awareness",
+        "Reduced anxiety"
+      ],
+      "sourceGap": false
+    }
+  },
+  {
+    "id": "day-3-daily-03-spiritual",
+    "before": {
+      "what": "6 Minutes Breathing + 2 Minutes Stillness",
+      "when": "After writing",
+      "how": [
+        "Sit in chair with feet on floor",
+        "Slow inhale through nose then slow exhale through mouth",
+        "Inhale 4 seconds…Hold 2 seconds…Exhale 6 seconds",
+        "After breathing, sit still for 2 minutes. No movement. No talking. Just sit."
+      ],
+      "benefits": [
+        "More calm",
+        "Less tension",
+        "Better emotional control"
+      ],
+      "sourceGap": false
+    },
+    "after": {
+      "what": "6 Minutes Breathing + 2 Minutes Stillness",
+      "when": "After writing",
+      "how": [
+        "Sit in chair with feet on floor",
+        "Slow inhale through nose then slow exhale through mouth",
+        "Inhale 4 seconds… Hold 2 seconds… Exhale 6 seconds",
+        "After breathing, sit still for 2 minutes. No movement. No talking. Just sit."
+      ],
+      "benefits": [
+        "More calm",
+        "Less tension",
+        "Better emotional control"
+      ],
+      "sourceGap": false
+    }
+  }
+]

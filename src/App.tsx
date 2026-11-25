@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import './App.css'
 import './todayA.css'
 import { RiseIcon } from './RiseIcon'
-import { getTaskPresentation } from './taskPresentation'
+import { getTaskPresentation, formatProgramText } from './taskPresentation'
 import { Disclosure, InlineExpansion } from './InlineExpansion'
 import type { ReactNode } from 'react'
 import { programContent, prompt5SourceIssues, type ProgramSection } from './programContent'
@@ -774,19 +774,19 @@ function Today({ progress, toolState, personalization, notificationPreferences, 
           </article>
         )}
         <button className="list-card today-a-kit" type="button" onClick={onOpenToolbox}>
-          <RiseIcon name="bookmark" /><span>My Quick Kit<small>Your favourites and recent practices.</small></span><span aria-hidden="true">›</span>
+          <RiseIcon name="bookmark" /><span>My Quick Kit{' '}<small>Your favourites and recent practices.</small></span>{' '}<span aria-hidden="true">›</span>
         </button>
       </section>
 
       <Disclosure className="calm-disclosure today-data-settings">
         <summary>
-          <span className="today-a-settings-closed">Privacy, reminders + local data<small>Optional settings, when you need them.</small></span>
+          <span className="today-a-settings-closed">Privacy, reminders + local data{' '}<small>Optional settings, when you need them.</small></span>{' '}
           <span className="today-a-settings-open">← Today</span>
         </summary>
         <div className="disclosure-stack">
           <div className="today-a-space-overview">
             <h1>Your space</h1><p className="muted">Privacy, reminders + local data.</p>
-            <article className="notice-card"><strong>Stored in this browser</strong><span>Progress, saved writing, favourites and recents stay here. No account sync. Clearing site data removes them.</span></article>
+            <article className="notice-card"><strong>Stored in this browser</strong>{' '}<span>Progress, saved writing, favourites and recents stay here. No account sync. Clearing site data removes them.</span></article>
           </div>
           <Disclosure className="today-a-scope">
             <summary>How suggestions work</summary>
@@ -803,7 +803,7 @@ function Today({ progress, toolState, personalization, notificationPreferences, 
 
 function ReminderGroup({ title, enabled, children }: { title: string; enabled: boolean; children: ReactNode }) {
   return <Disclosure className="reminder-group" defaultOpen={enabled}>
-    <summary><span>{title}</span><small>{enabled ? 'On' : 'Off'}</small></summary>
+    <summary><span>{title}</span>{' '}<small>{enabled ? 'On' : 'Off'}</small></summary>
     <div className="reminder-group-body">{children}</div>
   </Disclosure>
 }
@@ -823,12 +823,12 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
 
   return (
     <Disclosure className="notification-settings" defaultOpen={activeReminderCount > 0}>
-      <summary><span className="today-a-reminders-closed">Reminders — optional, discreet and shift-work aware</span><span className="today-a-reminders-open">← Your space</span></summary>
+      <summary><span className="today-a-reminders-closed">Reminders — optional, discreet and shift-work aware</span>{' '}<span className="today-a-reminders-open">← Your space</span></summary>
       <div className="notification-stack">
         <h1>Reminders</h1><p className="muted">Optional. Discreet. Built around your hours.</p>
         <article className="notice-card" aria-label="Notification platform capability">
-          <strong>Platform truth</strong>
-          <span>{platform.summary}</span>
+          <strong>Platform truth</strong>{' '}
+          <span>{platform.summary}</span>{' '}
           <span>Current support: {platform.currentSupport}. No push backend, service-worker registration or native wrapper is present in this prototype.</span>
         </article>
 
@@ -851,7 +851,7 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
           <Disclosure className="notification-copy-details">
             <summary>Preview notification wording</summary>
             <div className="copy-preview" aria-label="Safe notification copy examples">
-              {Object.entries(notificationCopyRegistry).map(([type, copy]) => <span key={type}>{copy.title}: {copy.discreetBody}</span>)}
+              {Object.entries(notificationCopyRegistry).map(([type, copy]) => <span key={type}>{copy.title}: {copy.discreetBody}{' '}</span>)}
             </div>
           </Disclosure>
         </section>
@@ -876,7 +876,7 @@ function NotificationSettings({ progress, toolState, preferences, permission, pl
             <button className="secondary" type="button" aria-pressed={preferences.practiceReminder.enabled} disabled={!preferences.practiceReminder.targetToolId} onClick={() => update((current) => ({ ...current, practiceReminder: { ...current.practiceReminder, enabled: !current.practiceReminder.enabled } }))}>{preferences.practiceReminder.enabled ? 'On' : 'Off'}</button>
           </div>
           <label className="setting-field">Practice
-            <select value={preferences.practiceReminder.targetToolId ?? ''} onChange={(event) => update((current) => ({ ...current, practiceReminder: { ...current.practiceReminder, targetToolId: event.target.value as ToolId || null, enabled: current.practiceReminder.enabled && Boolean(event.target.value) } }))}>
+            {' '}<select value={preferences.practiceReminder.targetToolId ?? ''} onChange={(event) => update((current) => ({ ...current, practiceReminder: { ...current.practiceReminder, targetToolId: event.target.value as ToolId || null, enabled: current.practiceReminder.enabled && Boolean(event.target.value) } }))}>
               <option value="">Choose a source-backed practice</option>
               {practiceOptions.map((tool) => <option value={tool.id} key={tool.id}>{tool.canonicalName}</option>)}
             </select>
@@ -954,7 +954,7 @@ function LocalDataControls({ onClearProgramData, onClearToolData, onClearAllLoca
 function PersonalizedShortcutCard({ recommendation, onOpen }: { recommendation: PersonalizationRecommendation; onOpen: (recommendation: PersonalizationRecommendation) => void }) {
   return (
     <button className="list-card personalized-card" type="button" onClick={() => onOpen(recommendation)} aria-label={`Open ${recommendation.label}. ${recommendation.reason}`}>
-      <span>{recommendation.label}</span>
+      <span>{recommendation.label}</span>{' '}
       <small>{recommendation.badge ? `${recommendation.badge} · ` : ''}{recommendation.reason}</small>
     </button>
   )
@@ -1017,7 +1017,7 @@ function ResetExperience({ view, selectedNeedId, activeToolId, activeToolContext
       <section className="need-grid" aria-label="Primary RESET need choices">
         {primaryNeeds.map((need) => (
           <button className="need-card" type="button" key={need.id} onClick={() => onSelectNeed(need.id)}>
-            <span>{need.label}</span>
+            <span>{need.label}</span>{' '}
             <small>{need.helper}</small>
           </button>
         ))}
@@ -1025,13 +1025,13 @@ function ResetExperience({ view, selectedNeedId, activeToolId, activeToolContext
       {secondaryNeeds.length > 0 && (
         <Disclosure className="calm-disclosure compact-disclosure">
           <summary>
-            <span>More RESET needs</span>
+            <span>More RESET needs</span>{' '}
             <small>{secondaryNeeds.length} more source-backed routes.</small>
           </summary>
           <section className="need-grid nested" aria-label="Additional RESET need choices">
             {secondaryNeeds.map((need) => (
               <button className="need-card" type="button" key={need.id} onClick={() => onSelectNeed(need.id)}>
-                <span>{need.label}</span>
+                <span>{need.label}</span>{' '}
                 <small>{need.helper}</small>
               </button>
             ))}
@@ -1040,8 +1040,8 @@ function ResetExperience({ view, selectedNeedId, activeToolId, activeToolContext
       )}
       {personalization.model.shortcut?.toolId && (
         <article className="notice-card" aria-label="Optional saved shortcut">
-          <strong>{personalization.model.shortcut.badge === 'FAVOURITE' ? 'Saved shortcut' : 'Recent shortcut'}</strong>
-          <span>{personalization.model.shortcut.label} · {personalization.model.shortcut.reason} RESET still starts with your current need.</span>
+          <strong>{personalization.model.shortcut.badge === 'FAVOURITE' ? 'Saved shortcut' : 'Recent shortcut'}</strong>{' '}
+          <span>{personalization.model.shortcut.label} · {personalization.model.shortcut.reason} RESET still starts with your current need.</span>{' '}
           <button className="secondary" type="button" onClick={() => onStartTool(personalization.model.shortcut!.toolId!, personalization.model.shortcut!.badge === 'FAVOURITE' ? 'favourite' : 'recent')}>Open shortcut</button>
         </article>
       )}
@@ -1072,7 +1072,7 @@ function Toolbox({ toolState, personalization, onStartTool, onToggleFavourite, o
       )}
       <Disclosure className="calm-disclosure compact-disclosure">
         <summary>
-          <span>Saved + recent practices</span>
+          <span>Saved + recent practices</span>{' '}
           <small>Quick returns when you have them.</small>
         </summary>
         <div className="disclosure-stack">
@@ -1082,13 +1082,13 @@ function Toolbox({ toolState, personalization, onStartTool, onToggleFavourite, o
       </Disclosure>
       {personalization.context.programComplete && (
         <article className="notice-card" aria-label="Post-program toolbox note">
-          <strong>After Day 28</strong>
+          <strong>After Day 28</strong>{' '}
           <span>The full Toolbox stays open for maintenance. There is no Day 29 or endless streak to chase.</span>
         </article>
       )}
       <Disclosure className="calm-disclosure browse-tools-disclosure">
         <summary>
-          <span>Browse all Toolbox practices</span>
+          <span>Browse all Toolbox practices</span>{' '}
           <small>All 10 canonical tools, grouped by purpose.</small>
         </summary>
         <div className="disclosure-stack">
@@ -1152,15 +1152,15 @@ function ToolRunner({ tool, context, favourite, onToggleFavourite, onComplete, o
         <h1 id="tool-runner-title">{tool.canonicalName}</h1>
         <p>{tool.purpose}</p>
         <div className="source-banner">
-          <strong>Source-backed</strong>
+          <strong>Source-backed</strong>{' '}
           <span>{day?.sourceLocation ?? 'Missing source location'} · {section?.label ?? 'Missing source section'}</span>
         </div>
         <div className="source-copy">
-          {preview.map((line, index) => <p key={`${tool.id}-preview-${index}`}>{line}</p>)}
+          {preview.map((line, index) => <p key={`${tool.id}-preview-${index}`}>{formatProgramText(line)}</p>)}
           {remaining.length > 0 && (
             <Disclosure>
               <summary>Read full source instructions ({remaining.length} more lines)</summary>
-              {remaining.map((line, index) => <p key={`${tool.id}-remaining-${index}`}>{line}</p>)}
+              {remaining.map((line, index) => <p key={`${tool.id}-remaining-${index}`}>{formatProgramText(line)}</p>)}
             </Disclosure>
           )}
         </div>
@@ -1196,9 +1196,9 @@ function ToolError({ onToolbox, onReset }: { onToolbox: () => void; onReset: () 
   return (
     <section className="stack page-enter" aria-labelledby="tool-error-title">
       <article className="notice-card">
-        <p className="eyebrow">Tool unavailable</p>
-        <h1 id="tool-error-title">This tool cannot be opened right now.</h1>
-        <p>No unsupported or invented replacement was shown. Choose another need or browse the Toolbox.</p>
+        <p className="eyebrow">Tool unavailable</p>{' '}
+        <h1 id="tool-error-title">This tool cannot be opened right now.</h1>{' '}
+        <p>No unsupported or invented replacement was shown. Choose another need or browse the Toolbox.</p>{' '}
         <div className="button-grid two">
           <button className="primary" type="button" onClick={onReset}>Choose need</button>
           <button className="secondary" type="button" onClick={onToolbox}>Toolbox</button>
@@ -1249,7 +1249,7 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
 
       <Disclosure className="calm-disclosure">
         <summary>
-          <span>Path map + insights</span>
+          <span>Path map + insights</span>{' '}
           <small>Weeks, day picker and descriptive progress notes.</small>
         </summary>
         <div className="disclosure-stack">
@@ -1261,7 +1261,7 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
 
       <Disclosure className="calm-disclosure">
         <summary>
-          <span>Practices + private reflections</span>
+          <span>Practices + private reflections</span>{' '}
           <small>Saved tools and local-only reflection review.</small>
         </summary>
         <div className="disclosure-stack">
@@ -1272,12 +1272,12 @@ function MyPath({ progress, progressModel, toolState, selectedDay, dayDetailOpen
 
       <Disclosure className="calm-disclosure compact-disclosure">
         <summary>
-          <span>Progress privacy</span>
+          <span>Progress privacy</span>{' '}
           <small>What this prototype uses and does not use.</small>
         </summary>
         <div className="disclosure-stack">
           <article className="notice-card compact" aria-label="Progress privacy scope">
-            <strong>Progress uses minimal data</strong>
+            <strong>Progress uses minimal data</strong>{' '}
             <span>{permittedProgressDataCount} permitted/caution signal groups are used for display. Reflection text is review-only and never interpreted into insights.</span>
           </article>
           {progressModel.dataIntegrityNotes.length > 0 && <ProgressIntegrityNotes notes={progressModel.dataIntegrityNotes} />}
@@ -1297,11 +1297,11 @@ function ProgressSummary({ model, selectedDay, onOpenDayDetail, onReset }: { mod
       <h2 id="progress-summary-title">{model.primarySummary}</h2>
       <p>{model.programComplete ? 'The full 28-Day Journey is complete. This does not mean recovery is finished; it means the source-backed program path is complete and reusable.' : `${model.daysCompleted} of 28 Days complete. Next: ${model.nextActionLabel}.`}</p>
       <div className="summary-metrics" aria-label="Progress summary metrics">
-        <span><strong>Week</strong>{model.programComplete ? '4 complete' : `${model.currentWeek} · ${model.currentWeekTheme}`}</span>
-        <span><strong>Day</strong>{model.programComplete ? '28 / 28' : `${model.currentDay} / 28`}</span>
-        <span><strong>Small Wins</strong>{model.smallWins.today.completed}/{model.smallWins.today.total} today</span>
-        <span><strong>This Week</strong>{model.smallWins.week.completed}/{model.smallWins.week.total}</span>
-        <span><strong>Journey</strong>{model.smallWins.program.completed}/{model.smallWins.program.total}</span>
+        <span><strong>Week</strong>{' '}{model.programComplete ? '4 complete' : `${model.currentWeek} · ${model.currentWeekTheme}`}</span>
+        <span><strong>Day</strong>{' '}{model.programComplete ? '28 / 28' : `${model.currentDay} / 28`}</span>
+        <span><strong>Small Wins</strong>{' '}{model.smallWins.today.completed}/{model.smallWins.today.total} today</span>
+        <span><strong>This Week</strong>{' '}{model.smallWins.week.completed}/{model.smallWins.week.total}</span>
+        <span><strong>Journey</strong>{' '}{model.smallWins.program.completed}/{model.smallWins.program.total}</span>
       </div>
       <div className="button-grid two">
         <button className="primary" type="button" onClick={onOpenDayDetail}>{model.programComplete ? `Review Day ${selectedDay.day}` : `Open Day ${selectedDay.day}`}</button>
@@ -1358,7 +1358,7 @@ function DayProgressGrid({ model, selectedDay, onSelectDay }: { model: ProgressV
       <div className="day-strip day-progress-grid" aria-label="28-Day progress. Complete, current, available and upcoming states are shown with text labels.">
         {model.dayProgress.map((day) => (
           <button className={`${selectedDay === day.day ? 'day active' : 'day'} state-${day.state}`} type="button" key={day.day} onClick={() => onSelectDay(day.day)} aria-label={`Day ${day.day}: ${day.title}. ${day.state}. ${day.completedSections} of ${day.totalSections} sections marked done.`}>
-            <span>{day.day}</span>
+            <span>{day.day}</span>{' '}
             <small>{day.state}</small>
           </button>
         ))}
@@ -1406,8 +1406,8 @@ function ReflectionReview({ model, savedReflections }: { model: ProgressViewMode
 function ProgressIntegrityNotes({ notes }: { notes: string[] }) {
   return (
     <section className="notice-card" aria-label="Progress data notes">
-      <strong>Progress data handled carefully</strong>
-      {notes.map((note) => <span key={note}>{note}</span>)}
+      <strong>Progress data handled carefully</strong>{' '}
+      {notes.map((note) => <span key={note}>{note}{' '}</span>)}
     </section>
   )
 }
@@ -1433,12 +1433,12 @@ function DayExperience({ day, progress, completedSections, draftReflections, onS
       <h2 id="day-title">{day.title}</h2>
       <p className="purpose">{day.purpose}</p>
       <div className="day-orientation" aria-label="Today progression">
-        <span><strong>Now</strong>{complete ? 'Review when useful' : 'Work through one section at a time'}</span>
-        <span><strong>Progress</strong>{progressText}</span>
-        <span><strong>Next</strong>{complete ? 'Return to Toolbox or RESET' : 'Mark useful sections done'}</span>
+        <span><strong>Now</strong>{' '}{complete ? 'Review when useful' : 'Work through one section at a time'}</span>
+        <span><strong>Progress</strong>{' '}{progressText}</span>
+        <span><strong>Next</strong>{' '}{complete ? 'Return to Toolbox or RESET' : 'Mark useful sections done'}</span>
       </div>
       <div className="source-banner">
-        <strong>{day.sourceStatus === 'VERIFIED_FROM_DOCX' ? 'Source verified' : 'Requires verification'}</strong>
+        <strong>{day.sourceStatus === 'VERIFIED_FROM_DOCX' ? 'Source verified' : 'Requires verification'}</strong>{' '}
         <span>{day.sourceLocation}</span>
       </div>
       {prompt5SourceIssues.length > 0 && <p className="fineprint left-copy">Source issues flagged: {prompt5SourceIssues.join('; ')}</p>}
@@ -1550,24 +1550,24 @@ function DayRoadmapExperience({ roadmap, progress, draftReflections, onDraftRefl
       <Disclosure className="day-intro-card">
         <summary>About Day {roadmap.day}</summary>
         <h3>Objective</h3>
-        <p>{roadmap.purpose}</p>
+        <p>{formatProgramText(roadmap.purpose)}</p>
         {roadmap.whatToExpect.length > 0 && (
           <Disclosure>
             <summary>What to expect</summary>
-            <ul className="instruction-list">{roadmap.whatToExpect.map((item) => <li key={item}>{item}</li>)}</ul>
+            <ul className="instruction-list">{roadmap.whatToExpect.map((item) => <li key={item}>{formatProgramText(item)}</li>)}</ul>
           </Disclosure>
         )}
       </Disclosure>
       {roadmap.dailyReminder.length > 0 && (
         <section className="notice-card compact daily-reminder-card" aria-label="Daily reminder">
-          <strong>Daily Reminder</strong>
-          {roadmap.dailyReminder.map((line) => <span key={line}>{line}</span>)}
+          <strong>Daily Reminder</strong>{' '}
+          {roadmap.dailyReminder.map((line) => <span key={line}>{formatProgramText(line)}{' '}</span>)}
         </section>
       )}
       <FeelingStuckPanel onSupport={onSupport} />
       <Disclosure className="source-banner roadmap-source">
-        <summary>Program source</summary>
-        <p>{roadmap.sourceReference}</p>
+        <summary>Program source</summary>{' '}
+        <p>{roadmap.sourceReference}</p>{' '}
         <p>Daily activities remain day-specific source curriculum. The first action uses the owner’s updated instructions. Feeling Stuck, RESET and Toolbox do not affect Small Wins.</p>
       </Disclosure>
     </article>
@@ -1588,7 +1588,7 @@ function SmallWinsMeter({ roadmap, status }: { roadmap: DayRoadmap; status: Retu
       <div className="section-progress" aria-hidden="true"><span style={{ width: `${Math.max(status.completedRequiredCount === 0 ? 0 : 6, percent)}%` }} /></div>
       <div className="summary-metrics small-win-metrics">
         {getChronologicalTaskGroups(roadmap).map(group => (
-          <span key={group.id}><strong>{group.title}</strong>{group.tasks.filter(task => status.completedTaskIds.includes(task.id)).length}/{group.tasks.length}</span>
+          <span key={group.id}><strong>{group.title}</strong>{' '}{group.tasks.filter(task => status.completedTaskIds.includes(task.id)).length}/{group.tasks.length}</span>
         ))}
       </div>
       <p className="fineprint left-copy">Weekly target: {roadmap.expectedWins.weekly} possible Small Wins. Full 28-day journey: {roadmap.expectedWins.program} possible Small Wins. No streaks, rankings, guilt or penalties.</p>
@@ -1607,7 +1607,7 @@ function ActionGroup({ title, progress, description, tasks, completedSet, curren
       <div className="roadmap-timeline" aria-label={`${title} actions`}>
         {tasks.map((task) => (
           <article key={task.id} data-task-id={task.id} className={`roadmap-task-card ${completedSet.has(task.id) ? 'complete' : ''} ${currentTaskId === task.id ? 'current' : ''}`} aria-label={task.title}>
-            {renderExpansion(task, <span className="task-row-label"><span>{task.title}</span><small>{completedSet.has(task.id) ? '✓ Done' : '○ Not done'} · {task.timingLabel}</small></span>)}
+            {renderExpansion(task, <span className="task-row-label"><span>{task.title}</span>{' '}<small>{completedSet.has(task.id) ? '✓ Done' : '○ Not done'} · {task.timingLabel}</small></span>)}
           </article>
         ))}
       </div>
@@ -1805,11 +1805,11 @@ function ProgramSectionCard({ day, section, done, draftReflections, savedReflect
       </div>
       <h3 id={`${section.id}-title`}>{section.label}</h3>
       <div className="source-copy">
-        {preview.map((line, index) => <p key={`${section.id}-preview-${index}`}>{line}</p>)}
+        {preview.map((line, index) => <p key={`${section.id}-preview-${index}`}>{formatProgramText(line)}</p>)}
         {remaining.length > 0 && (
           <Disclosure>
             <summary>Read full source section ({remaining.length} more lines)</summary>
-            {remaining.map((line, index) => <p key={`${section.id}-remaining-${index}`}>{line}</p>)}
+            {remaining.map((line, index) => <p key={`${section.id}-remaining-${index}`}>{formatProgramText(line)}</p>)}
           </Disclosure>
         )}
       </div>
@@ -1823,11 +1823,11 @@ function ProgramSectionCard({ day, section, done, draftReflections, savedReflect
             maxLength={reflectionMaxLength}
             aria-describedby={reflectionHelpId}
           />
-          <span id={reflectionHelpId} className={`fineprint ${reflectionOverLimit ? 'warning-text' : ''}`}>{reflectionValue.length.toLocaleString()} / {reflectionMaxLength.toLocaleString()} characters. Saved reflection text stays local to this browser and is not used for personalization or automatic insights.</span>
+          <span id={reflectionHelpId} className={`fineprint ${reflectionOverLimit ? 'warning-text' : ''}`}>{reflectionValue.length.toLocaleString()} / {reflectionMaxLength.toLocaleString()} characters. Saved reflection text stays local to this browser and is not used for personalization or automatic insights.</span>{' '}
           <div className="button-grid two">
             <button className="secondary" type="button" disabled={reflectionValue.trim().length === 0 || reflectionOverLimit} onClick={() => onSaveReflection(reflectionKey, reflectionValue)}>Save reflection</button>
             {savedReflection && <button className="secondary danger" type="button" onClick={() => onDeleteReflection(reflectionKey)}>Delete saved reflection</button>}
-          </div>
+          </div>{' '}
           {savedReflection && <small>Saved locally for this prototype. Do not use this as production privacy architecture.</small>}
         </label>
       )}
@@ -1843,7 +1843,7 @@ function Support() {
       <h1 id="support-title">Reach people, not a wall.</h1>
       <p className="muted">The app does not diagnose, monitor emergencies, or replace professional care.</p>
       <div className="support-list">
-        {supportLevels.map((level, index) => <article className="support-card" key={level}><strong>Level {index + 1}</strong><span>{level}</span></article>)}
+        {supportLevels.map((level, index) => <article className="support-card" key={level}><strong>Level {index + 1}</strong>{' '}<span>{level}</span></article>)}
       </div>
       <article className="crisis-card">
         <h2>Need urgent help?</h2>
