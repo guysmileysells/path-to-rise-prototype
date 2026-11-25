@@ -1,0 +1,1 @@
+PASS: all ten loaded-page offline start/stop flows at 320x568, 390 and 1280; no horizontal overflow or sub-44px button/select targets; no storage writes, runtime errors or non-GET requests. Screenshots saved.

@@ -1,6 +1,6 @@
 # Real-Time Support: expansion to ten
 
-Status: local engineering checkpoint passed. Owner message `1575273174076096513` explicitly authorizes updating the existing GitHub Pages link with the ten-tool **mobile test preview**. Publication is pending release/hosted checks. This is not clinical, public-beta or production approval; those gates remain unmet.
+Status: **Publicly accessible ten-tool mobile TEST PREVIEW is LIVE and hosted-verified**, authorized by `1575273174076096513`; [Pages run 45712510668](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/45712510668) passed all 106 browser tests. Clinical/general-release approval remains unmet. Current evidence and limitations: `REAL_TIME_SUPPORT_EXPANSION_VERIFICATION.md`.
 
 ## Owner contract
 Add five tools, preserving original five content, order, timing, ratings, audio and program isolation. Exact additional names: Physical Tension Reset; Control and Confidence Reset; Re-Engagement Reset; Urge and Craving Reset; Self-Compassion and Accountability Reset. All tools retain What / When / How / Why / Benefits / Duration / Adaptations / Scientific References in that order; 3–5 When/Benefits examples, numbered How, no clinical guarantees. Audiences include first responders, military personnel and veterans.

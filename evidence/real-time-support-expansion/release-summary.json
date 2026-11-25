@@ -1,0 +1,24 @@
+{
+  "gate": "HOSTED_OWNER_AUTHORIZED_MOBILE_TEST_PREVIEW_VERIFIED",
+  "ownerMessage": "1575273174076096513",
+  "url": "https://guysmileysells.github.io/path-to-rise-prototype/#support",
+  "appSourceCommit": "d905df7f0bace77fbc4209c586320b823fb589c6",
+  "deployedMergeCommit": "d37f6c9deff247f0a448fb2ba6d408e62d77dd28",
+  "workflowRun": "45712510668",
+  "workflowURL": "https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/45712510668",
+  "workflowConclusion": "success",
+  "sourceDigest": "703565d5ddfde14767885552cadb273ff6f89b765377d6fad343260167d867d2",
+  "localBrowserPassed": 106,
+  "linuxBrowserPassed": 106,
+  "hostedWidths": [
+    320,
+    390,
+    1280
+  ],
+  "hostedToolFlows": 30,
+  "clinicalApproval": "NOT VERIFIED",
+  "physicalDevices": "NOT VERIFIED; owner testing next",
+  "byteIdentityReadback": "Prior optional localhost comparison was approval-blocked and not retried; this release verifies the actual hosted rendered UI instead.",
+  "offlineScope": "Already-loaded page only; no cold-start guarantee",
+  "sharedDocumentStaging": "Only new owned top-level release section; older unrelated worktree hunks preserved"
+}

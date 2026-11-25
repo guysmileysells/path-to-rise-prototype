@@ -1,0 +1,2 @@
+build	Verify mobile and desktop expansion behavior	2026-11-25T22:26:01.9180244Z   ✓   53 [mobile] › tests/browser/word-spacing.spec.ts:22:1 › whole-prototype labels retain real word spaces across every shared screen (18.7s)
+build	Verify mobile and desktop expansion behavior	2026-11-25T22:30:47.2910931Z   106 passed (8.9m)

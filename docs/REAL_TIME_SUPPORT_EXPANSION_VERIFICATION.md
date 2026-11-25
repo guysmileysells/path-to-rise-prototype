@@ -1,8 +1,16 @@
 # Ten-tool expansion — engineering verification
 
-Status: LOCAL ENGINEERING CHECKPOINT PASSED — prior 106-browser run passed. Owner `1575273174076096513` now authorizes a **publicly accessible mobile test preview at the existing Pages URL**, not clinical/general-release approval. Fresh local/CI/hosted release checks are underway; publication is not yet claimed. Historical local-only statements below record the earlier checkpoint and are superseded only by this access authorization. Clinical/SME and physical-device acceptance remain NOT VERIFIED.
+Status: **HOSTED OWNER-AUTHORIZED MOBILE TEST PREVIEW VERIFIED** at the existing public URL. Pages run `45712510668` succeeded, including all 106 Linux browser tests; all ten hosted tools passed at 320/390/1280px. Clinical/general-release approval and physical-device acceptance remain NOT VERIFIED. Earlier local-only records below are historical checkpoints.
 
-## Fresh owner-authorized mobile-preview release candidate
+## Current public mobile-test preview — 2026-11-25
+**Live:** https://guysmileysells.github.io/path-to-rise-prototype/#support → **Real-Time Support**. Owner message `1575273174076096513` authorized the existing publicly accessible URL for testing the ten-tool version on phones. This is not private/access-controlled, clinically approved, public-beta or production-ready.
+
+- App source `d905df7f0bace77fbc4209c586320b823fb589c6`, merged as `d37f6c9deff247f0a448fb2ba6d408e62d77dd28` via [PR5](https://github.com/guysmileysells/path-to-rise-prototype/pull/5). [Pages run 45712510668](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/45712510668) completed successfully: **106/106 Linux browser tests**, aggregate/build/lint PASS. The unchanged mobile settings overflow assertion also passes with the actual select min-width fix; the former failed spacing run is superseded.
+- All ten hosted tools passed eight-heading/start-stop/loaded-tab-offline/geometry checks at **320, 390 and 1280px**; no captured page errors, practice storage writes or non-GET app requests. Visible educational/not-clinically-reviewed warning remains; original five and 13 protected source/model/storage files pass preservation gates. Four primary tabs and the 28-day/16-required-task model are unchanged; no owner data was cleared.
+- Source/test checkpoint `703565d5ddfde14767885552cadb273ff6f89b765377d6fad343260167d867d2` (71 files). Evidence: `evidence/real-time-support-expansion/release-summary.json`, `release-deployment.json`, `release-browser.txt`, `hosted-verification.json`, `release-ci-proof.txt`. Canonical scope/gates: `docs/REAL_TIME_SUPPORT_EXPANSION.md` and `docs/REAL_TIME_SUPPORT_EXPANSION_VERIFICATION.md`.
+- **Still NOT VERIFIED:** clinical/SME, physical phones/Safari, audible device speech, manual screen readers and privacy/legal review. Loaded-page offline is not offline reopening. Day16’s three existing source gaps remain. Older local-only/pending paragraphs below are historical checkpoints, not current publication status.
+
+## Pre-publication fresh local candidate (history)
 Frozen runtime/test checkpoint: `703565d5ddfde14767885552cadb273ff6f89b765377d6fad343260167d867d2` (71 files). Fresh `npm test` including build and source-preservation scenarios PASS; lint 0 warnings/errors. Fresh production-preview browser suite: **106 passed (4.3m), no failed cases**; `release-browser.txt`. Snapshot recheck PASS after the full suite. Linux CI and actual hosted preview checks are still required before a live-update claim. Existing visible educational/not-clinically-reviewed warning is unchanged. Unrelated WIP is intentionally excluded from the release commit.
 
 ## Delivered locally
@@ -37,9 +45,9 @@ An optional served-build SHA/byte-identity read-back command was blocked after a
 - Full production-preview suite: PASS, 106 passed; zero failed/flaky/skipped, 249.5 seconds. Command: `npx playwright test --config=evidence/real-time-support-expansion/full-built-playwright.config.ts`. Primary evidence: `browser-final-built.txt`, `final-built-results.json`. All original four-tab/program/RESET/reminder/private-writing cases and old/new support flows included. JSON originally resolved into a nested config-relative directory; exact results copied to the indexed root path without modifying them.
 - Final served/audio rerun: PASS after final copy/build; all ten loaded-page offline flows at 320/390/1280px, plus all five new modelled-audio lifecycles at 320/1280px. Tall mobile screenshot reviewed: all ten titles, cream/forest branding, consistent spacing, no visible title/control overlap; short 320px capture retains visible global Exit.
 - Clinical/SME: NOT VERIFIED / REQUIRED before public release, all five new adapted flows.
-- Physical iOS/Android, real audible voices, manual screen readers, Safari/WebKit, formal accessibility, privacy/legal and original Linux CI: NOT VERIFIED.
+- Physical iOS/Android, real audible voices, manual screen readers, Safari/WebKit, formal accessibility and privacy/legal: NOT VERIFIED. Linux CI now PASSED in the hosted-release record above.
 - Offline cold start/reload, PWA/background operation: NOT implemented or promised.
-- Public deployment/commit: NOT performed; inherited dirty WIP preserved. Existing public URL has not been updated by this task.
+- Public mobile-test preview: now published under explicit owner authorization and verified; run `45712510668`, merged app `d37f6c9deff247f0a448fb2ba6d408e62d77dd28`. This is not clinical/general-release approval. Inherited unrelated dirty WIP is preserved.
 - Non-blocking build warning: main minified JS about 666kB / 165kB gzip, mostly existing content; no unproven performance refactor undertaken.
 
 ## Clinical review queue

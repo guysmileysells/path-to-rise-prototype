@@ -1,5 +1,14 @@
 # PATH to RISE — functioning version
 
+## Current public mobile-test preview — 2026-11-25
+**Live:** https://guysmileysells.github.io/path-to-rise-prototype/#support → **Real-Time Support**. Owner message `1575273174076096513` authorized the existing publicly accessible URL for testing the ten-tool version on phones. This is not private/access-controlled, clinically approved, public-beta or production-ready.
+
+- App source `d905df7f0bace77fbc4209c586320b823fb589c6`, merged as `d37f6c9deff247f0a448fb2ba6d408e62d77dd28` via [PR5](https://github.com/guysmileysells/path-to-rise-prototype/pull/5). [Pages run 45712510668](https://github.com/guysmileysells/path-to-rise-prototype/actions/runs/45712510668) completed successfully: **106/106 Linux browser tests**, aggregate/build/lint PASS. The unchanged mobile settings overflow assertion also passes with the actual select min-width fix; the former failed spacing run is superseded.
+- All ten hosted tools passed eight-heading/start-stop/loaded-tab-offline/geometry checks at **320, 390 and 1280px**; no captured page errors, practice storage writes or non-GET app requests. Visible educational/not-clinically-reviewed warning remains; original five and 13 protected source/model/storage files pass preservation gates. Four primary tabs and the 28-day/16-required-task model are unchanged; no owner data was cleared.
+- Source/test checkpoint `703565d5ddfde14767885552cadb273ff6f89b765377d6fad343260167d867d2` (71 files). Evidence: `evidence/real-time-support-expansion/release-summary.json`, `release-deployment.json`, `release-browser.txt`, `hosted-verification.json`, `release-ci-proof.txt`. Canonical scope/gates: `docs/REAL_TIME_SUPPORT_EXPANSION.md` and `docs/REAL_TIME_SUPPORT_EXPANSION_VERIFICATION.md`.
+- **Still NOT VERIFIED:** clinical/SME, physical phones/Safari, audible device speech, manual screen readers and privacy/legal review. Loaded-page offline is not offline reopening. Day16’s three existing source gaps remain. Older local-only/pending paragraphs below are historical checkpoints, not current publication status.
+
+
 ## Latest word-spacing review — 2026-11-25
 - Owner instruction: `1575167851134849035`. App-wide review covers all 28 days, 10 Toolbox practices, 9 RESET paths, 6 Feeling Stuck responses, Today, My Path, Support and settings.
 - Fixes: 49 explicit shared-template word separators; display-only correction of 58 source passages / 73 missing spaces. Raw source, all 476 task/reflection records, task order, countdowns, numbers, punctuation, writing and storage handlers remain unchanged. CSS/design is unchanged.

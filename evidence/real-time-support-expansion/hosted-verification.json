@@ -1,0 +1,299 @@
+{
+  "base": "https://guysmileysells.github.io/path-to-rise-prototype/#support",
+  "results": [
+    {
+      "width": 320,
+      "cases": [
+        {
+          "tool": "Physiological Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Here and Now Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Intrusive Thought Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Respond, Don't React +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Post-Incident Recovery Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Physical Tension Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Control and Confidence Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Re-Engagement Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Urge and Craving Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        },
+        {
+          "tool": "Self-Compassion and Accountability Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 320,
+            "scroll": 320,
+            "small": []
+          }
+        }
+      ],
+      "errors": [],
+      "nonGetRequests": [],
+      "offlineScope": "already loaded tab only; no cold-start guarantee"
+    },
+    {
+      "width": 390,
+      "cases": [
+        {
+          "tool": "Physiological Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Here and Now Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Intrusive Thought Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Respond, Don't React +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Post-Incident Recovery Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Physical Tension Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Control and Confidence Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Re-Engagement Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Urge and Craving Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        },
+        {
+          "tool": "Self-Compassion and Accountability Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 390,
+            "scroll": 390,
+            "small": []
+          }
+        }
+      ],
+      "errors": [],
+      "nonGetRequests": [],
+      "offlineScope": "already loaded tab only; no cold-start guarantee"
+    },
+    {
+      "width": 1280,
+      "cases": [
+        {
+          "tool": "Physiological Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Here and Now Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Intrusive Thought Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Respond, Don't React +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Post-Incident Recovery Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Physical Tension Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Control and Confidence Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Re-Engagement Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Urge and Craving Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        },
+        {
+          "tool": "Self-Compassion and Accountability Reset +",
+          "offlineStartStop": "PASS",
+          "geometry": {
+            "viewport": 1280,
+            "scroll": 1280,
+            "small": []
+          }
+        }
+      ],
+      "errors": [],
+      "nonGetRequests": [],
+      "offlineScope": "already loaded tab only; no cold-start guarantee"
+    }
+  ]
+}

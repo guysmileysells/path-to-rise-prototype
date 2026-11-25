@@ -1,9 +1,9 @@
 # Real-Time Support — implementation and acceptance contract
 
-> Expansion update: owner-authorized ten-tool scope and privacy contract are canonical in `REAL_TIME_SUPPORT_EXPANSION.md`; scientific evidence in `REAL_TIME_SUPPORT_EXPANSION_EVIDENCE.md`; current engineering/clinical gates in `REAL_TIME_SUPPORT_EXPANSION_VERIFICATION.md`. Original five are preserved exactly. No public release is claimed.
+> Expansion update: owner-authorized ten-tool scope and privacy contract are canonical in `REAL_TIME_SUPPORT_EXPANSION.md`; scientific evidence in `REAL_TIME_SUPPORT_EXPANSION_EVIDENCE.md`; current engineering/clinical gates in `REAL_TIME_SUPPORT_EXPANSION_VERIFICATION.md`. Original five are preserved exactly. The owner-authorized ten-tool mobile test preview is now hosted and verified; general/clinical release is not approved. Current status is in `REAL_TIME_SUPPORT_EXPANSION_VERIFICATION.md`.
 
 
-Status: LOCAL IMPLEMENTATION, acceptance/release incomplete. Owner has authorized expansion to ten; `docs/REAL_TIME_SUPPORT_EXPANSION.md` supersedes the five-tool inventory below while preserving the original five unchanged. Owner-supplied brief: `message.txt`, received in #ronnie after the spacing-release status report.
+Status: original-five contract retained as history; the ten-tool mobile test preview is now published and engineering/hosted checks pass. Clinical and physical-device acceptance remain unverified. Owner has authorized expansion to ten; `docs/REAL_TIME_SUPPORT_EXPANSION.md` supersedes the five-tool inventory below while preserving the original five unchanged. Owner-supplied brief: `message.txt`, received in #ronnie after the spacing-release status report.
 
 ## Locked owner requirements
 
@@ -33,7 +33,7 @@ Every tool: Start Guided Practice; one step at a time; optional audio; optional 
 
 ## Current baseline / release blocker
 
-Previous spacing PR #4 merged at `ed0e9a31e8a65dbd50ad1acc729e3a40a2d344ae`. Pages run `45649635917` failed before deployment: 55 browser tests passed, one failed. Expanded Your space/reminder/privacy screen had `scrollWidth=422` versus `clientWidth=390` (allowance 391) on the Linux mobile runner. This is an unresolved measured mobile overflow, not a proven content/timer defect. Do not weaken the assertion, hide overflow or claim spacing already live. Diagnose and retest before new publication. Preserve all unrelated dirty docs/evidence.
+Previous spacing PR #4 merged at `ed0e9a31e8a65dbd50ad1acc729e3a40a2d344ae`. Pages run `45649635917` failed before deployment: 55 browser tests passed, one failed. Expanded Your space/reminder/privacy screen had `scrollWidth=422` versus `clientWidth=390` (allowance 391) on the Linux mobile runner. That historical measured overflow is now resolved by the one-declaration select min-width repair: the original unchanged mobile assertion passed on Linux in run `45712510668`. No overflow hiding or weakened assertion was used. Preserve all unrelated dirty docs/evidence.
 
 ## Proof slices / exit gates
 
